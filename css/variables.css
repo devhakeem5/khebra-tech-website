@@ -1,78 +1,73 @@
-/* 
- * Khebra Tech - Variables
- * Color Palette: "Digital Trust"
- */
+/* ========================================
+   KHEBRA TECH — Design Tokens
+   Color palette derived from logo (#1B2A4A)
+   ======================================== */
 
- :root {
-    /* Colors */
-    --c-bg-primary: #0A0E17;
-    --c-bg-secondary: #111827;
-    --c-bg-elevated: #1E293B;
-    
-    --c-primary: #00D4FF;
-    --c-secondary: #7C3AED;
-    --c-accent: #10B981;
-    
-    --c-text-primary: #F1F5F9;
-    --c-text-secondary: #94A3B8;
-    
-    --c-border: rgba(255, 255, 255, 0.1);
-    --c-border-hover: rgba(0, 212, 255, 0.3);
-    
-    /* Gradients */
-    --g-primary: linear-gradient(135deg, var(--c-primary), var(--c-secondary));
-    --g-accent: linear-gradient(135deg, var(--c-secondary), var(--c-accent));
-    --g-bg-glow: radial-gradient(circle at center, rgba(0, 212, 255, 0.15) 0%, transparent 70%);
-    
-    /* Typography */
-    --font-heading: 'Cairo', sans-serif;
-    --font-body: 'IBM Plex Sans Arabic', sans-serif;
-    --font-mono: 'Space Grotesk', monospace;
-    
-    /* Fluid Typography via clamp() for responsiveness */
-    /* Mobile -> Desktop scaling */
-    --fs-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
-    --fs-sm: clamp(0.875rem, 0.825rem + 0.25vw, 1rem);
-    --fs-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
-    --fs-lg: clamp(1.125rem, 1.05rem + 0.375vw, 1.3125rem);
-    --fs-xl: clamp(1.3125rem, 1.2rem + 0.5625vw, 1.625rem);
-    --fs-2xl: clamp(1.625rem, 1.4rem + 1.125vw, 2.1875rem);
-    --fs-3xl: clamp(2rem, 1.65rem + 1.75vw, 2.875rem);
-    --fs-4xl: clamp(2.5rem, 2rem + 2.5vw, 3.75rem);
-    --fs-5xl: clamp(3rem, 2.2rem + 4vw, 5rem);
-    
-    /* Spacing */
-    --space-1: 0.25rem;
-    --space-2: 0.5rem;
-    --space-3: 0.75rem;
-    --space-4: 1rem;
-    --space-6: 1.5rem;
-    --space-8: 2rem;
-    --space-12: 3rem;
-    --space-16: 4rem;
-    --space-24: 6rem;
-    --space-32: 8rem;
-    
-    /* Layout */
-    --container-max: 1200px;
-    --container-padding: var(--space-4);
-    --header-height: 80px;
-    
-    /* Borders & Shadows */
-    --radius-sm: 4px;
-    --radius-md: 8px;
-    --radius-lg: 16px;
-    --radius-full: 9999px;
-    
-    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.1);
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.15);
-    --shadow-glow: 0 0 20px rgba(0, 212, 255, 0.2);
-    --shadow-glow-hover: 0 0 30px rgba(0, 212, 255, 0.4);
-    
-    /* Transitions */
-    --ts-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
-    --ts-normal: 300ms cubic-bezier(0.4, 0, 0.2, 1);
-    --ts-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
-    --ts-bounce: 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
+:root {
+    /* ── Logo-derived palette ── */
+    --navy:        #1B2A4A;
+    --navy-light:  #243558;
+    --navy-deep:   #0F1A2E;
+    --navy-90:     rgba(27, 42, 74, 0.9);
+
+    /* Background layers */
+    --bg-void:     #060A11;
+    --bg-base:     #0B1120;
+    --bg-surface:  #111B2E;
+    --bg-elevated: #182540;
+
+    /* Accent: warm electric blue, complementary to navy */
+    --accent:      #4A9EFF;
+    --accent-dim:  rgba(74, 158, 255, 0.15);
+    --accent-glow: rgba(74, 158, 255, 0.25);
+
+    /* Secondary accent */
+    --teal:        #38BDF8;
+    --teal-dim:    rgba(56, 189, 248, 0.1);
+
+    /* Text */
+    --text-1:      #E8EDF5;
+    --text-2:      #8C9BB5;
+    --text-3:      #556380;
+
+    /* Borders */
+    --border:      rgba(255, 255, 255, 0.06);
+    --border-hover:rgba(74, 158, 255, 0.3);
+
+    /* ── Typography ── */
+    --font-h: 'Cairo', sans-serif;
+    --font-b: 'IBM Plex Sans Arabic', sans-serif;
+
+    --fs-xs:  clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+    --fs-sm:  clamp(0.875rem, 0.82rem + 0.27vw, 1rem);
+    --fs-md:  clamp(1rem, 0.94rem + 0.3vw, 1.125rem);
+    --fs-lg:  clamp(1.15rem, 1.05rem + 0.5vw, 1.375rem);
+    --fs-xl:  clamp(1.375rem, 1.2rem + 0.875vw, 1.875rem);
+    --fs-2xl: clamp(1.75rem, 1.45rem + 1.5vw, 2.625rem);
+    --fs-3xl: clamp(2.25rem, 1.75rem + 2.5vw, 3.5rem);
+    --fs-4xl: clamp(2.75rem, 2rem + 3.75vw, 4.5rem);
+    --fs-display: clamp(3.5rem, 2.5rem + 5vw, 6rem);
+
+    /* ── Spacing ── */
+    --s-1: 0.25rem; --s-2: 0.5rem; --s-3: 0.75rem; --s-4: 1rem;
+    --s-6: 1.5rem;  --s-8: 2rem;   --s-10: 2.5rem;  --s-12: 3rem;
+    --s-16: 4rem;   --s-20: 5rem;   --s-24: 6rem;    --s-32: 8rem;
+
+    /* ── Radius ── */
+    --r-sm: 6px;
+    --r-md: 12px;
+    --r-lg: 20px;
+    --r-xl: 32px;
+    --r-full: 9999px;
+
+    /* ── Transitions ── */
+    --ease: cubic-bezier(0.16, 1, 0.3, 1);
+    --t-fast:   200ms var(--ease);
+    --t-normal: 400ms var(--ease);
+    --t-slow:   700ms var(--ease);
+
+    /* ── Layout ── */
+    --max-w: 1280px;
+    --gutter: clamp(1.25rem, 3vw, 3rem);
+    --header-h: 72px;
 }

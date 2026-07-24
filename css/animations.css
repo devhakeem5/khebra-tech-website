@@ -1,80 +1,59 @@
-/* 
- * Khebra Tech - Animations & Interactions
- */
+/* ========================================
+   KHEBRA TECH — Animations
+   ======================================== */
 
- /* Keyframes */
- @keyframes scroll {
-    0% { transform: translate(-50%, 0); opacity: 1; }
-    100% { transform: translate(-50%, 15px); opacity: 0; }
-}
-
-@keyframes spin {
-    100% { transform: translate(-50%, -50%) rotate(360deg); }
-}
-
-@keyframes pulse {
-    0% { transform: scale(1); opacity: 1; }
-    50% { transform: scale(1.5); opacity: 0.5; }
-    100% { transform: scale(1); opacity: 1; }
+/* Keyframes */
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
 }
 
 @keyframes float {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
-    100% { transform: translateY(0px); }
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
 }
 
-/* Scroll Reveal Classes (Intersection Observer) */
-.fade-up {
+@keyframes pulse-glow {
+    0%, 100% { opacity: 0.4; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.1); }
+}
+
+@keyframes scroll-down {
+    0% { opacity: 1; transform: scaleY(1); transform-origin: top; }
+    100% { opacity: 0; transform: scaleY(0); transform-origin: bottom; }
+}
+
+@keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+@keyframes cell-blink {
+    0%, 100% { opacity: 0.15; }
+    50% { opacity: 0.6; }
+}
+
+/* Scroll reveal */
+.reveal {
     opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(40px);
+    transition:
+        opacity 0.9s var(--ease),
+        transform 0.9s var(--ease);
+    transition-delay: var(--delay, 0s);
 }
 
-.fade-up.visible {
+.reveal.visible {
     opacity: 1;
     transform: translateY(0);
 }
 
-.fade-in-right {
-    opacity: 0;
-    transform: translateX(30px); /* Because it's RTL */
-    transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.fade-in-right.visible {
-    opacity: 1;
-    transform: translateX(0);
-}
-
-.fade-in-left {
-    opacity: 0;
-    transform: translateX(-30px); /* Because it's RTL */
-    transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.fade-in-left.visible {
-    opacity: 1;
-    transform: translateX(0);
-}
-
-/* SVG Path Animation */
-.shield-path {
-    stroke-dasharray: 300;
-    stroke-dashoffset: 300;
-    transition: stroke-dashoffset 2s ease-out;
-}
-
-.about.visible .shield-path {
-    stroke-dashoffset: 0;
-}
-
-/* Respect Reduced Motion */
+/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
-    * {
+    *, *::before, *::after {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
     }
+    .reveal { opacity: 1; transform: none; }
 }
