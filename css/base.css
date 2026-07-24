@@ -1,0 +1,145 @@
+/* 
+ * Khebra Tech - Base Styles
+ */
+
+ *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: var(--font-body);
+    font-size: var(--fs-base);
+    line-height: 1.6;
+    color: var(--c-text-primary);
+    background-color: var(--c-bg-primary);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    cursor: none; /* For custom cursor */
+}
+
+/* Typography Base */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    line-height: 1.2;
+    font-weight: 700;
+    margin-bottom: var(--space-4);
+    color: var(--c-text-primary);
+}
+
+p {
+    margin-bottom: var(--space-4);
+    color: var(--c-text-secondary);
+}
+
+a {
+    color: var(--c-primary);
+    text-decoration: none;
+    transition: color var(--ts-normal);
+}
+
+a:hover {
+    color: var(--c-text-primary);
+}
+
+ul, ol {
+    list-style: none;
+}
+
+img, svg {
+    display: block;
+    max-width: 100%;
+}
+
+button, input, textarea, select {
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    background: none;
+    border: none;
+    outline: none;
+}
+
+button {
+    cursor: none; /* Keep none for custom cursor */
+}
+
+/* Custom Cursor */
+.custom-cursor,
+.custom-cursor-follower {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 9999;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s, height 0.3s, background-color 0.3s, opacity 0.3s;
+}
+
+.custom-cursor {
+    width: 8px;
+    height: 8px;
+    background-color: var(--c-primary);
+    mix-blend-mode: difference;
+}
+
+.custom-cursor-follower {
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--c-primary);
+    opacity: 0.5;
+    transition: width 0.3s, height 0.3s, opacity 0.3s, transform 0.1s ease-out;
+}
+
+/* Cursor States */
+body.hovering .custom-cursor {
+    width: 0;
+    height: 0;
+    opacity: 0;
+}
+
+body.hovering .custom-cursor-follower {
+    width: 64px;
+    height: 64px;
+    background-color: rgba(0, 212, 255, 0.1);
+    border-color: transparent;
+    opacity: 1;
+}
+
+/* Background Effects */
+.bg-grid {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: 
+        linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.5;
+}
+
+/* Utilities */
+.text-primary { color: var(--c-primary); }
+.text-secondary { color: var(--c-secondary); }
+.text-gradient {
+    background: var(--g-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: inline-block;
+}
+.text-center { text-align: center; }
+.relative { position: relative; }
+.z-10 { z-index: 10; }

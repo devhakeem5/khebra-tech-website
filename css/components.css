@@ -1,0 +1,213 @@
+/* 
+ * Khebra Tech - Components
+ */
+
+ /* Buttons */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    font-family: var(--font-heading);
+    font-weight: 700;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-md);
+    transition: all var(--ts-normal);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.btn-sm {
+    padding: 0.5rem 1rem;
+    font-size: var(--fs-sm);
+}
+
+.btn-lg {
+    padding: 1rem 2rem;
+    font-size: var(--fs-base);
+}
+
+.btn-primary {
+    background: var(--g-primary);
+    color: #fff;
+    border: none;
+    box-shadow: var(--shadow-md);
+}
+
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--c-secondary), var(--c-primary));
+    opacity: 0;
+    z-index: -1;
+    transition: opacity var(--ts-normal);
+}
+
+.btn-primary:hover {
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-glow-hover);
+}
+
+.btn-primary:hover::before {
+    opacity: 1;
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--c-text-primary);
+    border: 1px solid var(--c-border);
+}
+
+.btn-outline:hover {
+    border-color: var(--c-primary);
+    background-color: rgba(0, 212, 255, 0.05);
+    box-shadow: inset 0 0 15px rgba(0, 212, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.btn-block {
+    width: 100%;
+}
+
+.btn-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    color: var(--c-primary);
+    font-weight: 600;
+    font-size: var(--fs-sm);
+}
+
+.btn-link span {
+    transition: transform var(--ts-normal);
+}
+
+.btn-link:hover span {
+    transform: translateX(-5px); /* RTL */
+}
+
+/* Badges */
+.badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background-color: rgba(0, 212, 255, 0.1);
+    color: var(--c-primary);
+    border: 1px solid rgba(0, 212, 255, 0.2);
+    border-radius: var(--radius-full);
+    font-size: var(--fs-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: var(--space-4);
+}
+
+/* Section Headers */
+.section-header {
+    margin-bottom: var(--space-12);
+}
+
+.section-title {
+    font-size: var(--fs-3xl);
+    position: relative;
+    display: inline-block;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    right: 0;
+    width: 50px;
+    height: 3px;
+    background: var(--g-primary);
+    border-radius: var(--radius-full);
+}
+
+.text-center .section-title::after {
+    right: 50%;
+    transform: translateX(50%);
+}
+
+.section-desc {
+    margin-top: var(--space-4);
+    font-size: var(--fs-lg);
+    max-width: 600px;
+}
+
+.text-center .section-desc {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Form Elements */
+.form-group {
+    margin-bottom: var(--space-6);
+    position: relative;
+}
+
+.form-control {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius-md);
+    padding: 1rem 1.25rem;
+    color: var(--c-text-primary);
+    transition: all var(--ts-normal);
+}
+
+.form-control:focus {
+    background-color: rgba(0, 212, 255, 0.05);
+    border-color: var(--c-primary);
+    box-shadow: 0 0 0 4px rgba(0, 212, 255, 0.1);
+}
+
+/* Floating Label implementation */
+.form-group input,
+.form-group textarea {
+    padding-top: 1.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.form-label {
+    position: absolute;
+    right: 1.25rem;
+    top: 1rem;
+    color: var(--c-text-secondary);
+    transition: all var(--ts-normal);
+    pointer-events: none;
+    font-size: var(--fs-base);
+}
+
+.form-control:focus ~ .form-label,
+.form-control:not(:placeholder-shown) ~ .form-label {
+    top: 0.35rem;
+    font-size: var(--fs-xs);
+    color: var(--c-primary);
+}
+
+select.form-control {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2394A3B8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: left 1rem center;
+    background-size: 1em;
+}
+
+/* Icon Boxes */
+.icon-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-md);
+    background: rgba(0, 212, 255, 0.1);
+    color: var(--c-primary);
+    flex-shrink: 0;
+}

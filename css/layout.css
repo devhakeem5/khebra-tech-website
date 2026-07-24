@@ -1,0 +1,223 @@
+/* 
+ * Khebra Tech - Layout
+ */
+
+ .container {
+    width: 100%;
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
+}
+
+.section-padding {
+    padding: var(--space-24) 0;
+}
+
+/* Header */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--header-height);
+    z-index: 100;
+    transition: background-color var(--ts-normal), backdrop-filter var(--ts-normal), box-shadow var(--ts-normal);
+}
+
+.header.scrolled {
+    background-color: rgba(10, 14, 23, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid var(--c-border);
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    z-index: 101;
+}
+
+.logo-text {
+    font-family: var(--font-heading);
+    font-weight: 900;
+    font-size: var(--fs-xl);
+    color: var(--c-text-primary);
+    letter-spacing: -0.5px;
+}
+
+.logo-img {
+    height: 40px;
+    width: auto;
+}
+
+/* Navigation */
+.nav-list {
+    display: flex;
+    align-items: center;
+    gap: var(--space-8);
+}
+
+.nav-link {
+    color: var(--c-text-secondary);
+    font-weight: 500;
+    font-size: var(--fs-sm);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    padding: var(--space-2) 0;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 0;
+    height: 2px;
+    background: var(--g-primary);
+    transition: width var(--ts-normal);
+    border-radius: var(--radius-full);
+}
+
+.nav-link:hover {
+    color: var(--c-text-primary);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+    left: 0;
+    right: auto;
+}
+
+.nav-link.active {
+    color: var(--c-text-primary);
+}
+
+/* Mobile Menu Button */
+.mobile-menu-btn {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 20px;
+    z-index: 101;
+}
+
+.mobile-menu-btn span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: var(--c-text-primary);
+    transition: transform 0.3s, opacity 0.3s;
+    border-radius: 2px;
+}
+
+/* Footer Layout */
+.footer {
+    background-color: var(--c-bg-secondary);
+    border-top: 1px solid var(--c-border);
+    padding: var(--space-16) 0 var(--space-4);
+    position: relative;
+    overflow: hidden;
+}
+
+.footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50%;
+    height: 1px;
+    background: var(--g-primary);
+    opacity: 0.5;
+}
+
+.footer-top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: var(--space-8);
+    margin-bottom: var(--space-12);
+}
+
+.footer-brand .footer-desc {
+    margin-top: var(--space-4);
+    max-width: 400px;
+}
+
+.footer-title {
+    font-size: var(--fs-lg);
+    margin-bottom: var(--space-6);
+    position: relative;
+    display: inline-block;
+}
+
+.footer-title::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    right: 0;
+    width: 30px;
+    height: 2px;
+    background-color: var(--c-primary);
+    border-radius: var(--radius-full);
+}
+
+.footer-links li {
+    margin-bottom: var(--space-3);
+}
+
+.footer-links a {
+    color: var(--c-text-secondary);
+    transition: color var(--ts-fast), padding-right var(--ts-fast);
+}
+
+.footer-links a:hover {
+    color: var(--c-primary);
+    padding-right: var(--space-2);
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: var(--space-6);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    color: var(--c-text-secondary);
+    font-size: var(--fs-sm);
+}
+
+.social-links {
+    display: flex;
+    gap: var(--space-4);
+}
+
+.social-links a {
+    color: var(--c-text-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--c-border);
+    transition: all var(--ts-normal);
+}
+
+.social-links a:hover {
+    color: var(--c-primary);
+    border-color: var(--c-primary);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-glow);
+}
