@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>خبرة تك | حلول تقنية وأمن سيبراني متقدمة</title>
-    <meta name="description" content="خبرة تك - شركة رائدة في الأمن السيبراني، تطوير البرمجيات، والحلول التقنية المخصصة للمؤسسات.">
+    <title>خبرة تك | نحرس المستقبل الرقمي</title>
+    <meta name="description" content="خبرة تك — أمن سيبراني متقدم، هندسة برمجيات لا تُقاوم، وحلول مؤسسية تبني إمبراطوريات رقمية.">
     <link rel="icon" type="image/png" href="assets/images/logo.png">
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
+
     <link rel="stylesheet" href="css/variables.css">
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/layout.css">
@@ -20,10 +20,10 @@
     <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
-    <!-- Noise Overlay for texture -->
+    <!-- Noise Overlay -->
     <div class="noise-overlay"></div>
 
-    <!-- Header -->
+    <!-- ==================== HEADER ==================== -->
     <header class="header" id="header">
         <div class="header-inner">
             <a href="#" class="logo">
@@ -33,12 +33,12 @@
 
             <nav class="nav" id="nav">
                 <a href="#home" class="nav-link active">الرئيسية</a>
-                <a href="#about" class="nav-link">عن الشركة</a>
-                <a href="#services" class="nav-link">الخدمات</a>
+                <a href="#manifesto" class="nav-link">من نحن</a>
+                <a href="#services" class="nav-link">قدراتنا</a>
                 <a href="#contact" class="nav-link">تواصل</a>
             </nav>
 
-            <a href="#contact" class="header-cta">ابدأ مشروعك</a>
+            <a href="#contact" class="header-cta"><span>ابدأ الآن</span></a>
 
             <button class="menu-toggle" id="menuToggle" aria-label="القائمة">
                 <span></span>
@@ -47,314 +47,260 @@
     </header>
 
     <main>
-        <!-- ===================== HERO ===================== -->
+        <!-- ==================== HERO ==================== -->
         <section id="home" class="hero">
-            <div class="hero-bg-shapes">
-                <div class="hero-diamond hero-diamond--1"></div>
-                <div class="hero-diamond hero-diamond--2"></div>
-                <div class="hero-diamond hero-diamond--3"></div>
-                <div class="hero-line hero-line--1"></div>
-                <div class="hero-line hero-line--2"></div>
-                <div class="hero-line hero-line--3"></div>
-            </div>
+            <canvas class="hero-canvas" id="heroCanvas"></canvas>
+            <div class="hero-glow"></div>
+            <div class="hero-scan"></div>
 
-            <div class="hero-layout">
-                <div class="hero-main">
-                    <div class="hero-badge">
-                        <span class="hero-badge-dot"></span>
-                        الأمن السيبراني · تطوير البرمجيات · حلول مخصصة
-                    </div>
-
-                    <h1 class="hero-title">
-                        <span class="hero-title-line">نبني</span>
-                        <span class="hero-title-line hero-title-line--accent">حصوناً رقمية</span>
-                        <span class="hero-title-line">لعالم لا يتوقف</span>
-                    </h1>
-
-                    <p class="hero-desc">
-                        نحوّل التحديات الأمنية والتقنية الأكثر تعقيداً إلى أنظمة
-                        تمنح مؤسستك ثقة مطلقة في بنيتها الرقمية.
-                    </p>
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="hero-badge-dot"></span>
+                    أمن سيبراني · هندسة برمجيات · حلول مؤسسية
                 </div>
 
-                <div class="hero-side">
-                    <div class="hero-visual">
-                        <div class="hero-logo-showcase">
-                            <img src="assets/images/logo.png" alt="" class="hero-logo-img">
-                            <div class="hero-logo-glow"></div>
-                        </div>
-                        <div class="hero-metrics">
-                            <div class="metric">
-                                <span class="metric-value" data-target="99.9">0</span><span class="metric-unit">%</span>
-                                <span class="metric-label">نسبة الأمان</span>
-                            </div>
-                            <div class="metric">
-                                <span class="metric-value" data-target="24">0</span><span class="metric-unit">/7</span>
-                                <span class="metric-label">مراقبة مستمرة</span>
-                            </div>
-                        </div>
-                    </div>
+                <h1 class="hero-title">
+                    <span class="hero-title-line">بينما ينام</span>
+                    <span class="hero-title-line hero-title-line--accent">العالم</span>
+                    <span class="hero-title-line">نحرس بياناتك.</span>
+                </h1>
+
+                <p class="hero-desc">
+                    لا نعدك بالأمان — نصنعه. نبني أنظمة تصمد حين تفشل البقية،
+                    ونكتب كوداً يُحترم قبل أن يُقرأ.
+                </p>
+
+                <div class="hero-cta-row">
+                    <a href="#services" class="btn btn-primary">
+                        <span>اكتشف قدراتنا</span>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 5 12 12 19"></polyline></svg>
+                    </a>
+                    <a href="#contact" class="btn btn-ghost">طلب استشارة مجانية</a>
                 </div>
             </div>
 
-            <div class="hero-cta-row">
-                <a href="#services" class="btn btn-primary">
-                    <span>اكتشف قدراتنا</span>
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 5 12 12 19"></polyline></svg>
-                </a>
-                <a href="#contact" class="btn btn-ghost">طلب استشارة</a>
-            </div>
-
-            <div class="hero-scroll-hint">
-                <div class="scroll-line"></div>
-                <span>اكتشف المزيد</span>
+            <div class="hero-scroll">
+                <div class="scroll-mouse"></div>
+                <span>اكتشف</span>
             </div>
         </section>
 
-        <!-- ===================== ABOUT ===================== -->
-        <section id="about" class="about">
-            <div class="about-inner">
-                <div class="about-marquee">
+        <!-- ==================== MANIFESTO ==================== -->
+        <section id="manifesto" class="manifesto">
+            <div class="manifesto-inner">
+                <!-- Marquee -->
+                <div class="manifesto-marquee">
                     <div class="marquee-track">
                         <span>CYBERSECURITY</span>
-                        <span>·</span>
-                        <span>SOFTWARE</span>
-                        <span>·</span>
-                        <span>ENTERPRISE</span>
-                        <span>·</span>
+                        <span>◆</span>
                         <span>PENETRATION TESTING</span>
-                        <span>·</span>
+                        <span>◆</span>
+                        <span>SOFTWARE ENGINEERING</span>
+                        <span>◆</span>
+                        <span>ENTERPRISE SOLUTIONS</span>
+                        <span>◆</span>
                         <span>CYBERSECURITY</span>
-                        <span>·</span>
-                        <span>SOFTWARE</span>
-                        <span>·</span>
-                        <span>ENTERPRISE</span>
-                        <span>·</span>
+                        <span>◆</span>
                         <span>PENETRATION TESTING</span>
-                        <span>·</span>
+                        <span>◆</span>
+                        <span>SOFTWARE ENGINEERING</span>
+                        <span>◆</span>
+                        <span>ENTERPRISE SOLUTIONS</span>
+                        <span>◆</span>
                     </div>
                 </div>
 
-                <div class="about-content">
-                    <div class="about-left reveal">
-                        <span class="section-tag">عن خبرة تك</span>
-                        <h2 class="about-title">
-                            لسنا مجرد شركة تقنية.
+                <!-- Content -->
+                <div class="manifesto-content">
+                    <div class="manifesto-statement reveal-right">
+                        <span class="section-label">البيان</span>
+                        <h2 class="manifesto-title">
+                            خلف كل نظام آمن
                             <br>
-                            <em>نحن الخط الدفاعي الأول.</em>
+                            <em>— قصة لم تُروَ.</em>
                         </h2>
                     </div>
-                    <div class="about-right reveal" style="--delay: 0.2s">
-                        <p>
-                            تأسست خبرة تك على قناعة واحدة: أن الأمن الرقمي ليس خياراً — بل ضرورة وجودية لكل مؤسسة تسعى للنمو في عالم متصل.
-                        </p>
-                        <p>
-                            فريقنا يجمع بين خبرات عميقة في اختبارات الاختراق وتحليل الثغرات، وقدرات هندسية متقدمة في بناء الأنظمة البرمجية التي تصمد أمام أعقد التهديدات.
-                        </p>
-                    </div>
-                </div>
 
-                <div class="about-pillars">
-                    <div class="pillar reveal" style="--delay: 0s">
-                        <div class="pillar-number">01</div>
-                        <h3>الأمن أولاً</h3>
-                        <p>كل سطر كود نكتبه، كل نظام نبنيه — يبدأ بالأمان وينتهي به.</p>
-                    </div>
-                    <div class="pillar reveal" style="--delay: 0.15s">
-                        <div class="pillar-number">02</div>
-                        <h3>هندسة بلا تنازل</h3>
-                        <p>نرفض الحلول السريعة. نبني أنظمة تعمل بكفاءة لسنوات لا لأسابيع.</p>
-                    </div>
-                    <div class="pillar reveal" style="--delay: 0.3s">
-                        <div class="pillar-number">03</div>
-                        <h3>شراكة حقيقية</h3>
-                        <p>لا نقدم خدمات — نتبنى مشاريع. نفكر معك كشركاء لا كمقدمي خدمات.</p>
+                    <div class="manifesto-right">
+                        <p class="reveal" style="--delay: 0.1s">
+                            لم نؤسس خبرة تك لنكون مجرد شركة تقنية أخرى. أسسناها لأن العالم الرقمي لا يرحم — والمؤسسات تستحق شريكاً يفهم ذلك بعمق.
+                        </p>
+                        <p class="reveal" style="--delay: 0.2s">
+                            نحن الفريق الذي يُستدعى حين تصبح الأمور جدية. نفكّر كالمهاجمين، نبني كالمهندسين، ونحمي كمن لديه ما يخسره.
+                        </p>
+
+                        <!-- Pillars -->
+                        <div class="manifesto-pillars">
+                            <div class="pillar reveal" style="--delay: 0.3s">
+                                <div class="pillar-header">
+                                    <div class="pillar-number">01</div>
+                                    <h3>هجوم قبل الدفاع</h3>
+                                </div>
+                                <p>نخترق أنظمتك قبل أن يفعلها غيرنا. هكذا نعرف أين تكمن الثغرات الحقيقية.</p>
+                            </div>
+                            <div class="pillar reveal" style="--delay: 0.4s">
+                                <div class="pillar-header">
+                                    <div class="pillar-number">02</div>
+                                    <h3>كود لا يشيخ</h3>
+                                </div>
+                                <p>نبني أنظمة تعمل بكفاءة بعد سنوات — لا مجرد حلول مؤقتة تنهار مع أول تحديث.</p>
+                            </div>
+                            <div class="pillar reveal" style="--delay: 0.5s">
+                                <div class="pillar-header">
+                                    <div class="pillar-number">03</div>
+                                    <h3>شراكة لا صفقة</h3>
+                                </div>
+                                <p>لا نبيع خدمات — ننضم إلى فريقك. نفكر بمشروعك كأنه مشروعنا.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ===================== SERVICES ===================== -->
+        <hr class="glow-line">
+
+        <!-- ==================== SERVICES ==================== -->
         <section id="services" class="services">
             <div class="services-inner">
                 <div class="services-header reveal">
-                    <span class="section-tag">ما نتقنه</span>
-                    <h2 class="services-title">ثلاثة محاور.<br>رؤية واحدة.</h2>
+                    <span class="section-label">ما نتقنه</span>
+                    <h2 class="services-title">ثلاثة محاور.<br><em>رؤية واحدة.</em></h2>
+                    <p class="services-subtitle">نفكّر كالمهاجمين. نتصرّف كالحُرّاس. نبني كالمهندسين.</p>
                 </div>
 
-                <!-- Service 1: Cybersecurity - Full Width Immersive -->
-                <div class="service-block service-block--cyber reveal">
-                    <div class="service-block-bg">
-                        <div class="cyber-grid">
-                            <div class="grid-cell" style="--i:0"></div>
-                            <div class="grid-cell" style="--i:1"></div>
-                            <div class="grid-cell" style="--i:2"></div>
-                            <div class="grid-cell" style="--i:3"></div>
-                            <div class="grid-cell" style="--i:4"></div>
-                            <div class="grid-cell" style="--i:5"></div>
-                            <div class="grid-cell" style="--i:6"></div>
-                            <div class="grid-cell" style="--i:7"></div>
-                            <div class="grid-cell active" style="--i:8"></div>
-                            <div class="grid-cell" style="--i:9"></div>
-                            <div class="grid-cell" style="--i:10"></div>
-                            <div class="grid-cell active" style="--i:11"></div>
+                <div class="services-grid">
+                    <!-- Service 1: Cybersecurity -->
+                    <div class="service-card reveal" style="--delay: 0s" data-tilt>
+                        <div class="service-card-number">01</div>
+                        <div class="service-card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="M12 8v4m0 4h.01" stroke-linecap="round"></path></svg>
                         </div>
-                    </div>
-                    <div class="service-block-content">
-                        <div class="service-number">01</div>
                         <h3>الأمن السيبراني</h3>
-                        <p class="service-tagline">نكتشف ثغراتك قبل أن يكتشفها غيرك.</p>
-                        <div class="service-capabilities">
-                            <div class="capability">
-                                <div class="capability-icon">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-                                </div>
-                                <div>
-                                    <h4>اختبارات الاختراق</h4>
-                                    <p>نحاكي أساليب المهاجمين الحقيقيين لاكتشاف نقاط الضعف في شبكاتك وتطبيقاتك وأنظمتك.</p>
-                                </div>
-                            </div>
-                            <div class="capability">
-                                <div class="capability-icon">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
-                                </div>
-                                <div>
-                                    <h4>تقييم الثغرات الأمنية</h4>
-                                    <p>فحص منهجي شامل للبنية التحتية الرقمية مع تقارير تفصيلية وخطط معالجة.</p>
-                                </div>
-                            </div>
-                            <div class="capability">
-                                <div class="capability-icon">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
-                                </div>
-                                <div>
-                                    <h4>المراقبة والاستجابة</h4>
-                                    <p>رصد التهديدات على مدار الساعة والاستجابة الفورية للحوادث الأمنية.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Service 2 & 3: Side by Side - Asymmetric -->
-                <div class="services-duo">
-                    <div class="service-block service-block--dev reveal" style="--delay: 0.1s">
-                        <div class="service-number">02</div>
-                        <h3>تطوير البرمجيات</h3>
-                        <p class="service-tagline">كود نظيف. أداء لا يُساوم عليه.</p>
-                        <div class="service-stack">
-                            <div class="stack-item">
-                                <span class="stack-icon">⟨/⟩</span>
-                                <span>تطبيقات ويب متقدمة</span>
-                            </div>
-                            <div class="stack-item">
-                                <span class="stack-icon">◉</span>
-                                <span>تطبيقات الموبايل</span>
-                            </div>
-                            <div class="stack-item">
-                                <span class="stack-icon">⛁</span>
-                                <span>أنظمة خلفية & APIs</span>
-                            </div>
-                            <div class="stack-item">
-                                <span class="stack-icon">⚡</span>
-                                <span>بنية سحابية</span>
-                            </div>
-                        </div>
-                        <div class="service-terminal">
-                            <div class="terminal-bar">
-                                <span class="terminal-dot"></span>
-                                <span class="terminal-dot"></span>
-                                <span class="terminal-dot"></span>
-                            </div>
-                            <div class="terminal-body">
-                                <div class="terminal-line"><span class="t-prompt">$</span> deploy --env production</div>
-                                <div class="terminal-line t-success">✓ Build successful</div>
-                                <div class="terminal-line t-success">✓ Security scan passed</div>
-                                <div class="terminal-line t-success">✓ Deployed to production</div>
-                                <div class="terminal-line"><span class="t-cursor">_</span></div>
-                            </div>
-                        </div>
+                        <p class="service-card-tagline">نفكّر كالمهاجمين.</p>
+                        <p class="service-card-desc">نكتشف الثغرات التي لا تراها، ونبني دفاعات لا تُخترق. فريقنا يحاكي أخطر أساليب الهجوم لحماية بنيتك الرقمية.</p>
+                        <ul class="service-features">
+                            <li>اختبارات اختراق متقدمة</li>
+                            <li>تقييم الثغرات الأمنية</li>
+                            <li>المراقبة والاستجابة 24/7</li>
+                            <li>تدريب الفرق الأمنية</li>
+                        </ul>
                     </div>
 
-                    <div class="service-block service-block--custom reveal" style="--delay: 0.25s">
-                        <div class="service-number">03</div>
+                    <!-- Service 2: Software -->
+                    <div class="service-card reveal" style="--delay: 0.15s" data-tilt>
+                        <div class="service-card-number">02</div>
+                        <div class="service-card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline><line x1="14" y1="4" x2="10" y2="20"></line></svg>
+                        </div>
+                        <h3>هندسة البرمجيات</h3>
+                        <p class="service-card-tagline">كود يُحترم.</p>
+                        <p class="service-card-desc">الكود الذي نكتبه لا يُقرأ فقط — يُحترم. نبني تطبيقات بأداء لا يُساوم عليه وأمان مدمج من اللحظة الأولى.</p>
+                        <ul class="service-features">
+                            <li>تطبيقات ويب وموبايل</li>
+                            <li>أنظمة خلفية و APIs</li>
+                            <li>بنية سحابية متقدمة</li>
+                            <li>DevSecOps</li>
+                        </ul>
+                    </div>
+
+                    <!-- Service 3: Enterprise -->
+                    <div class="service-card reveal" style="--delay: 0.3s" data-tilt>
+                        <div class="service-card-number">03</div>
+                        <div class="service-card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line><path d="M6 8h.01M9 8h.01M12 8h6"></path></svg>
+                        </div>
                         <h3>حلول المؤسسات</h3>
-                        <p class="service-tagline">حلول مُفصّلة على مقاس أعمالك.</p>
-                        <ul class="service-list">
-                            <li>
-                                <strong>تكامل الأنظمة</strong>
-                                <p>ربط الأنظمة المتباينة في بنية موحدة تعمل بانسجام.</p>
-                            </li>
-                            <li>
-                                <strong>أتمتة العمليات</strong>
-                                <p>تحويل المهام اليدوية إلى عمليات رقمية ذكية.</p>
-                            </li>
-                            <li>
-                                <strong>أنظمة ERP مخصصة</strong>
-                                <p>تطويع أنظمة الإدارة لتناسب هيكل مؤسستك بدقة.</p>
-                            </li>
-                            <li>
-                                <strong>استشارات تقنية</strong>
-                                <p>خارطة طريق تقنية واضحة مبنية على تحليل عميق.</p>
-                            </li>
+                        <p class="service-card-tagline">إمبراطوريات رقمية.</p>
+                        <p class="service-card-desc">لا نبني حلولاً جاهزة — نبني أنظمة مُفصّلة على مقاس مؤسستك، تنمو معك وتتكيف مع تحدياتك.</p>
+                        <ul class="service-features">
+                            <li>تكامل الأنظمة المؤسسية</li>
+                            <li>أتمتة العمليات</li>
+                            <li>أنظمة ERP مخصصة</li>
+                            <li>استشارات تقنية استراتيجية</li>
                         </ul>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ===================== WHY US ===================== -->
-        <section id="why" class="why">
-            <div class="why-inner">
-                <div class="why-header reveal">
-                    <span class="section-tag">لماذا نحن</span>
-                    <h2 class="why-title">ما يجعلنا<br><em>الخيار الأمثل.</em></h2>
-                </div>
-
-                <div class="why-grid">
-                    <div class="why-card why-card--featured reveal" style="--delay: 0s">
-                        <div class="why-card-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
+        <!-- ==================== NUMBERS ==================== -->
+        <section class="numbers">
+            <div class="numbers-inner">
+                <div class="numbers-grid">
+                    <div class="number-item reveal" style="--delay: 0s">
+                        <div class="number-value">
+                            <span class="counter" data-target="150">0</span>
+                            <span class="number-suffix">+</span>
                         </div>
-                        <h3>سرعة بلا تنازل</h3>
-                        <p>ننجز بسرعة المشاريع الضخمة دون التضحية بالجودة أو الأمان — لأن الوقت في المشاريع الحساسة لا يقدّر بثمن.</p>
+                        <div class="number-label">مشروع مُنجز</div>
                     </div>
-
-                    <div class="why-card reveal" style="--delay: 0.1s">
-                        <div class="why-card-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="M9 12l2 2 4-4"></path></svg>
+                    <div class="number-item reveal" style="--delay: 0.1s">
+                        <div class="number-value">
+                            <span class="counter" data-target="99.9">0</span>
+                            <span class="number-suffix">%</span>
                         </div>
-                        <h3>أمان بلا ثغرات</h3>
-                        <p>نتبع أحدث معايير OWASP و NIST في كل مشروع لضمان الحماية القصوى من التهديدات المتطورة.</p>
+                        <div class="number-label">نسبة الحماية</div>
                     </div>
-
-                    <div class="why-card reveal" style="--delay: 0.2s">
-                        <div class="why-card-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    <div class="number-item reveal" style="--delay: 0.2s">
+                        <div class="number-value">
+                            <span class="counter" data-target="24">0</span>
+                            <span class="number-suffix">/7</span>
                         </div>
-                        <h3>رؤية عالمية</h3>
-                        <p>نستلهم من أفضل الممارسات العالمية ونطبقها بفهم عميق للسوق المحلي واحتياجاته الفريدة.</p>
+                        <div class="number-label">مراقبة مستمرة</div>
                     </div>
-
-                    <div class="why-card reveal" style="--delay: 0.3s">
-                        <div class="why-card-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                    <div class="number-item reveal" style="--delay: 0.3s">
+                        <div class="number-value">
+                            <span class="counter" data-target="40">0</span>
+                            <span class="number-suffix">+</span>
                         </div>
-                        <h3>فريق نخبوي</h3>
-                        <p>مهندسون حاصلون على شهادات OSCP و CEH و AWS، مع سنوات من الخبرة في المشاريع الحساسة.</p>
+                        <div class="number-label">عميل يثق بنا</div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ===================== CONTACT ===================== -->
+        <!-- ==================== TERMINAL ==================== -->
+        <section class="terminal-section">
+            <div class="terminal-section-inner">
+                <div class="terminal-header-text reveal">
+                    <span class="section-label">لمحة من عملنا</span>
+                    <h2>هكذا نعمل. <em>في الخفاء.</em></h2>
+                </div>
+
+                <div class="live-terminal reveal-scale" style="--delay: 0.2s">
+                    <div class="terminal-bar">
+                        <span class="terminal-dot"></span>
+                        <span class="terminal-dot"></span>
+                        <span class="terminal-dot"></span>
+                        <span class="terminal-title">khebra@sec:~</span>
+                    </div>
+                    <div class="terminal-body" id="terminalBody">
+                        <div class="terminal-line" data-delay="300"><span class="t-prompt">$</span> nmap -sV --script vuln target-system.sa</div>
+                        <div class="terminal-line" data-delay="800"><span class="t-dim">Scanning 1024 ports...</span></div>
+                        <div class="terminal-line" data-delay="1500"><span class="t-warning">⚠ CVE-2024-3094 detected on port 443</span></div>
+                        <div class="terminal-line" data-delay="2200"><span class="t-prompt">$</span> khebra --patch --verify --deploy</div>
+                        <div class="terminal-line" data-delay="3000"><span class="t-success">✓ Vulnerability patched</span></div>
+                        <div class="terminal-line" data-delay="3500"><span class="t-success">✓ Security scan passed</span></div>
+                        <div class="terminal-line" data-delay="4000"><span class="t-success">✓ System hardened</span></div>
+                        <div class="terminal-line" data-delay="4500"><span class="t-info">→ Protection level: 99.9%</span></div>
+                        <div class="terminal-line" data-delay="5000"><span class="terminal-cursor"></span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr class="glow-line">
+
+        <!-- ==================== CONTACT ==================== -->
         <section id="contact" class="contact">
             <div class="contact-inner">
-                <div class="contact-left reveal">
-                    <span class="section-tag">لنبدأ</span>
-                    <h2 class="contact-title">مشروعك القادم<br>يبدأ بمحادثة.</h2>
+                <div class="contact-left reveal-right">
+                    <span class="section-label">لنبدأ</span>
+                    <h2 class="contact-title">مشروعك القادم<br>يبدأ <em>بمحادثة.</em></h2>
                     <p class="contact-desc">
-                        أخبرنا عن التحدي الذي تواجهه — وسنتواصل معك خلال 24 ساعة بخطة عمل أولية.
+                        أخبرنا عن التحدي — وسنعود إليك خلال 24 ساعة بخطة عمل.
+                        لا التزامات. لا تكاليف. فقط حوار صريح.
                     </p>
 
                     <div class="contact-channels">
@@ -362,7 +308,7 @@
                             <div class="channel-icon">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
                             </div>
-                            <div>
+                            <div class="channel-text">
                                 <span class="channel-label">البريد الإلكتروني</span>
                                 <span class="channel-value">hello@khebra-tech.com</span>
                             </div>
@@ -371,7 +317,7 @@
                             <div class="channel-icon">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.58 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
                             </div>
-                            <div>
+                            <div class="channel-text">
                                 <span class="channel-label">الهاتف</span>
                                 <span class="channel-value" dir="ltr">+966 50 000 0000</span>
                             </div>
@@ -379,7 +325,7 @@
                     </div>
                 </div>
 
-                <div class="contact-right reveal" style="--delay: 0.2s">
+                <div class="contact-form-wrap reveal" style="--delay: 0.2s">
                     <form class="contact-form" id="contactForm">
                         <div class="form-row">
                             <div class="form-field">
@@ -400,22 +346,22 @@
                         </div>
                         <div class="form-field">
                             <select id="f-service" required>
-                                <option value="" disabled selected>ما الخدمة التي تهمك؟</option>
-                                <option value="cyber">الأمن السيبراني</option>
-                                <option value="dev">تطوير البرمجيات</option>
-                                <option value="enterprise">حلول المؤسسات</option>
-                                <option value="consult">استشارة عامة</option>
+                                <option value="" disabled selected>ما الذي تحتاجه؟</option>
+                                <option value="cyber">أمن سيبراني</option>
+                                <option value="dev">هندسة برمجيات</option>
+                                <option value="enterprise">حلول مؤسسية</option>
+                                <option value="consult">استشارة أولية</option>
                             </select>
                             <div class="field-line"></div>
                         </div>
                         <div class="form-field">
                             <textarea id="f-message" rows="4" required placeholder=" "></textarea>
-                            <label for="f-message">أخبرنا المزيد عن مشروعك</label>
+                            <label for="f-message">أخبرنا عن التحدي الذي تواجهه</label>
                             <div class="field-line"></div>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-submit">
-                            <span>إرسال الطلب</span>
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                        <button type="submit" class="btn btn-primary btn-submit" id="submitBtn">
+                            <span>إرسال</span>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
                         </button>
                     </form>
                 </div>
@@ -423,26 +369,26 @@
         </section>
     </main>
 
-    <!-- Footer -->
+    <!-- ==================== FOOTER ==================== -->
     <footer class="footer">
         <div class="footer-inner">
             <div class="footer-main">
                 <div class="footer-brand">
                     <img src="assets/images/logo.png" alt="خبرة تك" class="footer-logo">
-                    <p>حلول أمنية وبرمجية مبتكرة ترتقي بأعمالك إلى آفاق جديدة.</p>
+                    <p>نحرس المستقبل الرقمي — بأمان لا يُخترق وكود لا يشيخ.</p>
                 </div>
                 <div class="footer-nav">
                     <div class="footer-col">
-                        <h4>الخدمات</h4>
+                        <h4>القدرات</h4>
                         <a href="#">اختبارات الاختراق</a>
                         <a href="#">تقييم الثغرات</a>
-                        <a href="#">تطوير التطبيقات</a>
-                        <a href="#">تكامل الأنظمة</a>
+                        <a href="#">هندسة البرمجيات</a>
+                        <a href="#">حلول المؤسسات</a>
                     </div>
                     <div class="footer-col">
-                        <h4>الشركة</h4>
-                        <a href="#about">عن خبرة تك</a>
-                        <a href="#services">الخدمات</a>
+                        <h4>خبرة تك</h4>
+                        <a href="#manifesto">من نحن</a>
+                        <a href="#services">قدراتنا</a>
                         <a href="#contact">تواصل معنا</a>
                     </div>
                 </div>
@@ -451,10 +397,10 @@
                 <span>&copy; 2026 خبرة تك. جميع الحقوق محفوظة.</span>
                 <div class="footer-social">
                     <a href="#" aria-label="LinkedIn">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
                     </a>
                     <a href="#" aria-label="X / Twitter">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4l11.733 16h4.267l-11.733 -16h-4.267z"></path><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path></svg>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4l11.733 16h4.267l-11.733 -16h-4.267z"></path><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path></svg>
                     </a>
                 </div>
             </div>

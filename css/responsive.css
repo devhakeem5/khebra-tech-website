@@ -1,51 +1,38 @@
 /* ========================================
-   KHEBRA TECH — Responsive
+   KHEBRA TECH — Responsive v2
    ======================================== */
 
-/* ── Tablet & below ── */
+/* ── Large tablets / small laptops ── */
+@media (max-width: 1100px) {
+    .services-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .services-grid .service-card:last-child {
+        grid-column: span 2;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .numbers-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--s-4);
+    }
+
+    .number-item:nth-child(3)::after {
+        display: none;
+    }
+}
+
+/* ── Tablet ── */
 @media (max-width: 1024px) {
-    .hero-layout {
+    .manifesto-content {
         grid-template-columns: 1fr;
         gap: var(--s-12);
     }
 
-    .hero-side {
-        justify-content: flex-start;
-    }
-
-    .hero-logo-showcase {
-        width: 140px;
-        height: 140px;
-    }
-
-    .hero-logo-img {
-        width: 80px;
-    }
-
-    .about-content {
-        grid-template-columns: 1fr;
-        gap: var(--s-8);
-        padding: var(--s-16) var(--gutter);
-    }
-
-    .about-pillars {
-        grid-template-columns: 1fr;
-    }
-
-    .service-capabilities {
-        grid-template-columns: 1fr;
-    }
-
-    .services-duo {
-        grid-template-columns: 1fr;
-    }
-
-    .why-grid {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .why-card--featured {
-        grid-column: span 2;
+    .manifesto-statement {
+        position: static;
     }
 
     .contact-inner {
@@ -62,9 +49,10 @@
 /* ── Mobile ── */
 @media (max-width: 768px) {
     :root {
-        --header-h: 64px;
+        --header-h: 68px;
     }
 
+    /* Mobile menu */
     .menu-toggle {
         display: block;
     }
@@ -76,14 +64,14 @@
         width: 100%;
         height: 100vh;
         height: 100dvh;
-        background: var(--bg-void);
+        background: var(--void);
         flex-direction: column;
         justify-content: center;
         align-items: center;
         gap: var(--s-10);
         opacity: 0;
         visibility: hidden;
-        transition: all 0.4s;
+        transition: all 0.5s var(--ease-out);
         z-index: 999;
     }
 
@@ -102,62 +90,83 @@
         display: none;
     }
 
+    /* Hero */
+    .hero-content {
+        text-align: center;
+    }
+
     .hero-title-line {
-        font-size: var(--fs-3xl);
+        font-size: var(--fs-4xl);
     }
 
-    .hero-metrics {
-        flex-direction: row;
-        gap: var(--s-4);
+    .hero-desc {
+        font-size: var(--fs-md);
     }
 
-    .metric {
-        flex: 1;
+    .hero-cta-row {
+        flex-direction: column;
+        width: 100%;
+        max-width: 320px;
     }
 
-    .marquee-track {
+    .hero-cta-row .btn {
+        width: 100%;
+    }
+
+    /* Manifesto */
+    .manifesto-marquee .marquee-track {
         font-size: var(--fs-2xl);
     }
 
-    .about-pillars {
-        gap: 0;
+    .pillar p {
+        padding-right: 0;
     }
 
-    .pillar {
-        padding: var(--s-8) var(--gutter);
-        border-bottom: 1px solid var(--border);
-    }
-
-    .pillar-number {
-        font-size: var(--fs-3xl);
-    }
-
-    .service-block--cyber {
-        padding: var(--s-8);
-    }
-
-    .services-duo {
-        gap: var(--s-4);
-    }
-
-    .service-block--dev,
-    .service-block--custom {
-        padding: var(--s-8);
-    }
-
-    .why-grid {
+    /* Services */
+    .services-grid {
         grid-template-columns: 1fr;
     }
 
-    .why-card--featured,
-    .why-card:last-child {
+    .services-grid .service-card:last-child {
         grid-column: span 1;
+        max-width: none;
     }
 
+    .service-card {
+        padding: var(--s-8);
+    }
+
+    /* Numbers */
+    .numbers-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0;
+    }
+
+    .number-item {
+        padding: var(--s-8) var(--s-4);
+    }
+
+    .number-item::after {
+        display: none;
+    }
+
+    .number-value {
+        font-size: var(--fs-3xl);
+    }
+
+    /* Terminal */
+    .terminal-body {
+        padding: var(--s-4);
+        font-size: 12px;
+        min-height: 200px;
+    }
+
+    /* Contact */
     .form-row {
         grid-template-columns: 1fr;
     }
 
+    /* Footer */
     .footer-nav {
         flex-direction: column;
         gap: var(--s-8);
@@ -172,24 +181,28 @@
 
 /* ── Small phones ── */
 @media (max-width: 480px) {
-    .hero-cta-row {
-        flex-direction: column;
-    }
-
-    .hero-cta-row .btn {
-        width: 100%;
-    }
-
     .hero-badge {
-        font-size: 0.65rem;
+        font-size: 0.6rem;
+        letter-spacing: 1px;
     }
 
-    .capability {
-        flex-direction: column;
-        text-align: center;
+    .hero-title-line {
+        font-size: var(--fs-3xl);
     }
 
-    .capability-icon {
-        margin: 0 auto;
+    .numbers-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .manifesto-title {
+        font-size: var(--fs-2xl);
+    }
+
+    .services-title {
+        font-size: var(--fs-2xl);
+    }
+
+    .contact-title {
+        font-size: var(--fs-2xl);
     }
 }

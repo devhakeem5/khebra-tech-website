@@ -1,8 +1,11 @@
 /* ========================================
-   KHEBRA TECH — Layout (Header + Footer)
+   KHEBRA TECH — Layout v2 (Header + Footer)
    ======================================== */
 
-/* ── HEADER ── */
+/* ═══════════════════════════════════════
+   HEADER
+   ═══════════════════════════════════════ */
+
 .header {
     position: fixed;
     top: 0;
@@ -10,14 +13,29 @@
     width: 100%;
     height: var(--header-h);
     z-index: 1000;
-    transition: background var(--t-normal), border-color var(--t-normal);
+    transition: all 0.5s var(--ease-out);
+}
+
+.header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent-20), transparent);
+    transition: width 0.8s var(--ease-out);
 }
 
 .header.scrolled {
-    background: rgba(6, 10, 17, 0.8);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border-bottom: 1px solid var(--border);
+    background: var(--void-95);
+    backdrop-filter: blur(20px) saturate(1.2);
+    -webkit-backdrop-filter: blur(20px) saturate(1.2);
+}
+
+.header.scrolled::after {
+    width: 100%;
 }
 
 .header-inner {
@@ -37,12 +55,17 @@
     align-items: center;
     gap: var(--s-3);
     z-index: 1001;
+    transition: transform var(--t-fast);
+}
+
+.logo:hover {
+    transform: scale(1.02);
 }
 
 .logo-img {
-    height: 36px;
+    height: 38px;
     width: auto;
-    filter: brightness(0) invert(1); /* Make logo white on dark bg */
+    filter: brightness(0) invert(1);
 }
 
 .logo-wordmark {
@@ -57,11 +80,11 @@
     color: var(--accent);
 }
 
-/* Nav */
+/* Navigation */
 .nav {
     display: flex;
     align-items: center;
-    gap: var(--s-8);
+    gap: var(--s-10);
 }
 
 .nav-link {
@@ -70,17 +93,18 @@
     color: var(--text-2);
     transition: color var(--t-fast);
     position: relative;
+    padding: var(--s-2) 0;
 }
 
 .nav-link::after {
     content: '';
     position: absolute;
-    bottom: -4px;
+    bottom: 0;
     right: 0;
     width: 0;
-    height: 2px;
+    height: 1px;
     background: var(--accent);
-    transition: width var(--t-normal);
+    transition: width 0.5s var(--ease-out);
 }
 
 .nav-link:hover,
@@ -96,26 +120,46 @@
 /* Header CTA */
 .header-cta {
     font-family: var(--font-h);
-    font-size: var(--fs-sm);
+    font-size: var(--fs-xs);
     font-weight: 700;
-    color: var(--text-1);
+    color: var(--void);
+    background: var(--accent);
     padding: var(--s-2) var(--s-6);
-    border: 1px solid var(--border);
     border-radius: var(--r-full);
+    letter-spacing: 1px;
     transition: all var(--t-normal);
+    position: relative;
+    overflow: hidden;
+}
+
+.header-cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--accent), var(--violet));
+    opacity: 0;
+    transition: opacity var(--t-normal);
 }
 
 .header-cta:hover {
-    border-color: var(--accent);
-    background: var(--accent-dim);
-    color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px var(--accent-20);
 }
 
-/* Menu Toggle */
+.header-cta:hover::before {
+    opacity: 1;
+}
+
+.header-cta span {
+    position: relative;
+    z-index: 1;
+}
+
+/* Mobile Toggle */
 .menu-toggle {
     display: none;
-    width: 32px;
-    height: 32px;
+    width: 36px;
+    height: 36px;
     position: relative;
     z-index: 1001;
     cursor: pointer;
@@ -130,23 +174,38 @@
     height: 2px;
     background: var(--text-1);
     border-radius: 2px;
-    transition: all 0.3s;
+    transition: all 0.4s var(--ease-out);
 }
 
-.menu-toggle span   { top: 50%; width: 24px; transform: translateY(-50%); }
-.menu-toggle::before { top: 8px; width: 32px; }
-.menu-toggle::after  { bottom: 8px; width: 18px; }
+.menu-toggle span   { top: 50%; width: 28px; transform: translateY(-50%); }
+.menu-toggle::before { top: 8px; width: 36px; }
+.menu-toggle::after  { bottom: 8px; width: 20px; }
 
-.menu-toggle.open span { opacity: 0; }
-.menu-toggle.open::before { top: 50%; width: 24px; transform: translateY(-50%) rotate(45deg); }
-.menu-toggle.open::after  { bottom: 50%; width: 24px; transform: translateY(50%) rotate(-45deg); }
+.menu-toggle.open span { opacity: 0; width: 0; }
+.menu-toggle.open::before { top: 50%; width: 28px; transform: translateY(-50%) rotate(45deg); }
+.menu-toggle.open::after  { bottom: 50%; width: 28px; transform: translateY(50%) rotate(-45deg); }
 
 
-/* ── FOOTER ── */
+/* ═══════════════════════════════════════
+   FOOTER
+   ═══════════════════════════════════════ */
+
 .footer {
-    background: var(--bg-base);
+    background: var(--surface-1);
     border-top: 1px solid var(--border);
     padding: var(--s-16) 0 var(--s-8);
+    position: relative;
+}
+
+.footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent-50), transparent);
 }
 
 .footer-inner {
@@ -164,20 +223,21 @@
 }
 
 .footer-brand {
-    max-width: 360px;
+    max-width: 380px;
 }
 
 .footer-logo {
-    height: 40px;
+    height: 42px;
     width: auto;
     filter: brightness(0) invert(1);
     margin-bottom: var(--s-6);
+    opacity: 0.8;
 }
 
 .footer-brand p {
     font-size: var(--fs-sm);
     color: var(--text-3);
-    line-height: 1.8;
+    line-height: 1.9;
 }
 
 .footer-nav {
@@ -194,18 +254,20 @@
 .footer-col h4 {
     font-size: var(--fs-sm);
     font-weight: 700;
-    margin-bottom: var(--s-2);
+    margin-bottom: var(--s-3);
     color: var(--text-1);
 }
 
 .footer-col a {
     font-size: var(--fs-sm);
     color: var(--text-3);
-    transition: color var(--t-fast);
+    transition: color var(--t-fast), transform var(--t-fast);
+    display: inline-block;
 }
 
 .footer-col a:hover {
     color: var(--accent);
+    transform: translateX(-4px);
 }
 
 .footer-bottom {
@@ -223,11 +285,20 @@
 }
 
 .footer-social a {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border);
+    border-radius: var(--r-full);
     color: var(--text-3);
-    transition: color var(--t-fast), transform var(--t-fast);
+    transition: all var(--t-normal);
 }
 
 .footer-social a:hover {
     color: var(--accent);
-    transform: translateY(-2px);
+    border-color: var(--accent-20);
+    background: var(--accent-05);
+    transform: translateY(-3px);
 }

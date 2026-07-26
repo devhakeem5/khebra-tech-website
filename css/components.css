@@ -1,8 +1,12 @@
 /* ========================================
-   KHEBRA TECH — Components
+   KHEBRA TECH — Components v2
+   Premium buttons, forms, reusable pieces
    ======================================== */
 
-/* ── Buttons ── */
+/* ═══════════════════════════════════════
+   BUTTONS
+   ═══════════════════════════════════════ */
+
 .btn {
     display: inline-flex;
     align-items: center;
@@ -16,37 +20,69 @@
     transition: all var(--t-normal);
     position: relative;
     overflow: hidden;
+    cursor: pointer;
+    letter-spacing: 0.5px;
 }
 
+/* Primary: filled accent */
 .btn-primary {
     background: var(--accent);
-    color: var(--bg-void);
+    color: var(--void);
+    border: none;
+}
+
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--accent), #00A3CC);
+    opacity: 0;
+    transition: opacity var(--t-normal);
 }
 
 .btn-primary:hover {
-    background: #5DAFFF;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 30px var(--accent-glow);
+    transform: translateY(-3px);
+    box-shadow:
+        0 10px 30px var(--accent-20),
+        0 0 60px var(--accent-05);
 }
 
+.btn-primary:hover::before {
+    opacity: 1;
+}
+
+.btn-primary span,
+.btn-primary svg {
+    position: relative;
+    z-index: 1;
+}
+
+/* Ghost: outlined */
 .btn-ghost {
     color: var(--text-2);
-    border: 1px solid var(--border);
+    border: 1px solid var(--border-light);
+    background: transparent;
 }
 
 .btn-ghost:hover {
-    color: var(--text-1);
-    border-color: var(--text-3);
-    background: rgba(255,255,255,0.03);
+    color: var(--accent);
+    border-color: var(--accent-20);
+    background: var(--accent-05);
+    transform: translateY(-3px);
 }
 
+/* Submit */
 .btn-submit {
     width: 100%;
-    padding: var(--s-4) var(--s-8);
+    padding: var(--s-5) var(--s-8);
     font-size: var(--fs-md);
 }
 
-/* ── Form Fields ── */
+
+/* ═══════════════════════════════════════
+   FORM FIELDS
+   ═══════════════════════════════════════ */
+
 .form-field {
     position: relative;
     margin-bottom: var(--s-8);
@@ -59,10 +95,10 @@
     padding: var(--s-4) 0;
     background: transparent;
     border: none;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid var(--border-light);
     color: var(--text-1);
     font-size: var(--fs-md);
-    transition: border-color var(--t-normal);
+    transition: border-color 0.5s var(--ease-out);
 }
 
 .form-field label {
@@ -72,7 +108,7 @@
     font-size: var(--fs-md);
     color: var(--text-3);
     pointer-events: none;
-    transition: all var(--t-fast);
+    transition: all 0.3s var(--ease-out);
 }
 
 .form-field input:focus,
@@ -84,19 +120,20 @@
 .form-field input:not(:placeholder-shown) ~ label,
 .form-field textarea:focus ~ label,
 .form-field textarea:not(:placeholder-shown) ~ label {
-    top: -12px;
+    top: -14px;
     font-size: var(--fs-xs);
     color: var(--accent);
 }
 
+/* Animated underline */
 .form-field .field-line {
     position: absolute;
     bottom: 0;
     right: 0;
     width: 0;
     height: 2px;
-    background: var(--accent);
-    transition: width var(--t-normal);
+    background: var(--gradient-accent);
+    transition: width 0.6s var(--ease-out);
 }
 
 .form-field input:focus ~ .field-line,
@@ -107,8 +144,8 @@
 .form-field select {
     appearance: none;
     cursor: pointer;
-    padding-left: 24px;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238C9BB5' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+    padding-left: 28px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234A5568' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: left center;
     background-size: 16px;
@@ -120,8 +157,31 @@
     gap: var(--s-8);
 }
 
-/* ── Misc ── */
+/* ═══════════════════════════════════════
+   MISC
+   ═══════════════════════════════════════ */
+
 em {
     font-style: normal;
     color: var(--accent);
+}
+
+/* Horizontal rule with glow */
+.divider {
+    border: none;
+    height: 1px;
+    background: var(--border);
+    margin: var(--s-16) 0;
+    position: relative;
+}
+
+.divider::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 1px;
+    background: var(--accent-20);
 }
