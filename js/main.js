@@ -1,156 +1,269 @@
 /* ========================================
-   KHEBRA TECH — Main JS v2
-   Particles · Tilt · Reveal · Terminal
+   KHEBRA TECH — Main JS v3 (VIP Edition)
+   Three.js · GSAP · Custom Cursor · Magnetic
    ======================================== */
 
 (function () {
     'use strict';
 
     /* ═══════════════════════════════════════
-       1. PARTICLE NETWORK (Canvas)
+       1. CUSTOM CURSOR
        ═══════════════════════════════════════ */
+    const cursorDot = document.getElementById('cursorDot');
+    const cursorOutline = document.getElementById('cursorOutline');
+    
+    if (cursorDot && cursorOutline) {
+        window.addEventListener('mousemove', (e) => {
+            const posX = e.clientX;
+            const posY = e.clientY;
 
+            cursorDot.style.left = `${posX}px`;
+            cursorDot.style.top = `${posY}px`;
+
+            // Slight delay for the outline
+            cursorOutline.animate({
+                left: `${posX}px`,
+                top: `${posY}px`
+            }, { duration: 150, fill: "forwards" });
+        });
+
+        // Hover effect for interactive elements
+        const interactables = document.querySelectorAll('a, button, input, textarea, select, .service-card, .about-card');
+        interactables.forEach(el => {
+            el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+            el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+        });
+    }
+
+    /* ═══════════════════════════════════════
+       2. THREE.JS VIP BACKGROUND
+       ═══════════════════════════════════════ */
     const canvas = document.getElementById('heroCanvas');
-    if (canvas) {
-        const ctx = canvas.getContext('2d');
-        let particles = [];
-        let mouse = { x: null, y: null, radius: 150 };
-        let animFrame;
+    if (canvas && typeof THREE !== 'undefined') {
+        const scene = new THREE.Scene();
+        // Deep void background
+        scene.background = null; 
 
-        function resizeCanvas() {
-            canvas.width = canvas.offsetWidth;
-            canvas.height = canvas.offsetHeight;
+        const camera = new THREE.PerspectiveCamera(75, canvas.offsetWidth / canvas.offsetHeight, 0.1, 1000);
+        camera.position.z = 30;
+
+        const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+        renderer.setSize(canvas.offsetWidth, canvas.offsetHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+        // Create a massive, abstract luxury shape (Torus Knot)
+        const geometry = new THREE.TorusKnotGeometry(12, 3, 200, 32);
+        
+        // VIP Gold Wireframe Material
+        const material = new THREE.MeshBasicMaterial({ 
+            color: 0xD4AF37, 
+            wireframe: true,
+            transparent: true,
+            opacity: 0.15
+        });
+        const torusKnot = new THREE.Mesh(geometry, material);
+        scene.add(torusKnot);
+
+        // Add glowing particles floating around
+        const particlesGeometry = new THREE.BufferGeometry();
+        const particlesCount = 700;
+        const posArray = new Float32Array(particlesCount * 3);
+
+        for(let i = 0; i < particlesCount * 3; i++) {
+            posArray[i] = (Math.random() - 0.5) * 100;
         }
 
-        class Particle {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 2 + 0.5;
-                this.speedX = (Math.random() - 0.5) * 0.5;
-                this.speedY = (Math.random() - 0.5) * 0.5;
-                this.opacity = Math.random() * 0.5 + 0.1;
-            }
+        particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+        const particlesMaterial = new THREE.PointsMaterial({
+            size: 0.1,
+            color: 0xF3E5AB,
+            transparent: true,
+            opacity: 0.8
+        });
+        const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+        scene.add(particlesMesh);
 
-            update() {
-                this.x += this.speedX;
-                this.y += this.speedY;
+        let mouseX = 0;
+        let mouseY = 0;
 
-                // Bounce off edges
-                if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
-                if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
-
-                // Mouse interaction — push particles away
-                if (mouse.x !== null) {
-                    const dx = this.x - mouse.x;
-                    const dy = this.y - mouse.y;
-                    const dist = Math.sqrt(dx * dx + dy * dy);
-                    if (dist < mouse.radius) {
-                        const force = (mouse.radius - dist) / mouse.radius;
-                        this.x += dx * force * 0.03;
-                        this.y += dy * force * 0.03;
-                    }
-                }
-            }
-
-            draw() {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(0, 212, 255, ${this.opacity})`;
-                ctx.fill();
-            }
-        }
-
-        function initParticles() {
-            particles = [];
-            const count = Math.min(Math.floor((canvas.width * canvas.height) / 8000), 120);
-            for (let i = 0; i < count; i++) {
-                particles.push(new Particle());
-            }
-        }
-
-        function drawConnections() {
-            for (let i = 0; i < particles.length; i++) {
-                for (let j = i + 1; j < particles.length; j++) {
-                    const dx = particles[i].x - particles[j].x;
-                    const dy = particles[i].y - particles[j].y;
-                    const dist = Math.sqrt(dx * dx + dy * dy);
-
-                    if (dist < 140) {
-                        const opacity = (1 - dist / 140) * 0.15;
-                        ctx.beginPath();
-                        ctx.moveTo(particles[i].x, particles[i].y);
-                        ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.strokeStyle = `rgba(0, 212, 255, ${opacity})`;
-                        ctx.lineWidth = 0.5;
-                        ctx.stroke();
-                    }
-                }
-            }
-        }
-
-        function animateParticles() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            particles.forEach(p => {
-                p.update();
-                p.draw();
-            });
-
-            drawConnections();
-            animFrame = requestAnimationFrame(animateParticles);
-        }
-
-        // Events
-        canvas.addEventListener('mousemove', (e) => {
-            const rect = canvas.getBoundingClientRect();
-            mouse.x = e.clientX - rect.left;
-            mouse.y = e.clientY - rect.top;
+        window.addEventListener('mousemove', (event) => {
+            mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+            mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
         });
 
-        canvas.addEventListener('mouseleave', () => {
-            mouse.x = null;
-            mouse.y = null;
-        });
+        // Animation Loop
+        const clock = new THREE.Clock();
+        function animate() {
+            requestAnimationFrame(animate);
+            const elapsedTime = clock.getElapsedTime();
+
+            // Smooth rotation
+            torusKnot.rotation.y = elapsedTime * 0.1;
+            torusKnot.rotation.x = elapsedTime * 0.05;
+
+            // Interactive mouse rotation
+            torusKnot.rotation.x += mouseY * 0.01;
+            torusKnot.rotation.y += mouseX * 0.01;
+
+            particlesMesh.rotation.y = -elapsedTime * 0.05;
+            
+            renderer.render(scene, camera);
+        }
+        animate();
 
         window.addEventListener('resize', () => {
-            resizeCanvas();
-            initParticles();
+            camera.aspect = canvas.offsetWidth / canvas.offsetHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(canvas.offsetWidth, canvas.offsetHeight);
+        });
+    }
+
+    /* ═══════════════════════════════════════
+       3. GSAP SCROLL REVEALS (VIP Smoothness)
+       ═══════════════════════════════════════ */
+    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Hero Parallax
+        gsap.to('.hero-content', {
+            yPercent: 30,
+            opacity: 0,
+            scrollTrigger: {
+                trigger: '.hero',
+                start: 'top top',
+                end: 'bottom top',
+                scrub: true
+            }
         });
 
-        resizeCanvas();
-        initParticles();
-        animateParticles();
+        // Staggered reveals for cards
+        const cardGroups = ['.about-cards', '.services-grid', '.diff-grid', '.numbers-grid'];
+        cardGroups.forEach(selector => {
+            const container = document.querySelector(selector);
+            if (container) {
+                const children = container.children;
+                gsap.from(children, {
+                    y: 60,
+                    opacity: 0,
+                    duration: 1.2,
+                    stagger: 0.15,
+                    ease: "power3.out",
+                    scrollTrigger: {
+                        trigger: container,
+                        start: "top 85%",
+                    }
+                });
+            }
+        });
+
+        // Title reveals
+        gsap.utils.toArray('.section-label, .about-title, .diff-title').forEach(title => {
+            gsap.from(title, {
+                y: 40,
+                opacity: 0,
+                duration: 1,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: title,
+                    start: "top 90%"
+                }
+            });
+        });
     }
+
+    /* ═══════════════════════════════════════
+       3b. SERVICE SHOWCASE SWITCHER
+       ═══════════════════════════════════════ */
+    (function () {
+        const tabs      = document.querySelectorAll('.svc-tab');
+        const panes     = document.querySelectorAll('.svc-pane');
+        const indicator = document.getElementById('svcIndicator');
+        const showcase  = document.querySelector('.svc-showcase');
+        if (!tabs.length || !panes.length) return;
+
+        let current = 0;
+        let autoTimer = null;
+
+        function getIndicatorTop(index) {
+            const selector = document.getElementById('svcSelector');
+            const track    = selector ? selector.querySelector('.svc-selector-track') : null;
+            if (!track) return 0;
+            const tabEls = selector.querySelectorAll('.svc-tab');
+            if (!tabEls[index]) return 0;
+            const tabRect  = tabEls[index].getBoundingClientRect();
+            const trackRect = track.getBoundingClientRect();
+            return tabRect.top - trackRect.top;
+        }
+
+        function switchTo(index) {
+            if (index === current) return;
+
+            // Deactivate old
+            tabs[current].classList.remove('active');
+            panes[current].classList.remove('active');
+
+            // Activate new
+            current = index;
+            tabs[current].classList.add('active');
+            panes[current].classList.add('active');
+
+            // Move indicator (only when selector-track is visible)
+            if (indicator && getComputedStyle(indicator).display !== 'none') {
+                indicator.style.top = getIndicatorTop(current) + 'px';
+            }
+        }
+
+        // Wire tabs
+        tabs.forEach((tab, i) => {
+            tab.addEventListener('click', () => {
+                switchTo(i);
+                clearInterval(autoTimer);
+                startAuto();
+            });
+        });
+
+        // Init indicator position
+        if (indicator) {
+            indicator.style.top = getIndicatorTop(0) + 'px';
+        }
+
+        // Auto-rotate every 5 s, pause on hover
+        function startAuto() {
+            autoTimer = setInterval(() => {
+                switchTo((current + 1) % tabs.length);
+            }, 5000);
+        }
+
+        startAuto();
+
+        if (showcase) {
+            showcase.addEventListener('mouseenter', () => clearInterval(autoTimer));
+            showcase.addEventListener('mouseleave', () => { clearInterval(autoTimer); startAuto(); });
+        }
+
+        // Recalculate indicator on resize
+        window.addEventListener('resize', () => {
+            if (indicator) indicator.style.top = getIndicatorTop(current) + 'px';
+        });
+    })();
 
 
     /* ═══════════════════════════════════════
-       2. HEADER SCROLL
+       4. HEADER SCROLL & MOBILE MENU
        ═══════════════════════════════════════ */
-
     const header = document.getElementById('header');
-
-    function onScroll() {
-        header.classList.toggle('scrolled', window.scrollY > 60);
-    }
-
-    window.addEventListener('scroll', onScroll, { passive: true });
-
-
-    /* ═══════════════════════════════════════
-       3. MOBILE MENU
-       ═══════════════════════════════════════ */
+    window.addEventListener('scroll', () => {
+        if(header) header.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
 
     const toggle = document.getElementById('menuToggle');
     const nav = document.getElementById('nav');
-
     if (toggle && nav) {
         toggle.addEventListener('click', () => {
             toggle.classList.toggle('open');
             nav.classList.toggle('open');
             document.body.style.overflow = nav.classList.contains('open') ? 'hidden' : '';
         });
-
         nav.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', () => {
                 toggle.classList.remove('open');
@@ -160,32 +273,19 @@
         });
     }
 
-
     /* ═══════════════════════════════════════
-       4. ACTIVE NAV LINK
+       5. ACTIVE NAV & SMOOTH SCROLL
        ═══════════════════════════════════════ */
-
     const sections = document.querySelectorAll('section[id]');
-
-    function updateActiveNav() {
+    window.addEventListener('scroll', () => {
         const y = window.scrollY + 120;
         sections.forEach(s => {
-            const top = s.offsetTop;
-            const h = s.offsetHeight;
-            const id = s.id;
-            const link = document.querySelector(`.nav-link[href="#${id}"]`);
+            const link = document.querySelector(`.nav-link[href="#${s.id}"]`);
             if (link) {
-                link.classList.toggle('active', y >= top && y < top + h);
+                link.classList.toggle('active', y >= s.offsetTop && y < s.offsetTop + s.offsetHeight);
             }
         });
-    }
-
-    window.addEventListener('scroll', updateActiveNav, { passive: true });
-
-
-    /* ═══════════════════════════════════════
-       5. SMOOTH SCROLL
-       ═══════════════════════════════════════ */
+    }, { passive: true });
 
     document.querySelectorAll('a[href^="#"]').forEach(a => {
         a.addEventListener('click', function (e) {
@@ -194,201 +294,61 @@
             const target = document.querySelector(href);
             if (!target) return;
             e.preventDefault();
-            const top = target.getBoundingClientRect().top + window.scrollY - 90;
-            window.scrollTo({ top, behavior: 'smooth' });
+            window.scrollTo({ top: target.offsetTop - 90, behavior: 'smooth' });
         });
     });
 
-
     /* ═══════════════════════════════════════
-       6. SCROLL REVEAL (Intersection Observer)
+       6. MAGNETIC BUTTONS & TILT
        ═══════════════════════════════════════ */
-
-    const revealSelectors = '.reveal, .reveal-left, .reveal-right, .reveal-scale';
-    const revealEls = document.querySelectorAll(revealSelectors);
-
-    if ('IntersectionObserver' in window) {
-        const revealObs = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
-        revealEls.forEach(el => revealObs.observe(el));
-    } else {
-        revealEls.forEach(el => el.classList.add('visible'));
-    }
-
-
-    /* ═══════════════════════════════════════
-       7. COUNTER ANIMATION
-       ═══════════════════════════════════════ */
-
-    const counters = document.querySelectorAll('.counter[data-target]');
-    let countersRan = false;
-
-    function animateCounters() {
-        if (countersRan) return;
-        countersRan = true;
-
-        counters.forEach(el => {
-            const target = parseFloat(el.dataset.target);
-            const isFloat = target % 1 !== 0;
-            const duration = 2500;
-            const start = performance.now();
-
-            function tick(now) {
-                const elapsed = now - start;
-                const progress = Math.min(elapsed / duration, 1);
-                // Ease out cubic
-                const eased = 1 - Math.pow(1 - progress, 3);
-                const current = eased * target;
-
-                el.textContent = isFloat ? current.toFixed(1) : Math.floor(current);
-
-                if (progress < 1) {
-                    requestAnimationFrame(tick);
-                } else {
-                    el.textContent = isFloat ? target.toFixed(1) : target;
-                }
-            }
-
-            requestAnimationFrame(tick);
+    const magneticBtns = document.querySelectorAll('.btn-primary, .btn-ghost');
+    magneticBtns.forEach(btn => {
+        btn.addEventListener('mousemove', (e) => {
+            const rect = btn.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            btn.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
         });
-    }
-
-    if (counters.length) {
-        const counterObs = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) animateCounters();
-            });
-        }, { threshold: 0.3 });
-
-        counters.forEach(m => counterObs.observe(m));
-    }
-
-
-    /* ═══════════════════════════════════════
-       8. TERMINAL TYPING EFFECT
-       ═══════════════════════════════════════ */
-
-    const terminalBody = document.getElementById('terminalBody');
-    let terminalStarted = false;
-
-    function startTerminal() {
-        if (terminalStarted || !terminalBody) return;
-        terminalStarted = true;
-
-        const lines = terminalBody.querySelectorAll('.terminal-line');
-        lines.forEach(line => {
-            const delay = parseInt(line.dataset.delay) || 0;
-            setTimeout(() => {
-                line.classList.add('visible');
-            }, delay);
+        btn.addEventListener('mouseleave', () => {
+            btn.style.transform = '';
         });
-    }
-
-    if (terminalBody) {
-        const termObs = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) startTerminal();
-            });
-        }, { threshold: 0.4 });
-
-        termObs.observe(terminalBody);
-    }
-
-
-    /* ═══════════════════════════════════════
-       9. 3D TILT EFFECT (Service Cards)
-       ═══════════════════════════════════════ */
+    });
 
     const tiltCards = document.querySelectorAll('[data-tilt]');
-
     tiltCards.forEach(card => {
         card.addEventListener('mousemove', (e) => {
             const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-
-            const rotateX = ((y - centerY) / centerY) * -6;
-            const rotateY = ((x - centerX) / centerX) * 6;
-
-            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
+            const x = (e.clientX - rect.left - rect.width / 2) / 20;
+            const y = -(e.clientY - rect.top - rect.height / 2) / 20;
+            card.style.transform = `perspective(1000px) rotateX(${y}deg) rotateY(${x}deg) scale3d(1.02, 1.02, 1.02)`;
         });
-
         card.addEventListener('mouseleave', () => {
             card.style.transform = '';
         });
     });
 
-
     /* ═══════════════════════════════════════
-       10. CONTACT FORM
+       7. CONTACT FORM (Simulated)
        ═══════════════════════════════════════ */
-
     const form = document.getElementById('contactForm');
     if (form) {
         form.addEventListener('submit', (e) => {
             e.preventDefault();
             const btn = form.querySelector('.btn-submit');
             const orig = btn.innerHTML;
-
-            btn.innerHTML = '<span>جاري الإرسال…</span>';
+            btn.innerHTML = '<span>جاري التشفير والإرسال...</span>';
             btn.disabled = true;
-            btn.style.opacity = '0.7';
-
             setTimeout(() => {
-                btn.innerHTML = '<span>✓ تم الإرسال بنجاح</span>';
+                btn.innerHTML = '<span>✓ تم استقبال طلبك بنجاح</span>';
                 btn.style.background = '#28CA41';
-                btn.style.opacity = '1';
                 form.reset();
-
                 setTimeout(() => {
                     btn.innerHTML = orig;
                     btn.style.background = '';
                     btn.disabled = false;
-                }, 3000);
-            }, 1500);
+                }, 4000);
+            }, 2000);
         });
     }
-
-
-    /* ═══════════════════════════════════════
-       11. WORD REVEAL ANIMATION
-       ═══════════════════════════════════════ */
-
-    const wordRevealEls = document.querySelectorAll('.word-reveal');
-    wordRevealEls.forEach(el => {
-        const text = el.textContent.trim();
-        el.innerHTML = text.split(' ').map((word, i) =>
-            `<span class="word" style="transition-delay: ${i * 0.08}s">${word}</span>`
-        ).join(' ');
-    });
-
-
-    /* ═══════════════════════════════════════
-       12. MAGNETIC BUTTONS
-       ═══════════════════════════════════════ */
-
-    const magneticBtns = document.querySelectorAll('.btn-primary');
-
-    magneticBtns.forEach(btn => {
-        btn.addEventListener('mousemove', (e) => {
-            const rect = btn.getBoundingClientRect();
-            const x = e.clientX - rect.left - rect.width / 2;
-            const y = e.clientY - rect.top - rect.height / 2;
-
-            btn.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px) translateY(-3px)`;
-        });
-
-        btn.addEventListener('mouseleave', () => {
-            btn.style.transform = '';
-        });
-    });
 
 })();

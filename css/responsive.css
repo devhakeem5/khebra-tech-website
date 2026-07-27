@@ -1,22 +1,80 @@
 /* ========================================
-   KHEBRA TECH — Responsive v2
+   KHEBRA TECH — Responsive v5
+   Creative Mobile Experience
    ======================================== */
 
 /* ── Large tablets / small laptops ── */
 @media (max-width: 1100px) {
-    .services-grid {
-        grid-template-columns: 1fr 1fr;
+    /* Showcase stacks vertically */
+    .svc-showcase {
+        grid-template-columns: 1fr;
+        min-height: auto;
     }
 
-    .services-grid .service-card:last-child {
-        grid-column: span 2;
-        max-width: 600px;
-        margin: 0 auto;
+    .svc-selector {
+        flex-direction: row;
+        border-left: none;
+        border-bottom: 1px solid var(--border);
+        padding: 0;
+        overflow-x: auto;
+    }
+
+    .svc-selector-track {
+        display: none;
+    }
+
+    .svc-selector-indicator {
+        display: none;
+    }
+
+    .svc-tab {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: var(--s-5) var(--s-6);
+        border-bottom: 2px solid transparent;
+        flex: 1;
+        min-width: 130px;
+        gap: var(--s-2);
+    }
+
+    .svc-tab.active {
+        border-bottom-color: var(--accent);
+        background: var(--surface-2);
+    }
+
+    .svc-tab-arrow {
+        display: none;
+    }
+
+    .svc-cta-link {
+        margin: 0;
+        border-radius: 0;
+        border: none;
+        border-right: 1px solid var(--border);
+        white-space: nowrap;
+        min-width: 130px;
+        flex-direction: column;
+        gap: var(--s-1);
+        font-size: var(--fs-xs);
+        background: transparent;
+    }
+
+    .svc-cta-link svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .svc-pane {
+        grid-template-columns: 1fr;
+    }
+
+    .svc-pane-visual {
+        display: none;
     }
 
     .numbers-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: var(--s-4);
     }
 
     .number-item:nth-child(3)::after {
@@ -26,15 +84,6 @@
 
 /* ── Tablet ── */
 @media (max-width: 1024px) {
-    .manifesto-content {
-        grid-template-columns: 1fr;
-        gap: var(--s-12);
-    }
-
-    .manifesto-statement {
-        position: static;
-    }
-
     .contact-inner {
         grid-template-columns: 1fr;
         gap: var(--s-12);
@@ -90,13 +139,15 @@
         display: none;
     }
 
-    /* Hero */
+    /* ────────────────────
+       HERO — Mobile
+    ──────────────────── */
     .hero-content {
         text-align: center;
     }
 
     .hero-title-line {
-        font-size: var(--fs-4xl);
+        font-size: var(--fs-3xl);
     }
 
     .hero-desc {
@@ -113,37 +164,204 @@
         width: 100%;
     }
 
-    /* Manifesto */
-    .manifesto-marquee .marquee-track {
-        font-size: var(--fs-2xl);
+    /* ────────────────────
+       ABOUT — Horizontal Scroll Cards
+       Instead of stacked identical cards,
+       use a swipeable horizontal layout
+    ──────────────────── */
+    .about-cards {
+        grid-template-columns: none;
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        gap: var(--s-4);
+        padding-bottom: var(--s-6);
+        margin: 0 calc(var(--gutter) * -1);
+        padding-left: var(--gutter);
+        padding-right: var(--gutter);
     }
 
-    .pillar p {
-        padding-right: 0;
+    /* Custom scrollbar for cards */
+    .about-cards::-webkit-scrollbar {
+        height: 4px;
+    }
+    .about-cards::-webkit-scrollbar-track {
+        background: var(--surface-2);
+        border-radius: 4px;
+    }
+    .about-cards::-webkit-scrollbar-thumb {
+        background: var(--accent-30);
+        border-radius: 4px;
     }
 
-    /* Services */
-    .services-grid {
+    .about-card {
+        flex: 0 0 80%;
+        scroll-snap-align: center;
+        min-height: 260px;
+    }
+
+    /* Give each about-card a unique accent feel */
+    .about-card:nth-child(1) {
+        border-top: 3px solid var(--accent);
+    }
+    .about-card:nth-child(2) {
+        border-top: 3px solid var(--violet);
+    }
+    .about-card:nth-child(3) {
+        border-top: 3px solid var(--warm, #FF6B35);
+    }
+    .about-card:nth-child(2) .about-card-icon {
+        color: var(--violet);
+        border-color: var(--violet-20);
+    }
+
+    /* ────────────────────
+       SERVICES — Mobile accordion
+    ──────────────────── */
+    .svc-showcase {
+        border-radius: var(--r-lg);
+    }
+
+    .svc-selector {
+        flex-direction: column;
+        overflow-x: unset;
+    }
+
+    .svc-selector-track {
+        display: block;
+    }
+
+    .svc-selector-indicator {
+        display: block;
+    }
+
+    .svc-tab {
+        flex-direction: row;
+        text-align: right;
+        border-bottom: none;
+        padding: var(--s-5) var(--s-5);
+        border-bottom: 1px solid var(--border);
+    }
+
+    .svc-tab.active {
+        border-bottom-color: var(--border);
+    }
+
+    .svc-tab:last-of-type {
+        border-bottom: none;
+    }
+
+    .svc-tab-arrow {
+        display: block;
+    }
+
+    .svc-cta-link {
+        flex-direction: row;
+        margin: var(--s-4) var(--s-4);
+        border-radius: var(--r-md);
+        border: 1px solid var(--accent-20);
+        background: var(--accent-10);
+        min-width: unset;
+        font-size: var(--fs-sm);
+        gap: var(--s-3);
+    }
+
+    .svc-pane {
+        padding: var(--s-8) var(--s-6);
         grid-template-columns: 1fr;
     }
 
-    .services-grid .service-card:last-child {
-        grid-column: span 1;
-        max-width: none;
+    .svc-pane-visual {
+        display: none;
     }
 
-    .service-card {
-        padding: var(--s-8);
+    .svc-pane-title {
+        font-size: var(--fs-3xl);
     }
 
-    /* Numbers */
+    /* ────────────────────
+       DIFFERENTIATORS — Timeline Layout
+       Instead of identical stacked cards,
+       use an elegant timeline on the right side
+    ──────────────────── */
+    .diff-grid {
+        grid-template-columns: 1fr;
+        gap: 0;
+        position: relative;
+        padding-right: var(--s-8);
+    }
+
+    /* Vertical timeline line */
+    .diff-grid::before {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: linear-gradient(to bottom, var(--accent), var(--violet), transparent);
+    }
+
+    .diff-card {
+        border: none;
+        border-radius: 0;
+        background: transparent;
+        padding: var(--s-8) 0;
+        position: relative;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .diff-card:last-child {
+        border-bottom: none;
+    }
+
+    /* Timeline dot */
+    .diff-card::after {
+        content: '';
+        position: absolute;
+        right: calc(var(--s-8) * -1 - 5px);
+        top: var(--s-10);
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: var(--accent);
+        box-shadow: 0 0 12px var(--accent-50);
+    }
+
+    .diff-card:nth-child(2)::after {
+        background: var(--violet);
+        box-shadow: 0 0 12px var(--violet-20);
+    }
+
+    .diff-card:nth-child(3)::after {
+        background: var(--warm, #FF6B35);
+        box-shadow: 0 0 12px rgba(255, 107, 53, 0.3);
+    }
+
+    .diff-card:hover {
+        transform: none;
+        box-shadow: none;
+    }
+
+    .diff-card-accent {
+        display: none;
+    }
+
+    .diff-card--highlight {
+        background: transparent;
+        border-color: var(--border);
+    }
+
+    /* ────────────────────
+       NUMBERS — 2x2 with personality
+    ──────────────────── */
     .numbers-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 0;
     }
 
     .number-item {
-        padding: var(--s-8) var(--s-4);
+        padding: var(--s-10) var(--s-4);
     }
 
     .number-item::after {
@@ -154,19 +372,16 @@
         font-size: var(--fs-3xl);
     }
 
-    /* Terminal */
-    .terminal-body {
-        padding: var(--s-4);
-        font-size: 12px;
-        min-height: 200px;
-    }
-
-    /* Contact */
+    /* ────────────────────
+       CONTACT — Clean mobile form
+    ──────────────────── */
     .form-row {
         grid-template-columns: 1fr;
     }
 
-    /* Footer */
+    /* ────────────────────
+       FOOTER — Mobile stack
+    ──────────────────── */
     .footer-nav {
         flex-direction: column;
         gap: var(--s-8);
@@ -181,28 +396,18 @@
 
 /* ── Small phones ── */
 @media (max-width: 480px) {
-    .hero-badge {
-        font-size: 0.6rem;
-        letter-spacing: 1px;
-    }
-
     .hero-title-line {
-        font-size: var(--fs-3xl);
-    }
-
-    .numbers-grid {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .manifesto-title {
         font-size: var(--fs-2xl);
     }
 
-    .services-title {
-        font-size: var(--fs-2xl);
-    }
-
+    .services-title,
+    .diff-title,
+    .about-title,
     .contact-title {
         font-size: var(--fs-2xl);
+    }
+
+    .about-card {
+        flex: 0 0 85%;
     }
 }

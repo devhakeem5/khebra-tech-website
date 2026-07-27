@@ -23,7 +23,45 @@ body {
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    cursor: default;
+    cursor: none;
+}
+
+/* ========================================
+   CUSTOM CURSOR (VIP)
+   ======================================== */
+.cursor-dot,
+.cursor-outline {
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    z-index: 10000;
+    pointer-events: none;
+}
+
+.cursor-dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--accent);
+}
+
+.cursor-outline {
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--accent-50);
+    transition: width 0.2s, height 0.2s;
+}
+
+a, button, input, textarea, select {
+    cursor: none !important;
+}
+
+.cursor-hover .cursor-outline {
+    width: 60px;
+    height: 60px;
+    background-color: var(--accent-10);
+    border-color: var(--accent);
 }
 
 /* Noise texture for depth */
@@ -42,7 +80,7 @@ body {
 h1, h2, h3, h4, h5 {
     font-family: var(--font-h);
     color: var(--text-1);
-    line-height: 1.1;
+    line-height: 1.35;
     font-weight: 900;
 }
 
@@ -57,6 +95,8 @@ a {
 
 ul, ol { list-style: none; }
 img { display: block; max-width: 100%; }
+svg { max-width: 100%; height: auto; display: inline-block; }
+svg.lucide { width: 24px; height: 24px; }
 button, input, textarea, select {
     font: inherit;
     color: inherit;
@@ -93,7 +133,8 @@ button, input, textarea, select {
     font-family: var(--font-h);
 }
 
-.section-label::before {
+.section-label::before,
+.section-label::after {
     content: '';
     width: 32px;
     height: 1px;
