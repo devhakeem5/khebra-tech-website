@@ -75,11 +75,6 @@
                     <a href="#contact" class="btn btn-ghost">طلب استشارة مجانية</a>
                 </div>
             </div>
-
-            <div class="hero-scroll">
-                <div class="scroll-mouse"></div>
-                <span>اكتشف</span>
-            </div>
         </section>
 
 
@@ -133,122 +128,77 @@
                     <span class="section-label">خدماتنا</span>
                 </div>
 
-                <!-- Split showcase -->
-                <div class="svc-showcase">
+                <!-- Bento Box Services Layout -->
+                <div class="bento-services">
 
-                    <!-- LEFT: selector tabs -->
-                    <div class="svc-selector" id="svcSelector">
-                        <div class="svc-selector-track">
-                            <div class="svc-selector-indicator" id="svcIndicator"></div>
+                    <!-- Service 1: Development (Large, Full Width) -->
+                    <div class="bento-card bento-card--large reveal" data-tilt data-tilt-max="2" data-tilt-speed="400">
+                        <div class="bento-bg" style="--pane-hue:190"></div>
+                        
+                        <div class="bento-content">
+                            <div class="bento-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline><line x1="14" y1="4" x2="10" y2="20"></line></svg>
+                            </div>
+                            <p class="bento-kicker">نحوّل أفكارك إلى أنظمة حيّة</p>
+                            <h3 class="bento-title">تطوير <em>الأنظمة</em></h3>
+                            <p class="bento-desc">نبني تطبيقات ويب وموبايل وأنظمة مؤسسية مخصصة من الصفر بأعلى معايير الأداء والأمان. من واجهة المستخدم إلى قاعدة البيانات، كل طبقة مصممة بدقة هندسية.</p>
+                            <ul class="bento-features">
+                                <li><span class="bento-dot"></span>تطبيقات ويب وموبايل مخصصة</li>
+                                <li><span class="bento-dot"></span>أنظمة إدارة مؤسسية (ERP / CRM)</li>
+                                <li><span class="bento-dot"></span>واجهات برمجية (APIs) وبنية خلفية</li>
+                                <li><span class="bento-dot"></span>بنية سحابية قابلة للتوسع</li>
+                            </ul>
                         </div>
-
-                        <button class="svc-tab active" data-svc="0" id="svcTab0">
-                            <span class="svc-tab-num">01</span>
-                            <div class="svc-tab-body">
-                                <span class="svc-tab-name">تطوير الأنظمة</span>
-                                <span class="svc-tab-sub">ويب · موبايل · مؤسسي</span>
-                            </div>
-                            <svg class="svc-tab-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
-                        </button>
-
-                        <button class="svc-tab" data-svc="1" id="svcTab1">
-                            <span class="svc-tab-num">02</span>
-                            <div class="svc-tab-body">
-                                <span class="svc-tab-name">الأمن السيبراني</span>
-                                <span class="svc-tab-sub">حماية · اختراق · مراقبة</span>
-                            </div>
-                            <svg class="svc-tab-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
-                        </button>
-
-                        <button class="svc-tab" data-svc="2" id="svcTab2">
-                            <span class="svc-tab-num">03</span>
-                            <div class="svc-tab-body">
-                                <span class="svc-tab-name">الحلول المتكاملة</span>
-                                <span class="svc-tab-sub">تكامل · أتمتة · استشارات</span>
-                            </div>
-                            <svg class="svc-tab-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
-                        </button>
-
-                        <a href="#contact" class="svc-cta-link">
-                            <span>ابدأ مشروعك</span>
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 5 12 12 19"></polyline></svg>
-                        </a>
+                        
+                        <div class="bento-visual">
+                            <div class="bento-orb"></div>
+                            <div class="bento-glyph">&lt;/&gt;</div>
+                        </div>
                     </div>
 
-                    <!-- RIGHT: content panel -->
-                    <div class="svc-panel" id="svcPanel">
-
-                        <!-- Pane 0: Development -->
-                        <div class="svc-pane active" data-pane="0">
-                            <div class="svc-pane-bg" style="--pane-hue:190"></div>
-                            <div class="svc-pane-content">
-                                <div class="svc-pane-icon">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline><line x1="14" y1="4" x2="10" y2="20"></line></svg>
-                                </div>
-                                <p class="svc-pane-kicker">نحوّل أفكارك إلى أنظمة حيّة</p>
-                                <h2 class="svc-pane-title">تطوير<br><em>الأنظمة</em></h2>
-                                <p class="svc-pane-desc">نبني تطبيقات ويب وموبايل وأنظمة مؤسسية مخصصة من الصفر بأعلى معايير الأداء والأمان. من واجهة المستخدم إلى قاعدة البيانات، كل طبقة مصممة بدقة هندسية.</p>
-                                <ul class="svc-pane-features">
-                                    <li><span class="svc-feat-dot"></span>تطبيقات ويب وموبايل مخصصة</li>
-                                    <li><span class="svc-feat-dot"></span>أنظمة إدارة مؤسسية (ERP / CRM)</li>
-                                    <li><span class="svc-feat-dot"></span>واجهات برمجية (APIs) وبنية خلفية</li>
-                                    <li><span class="svc-feat-dot"></span>بنية سحابية قابلة للتوسع</li>
-                                </ul>
+                    <!-- Service 2: Security (Half Width) -->
+                    <div class="bento-card reveal" style="--delay: 0.1s" data-tilt data-tilt-max="3">
+                        <div class="bento-bg" style="--pane-hue:250"></div>
+                        <div class="bento-watermark">⬡</div>
+                        
+                        <div class="bento-content">
+                            <div class="bento-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="M9 12l2 2 4-4"></path></svg>
                             </div>
-                            <div class="svc-pane-visual" aria-hidden="true">
-                                <div class="svc-orb"></div>
-                                <div class="svc-glyph">&lt;/&gt;</div>
-                            </div>
+                            <p class="bento-kicker">نكتشف الخلل قبل أن يُستغل</p>
+                            <h3 class="bento-title">الأمن <em>السيبراني</em></h3>
+                            <p class="bento-desc">نحمي أنظمتك من التهديدات المتطورة عبر اختبارات اختراق حقيقية، فحص شامل للثغرات، ومراقبة مستمرة.</p>
+                            <ul class="bento-features">
+                                <li><span class="bento-dot"></span>اختبارات اختراق متقدمة</li>
+                                <li><span class="bento-dot"></span>تقييم وتحليل الثغرات</li>
+                                <li><span class="bento-dot"></span>مراقبة واستجابة فورية</li>
+                                <li><span class="bento-dot"></span>تدريب وتأهيل الفرق</li>
+                            </ul>
                         </div>
+                    </div>
 
-                        <!-- Pane 1: Security -->
-                        <div class="svc-pane" data-pane="1">
-                            <div class="svc-pane-bg" style="--pane-hue:250"></div>
-                            <div class="svc-pane-content">
-                                <div class="svc-pane-icon">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="M9 12l2 2 4-4"></path></svg>
-                                </div>
-                                <p class="svc-pane-kicker">نكتشف الخلل قبل أن يُستغل</p>
-                                <h2 class="svc-pane-title">الأمن<br><em>السيبراني</em></h2>
-                                <p class="svc-pane-desc">نحمي أنظمتك من التهديدات المتطورة عبر اختبارات اختراق حقيقية، فحص شامل للثغرات، ومراقبة مستمرة. نختبر تماماً من الخارج كما يفعل المهاجم الحقيقي.</p>
-                                <ul class="svc-pane-features">
-                                    <li><span class="svc-feat-dot"></span>اختبارات اختراق متقدمة</li>
-                                    <li><span class="svc-feat-dot"></span>تقييم وتحليل الثغرات</li>
-                                    <li><span class="svc-feat-dot"></span>مراقبة واستجابة فورية 24/7</li>
-                                    <li><span class="svc-feat-dot"></span>تدريب وتأهيل الفرق الأمنية</li>
-                                </ul>
+                    <!-- Service 3: Enterprise (Half Width) -->
+                    <div class="bento-card reveal" style="--delay: 0.2s" data-tilt data-tilt-max="3">
+                        <div class="bento-bg" style="--pane-hue:16"></div>
+                        <div class="bento-watermark">◈</div>
+                        
+                        <div class="bento-content">
+                            <div class="bento-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
                             </div>
-                            <div class="svc-pane-visual" aria-hidden="true">
-                                <div class="svc-orb"></div>
-                                <div class="svc-glyph">⬡</div>
-                            </div>
+                            <p class="bento-kicker">أنظمة مُفصّلة على مقاسك</p>
+                            <h3 class="bento-title">الحلول <em>المتكاملة</em></h3>
+                            <p class="bento-desc">نربط أنظمتك ببعضها، نؤتمت عملياتك، ونبني حلولاً متكاملة تنمو مع مؤسستك بدقة هندسية وفهم عميق.</p>
+                            <ul class="bento-features">
+                                <li><span class="bento-dot"></span>تكامل الأنظمة والمنصات</li>
+                                <li><span class="bento-dot"></span>أتمتة العمليات التشغيلية</li>
+                                <li><span class="bento-dot"></span>استشارات تقنية استراتيجية</li>
+                                <li><span class="bento-dot"></span>دعم فني ومتابعة مستمرة</li>
+                            </ul>
                         </div>
+                    </div>
 
-                        <!-- Pane 2: Enterprise -->
-                        <div class="svc-pane" data-pane="2">
-                            <div class="svc-pane-bg" style="--pane-hue:16"></div>
-                            <div class="svc-pane-content">
-                                <div class="svc-pane-icon">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
-                                </div>
-                                <p class="svc-pane-kicker">أنظمة مُفصّلة على مقاسك</p>
-                                <h2 class="svc-pane-title">الحلول<br><em>المتكاملة</em></h2>
-                                <p class="svc-pane-desc">نربط أنظمتك ببعضها، نؤتمت عملياتك، ونبني حلولاً متكاملة تنمو مع مؤسستك. بدقة هندسية وفهم عميق لاحتياجاتك الآن والمستقبل.</p>
-                                <ul class="svc-pane-features">
-                                    <li><span class="svc-feat-dot"></span>تكامل الأنظمة والمنصات</li>
-                                    <li><span class="svc-feat-dot"></span>أتمتة العمليات التشغيلية</li>
-                                    <li><span class="svc-feat-dot"></span>استشارات تقنية استراتيجية</li>
-                                    <li><span class="svc-feat-dot"></span>دعم فني ومتابعة مستمرة</li>
-                                </ul>
-                            </div>
-                            <div class="svc-pane-visual" aria-hidden="true">
-                                <div class="svc-orb"></div>
-                                <div class="svc-glyph">◈</div>
-                            </div>
-                        </div>
-
-                    </div><!-- /svc-panel -->
-                </div><!-- /svc-showcase -->
+                </div><!-- /bento-services -->
             </div>
         </section>
 

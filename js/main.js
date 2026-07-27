@@ -223,81 +223,7 @@
         });
     }
 
-    /* ═══════════════════════════════════════
-       3b. SERVICE SHOWCASE SWITCHER
-       ═══════════════════════════════════════ */
-    (function () {
-        const tabs      = document.querySelectorAll('.svc-tab');
-        const panes     = document.querySelectorAll('.svc-pane');
-        const indicator = document.getElementById('svcIndicator');
-        const showcase  = document.querySelector('.svc-showcase');
-        if (!tabs.length || !panes.length) return;
 
-        let current = 0;
-        let autoTimer = null;
-
-        function getIndicatorTop(index) {
-            const selector = document.getElementById('svcSelector');
-            const track    = selector ? selector.querySelector('.svc-selector-track') : null;
-            if (!track) return 0;
-            const tabEls = selector.querySelectorAll('.svc-tab');
-            if (!tabEls[index]) return 0;
-            const tabRect  = tabEls[index].getBoundingClientRect();
-            const trackRect = track.getBoundingClientRect();
-            return tabRect.top - trackRect.top;
-        }
-
-        function switchTo(index) {
-            if (index === current) return;
-
-            // Deactivate old
-            tabs[current].classList.remove('active');
-            panes[current].classList.remove('active');
-
-            // Activate new
-            current = index;
-            tabs[current].classList.add('active');
-            panes[current].classList.add('active');
-
-            // Move indicator (only when selector-track is visible)
-            if (indicator && getComputedStyle(indicator).display !== 'none') {
-                indicator.style.top = getIndicatorTop(current) + 'px';
-            }
-        }
-
-        // Wire tabs
-        tabs.forEach((tab, i) => {
-            tab.addEventListener('click', () => {
-                switchTo(i);
-                clearInterval(autoTimer);
-                startAuto();
-            });
-        });
-
-        // Init indicator position
-        if (indicator) {
-            indicator.style.top = getIndicatorTop(0) + 'px';
-        }
-
-        // Auto-rotate every 5 s, pause on hover
-        function startAuto() {
-            autoTimer = setInterval(() => {
-                switchTo((current + 1) % tabs.length);
-            }, 5000);
-        }
-
-        startAuto();
-
-        if (showcase) {
-            showcase.addEventListener('mouseenter', () => clearInterval(autoTimer));
-            showcase.addEventListener('mouseleave', () => { clearInterval(autoTimer); startAuto(); });
-        }
-
-        // Recalculate indicator on resize
-        window.addEventListener('resize', () => {
-            if (indicator) indicator.style.top = getIndicatorTop(current) + 'px';
-        });
-    })();
 
 
     /* ═══════════════════════════════════════
@@ -401,6 +327,25 @@
                 }, 4000);
             }, 2000);
         });
+    }
+
+    /* ═══════════════════════════════════════
+       6. SCROLL REVEAL (Intersection Observer)
+       ═══════════════════════════════════════ */
+    const revealEls = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+        const revealObs = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    revealObs.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        revealEls.forEach(el => revealObs.observe(el));
+    } else {
+        revealEls.forEach(el => el.classList.add('visible'));
     }
 
 })();
