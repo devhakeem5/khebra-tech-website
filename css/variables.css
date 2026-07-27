@@ -4,49 +4,49 @@
    ======================================== */
 
 :root {
-    /* ── Void: the deepest black for a VIP feel ── */
-    --void:        #050505;
-    --void-95:     rgba(5, 5, 5, 0.95);
-    --void-80:     rgba(5, 5, 5, 0.8);
+    /* ── Void: the deepest background ── */
+    --void:        #030608;
+    --void-95:     rgba(3, 6, 8, 0.95);
+    --void-80:     rgba(3, 6, 8, 0.8);
 
-    /* ── Surface layers (dark monolithic grays) ── */
-    --surface-1:   #0a0a0a;
-    --surface-2:   #111111;
-    --surface-3:   #1a1a1a;
-    --surface-4:   #222222;
+    /* ── Surface layers ── */
+    --surface-1:   #080D15;
+    --surface-2:   #0E1520;
+    --surface-3:   #14202F;
+    --surface-4:   #1A2B40;
 
-    /* ── Accent: Luxury Gold ── */
-    --accent:      #D4AF37;
-    --accent-50:   rgba(212, 175, 55, 0.5);
-    --accent-20:   rgba(212, 175, 55, 0.2);
-    --accent-10:   rgba(212, 175, 55, 0.1);
-    --accent-05:   rgba(212, 175, 55, 0.05);
+    /* ── Accent: Electric cyan-blue ── */
+    --accent:      #00D4FF;
+    --accent-50:   rgba(0, 212, 255, 0.5);
+    --accent-20:   rgba(0, 212, 255, 0.2);
+    --accent-10:   rgba(0, 212, 255, 0.1);
+    --accent-05:   rgba(0, 212, 255, 0.05);
 
-    /* ── Secondary: Platinum / Silver ── */
-    --warm:        #E5E4E2;
-    --warm-20:     rgba(229, 228, 226, 0.2);
+    /* ── Secondary: Warm amber for contrast ── */
+    --warm:        #FF6B35;
+    --warm-20:     rgba(255, 107, 53, 0.2);
 
-    /* ── Tertiary: Deep Copper / Bronze ── */
-    --violet:      #b87333;
-    --violet-20:   rgba(184, 115, 51, 0.2);
+    /* ── Tertiary: Deep violet ── */
+    --violet:      #7B61FF;
+    --violet-20:   rgba(123, 97, 255, 0.2);
 
     /* ── Text hierarchy ── */
-    --text-1:      #FFFFFF;
-    --text-2:      #D1D1D1;
-    --text-3:      #888888;
+    --text-1:      #F0F4F8;
+    --text-2:      #8899AA;
+    --text-3:      #4A5568;
     --text-accent: var(--accent);
 
-    /* ── Borders & Glassmorphism ── */
-    --border:      rgba(212, 175, 55, 0.15);
-    --border-light:rgba(255, 255, 255, 0.05);
-    --border-accent:rgba(212, 175, 55, 0.3);
+    /* ── Borders ── */
+    --border:      rgba(255, 255, 255, 0.04);
+    --border-light:rgba(255, 255, 255, 0.08);
+    --border-accent:rgba(0, 212, 255, 0.2);
     
-    --glass-bg:    rgba(17, 17, 17, 0.6);
+    --glass-bg:    rgba(14, 21, 32, 0.6);
     --glass-blur:  blur(16px);
 
     /* ── Gradients ── */
-    --gradient-accent: linear-gradient(135deg, var(--accent), #F3E5AB);
-    --gradient-warm:   linear-gradient(135deg, var(--warm), #FFFFFF);
+    --gradient-accent: linear-gradient(135deg, var(--accent), var(--violet));
+    --gradient-warm:   linear-gradient(135deg, var(--warm), #FF9F43);
     --gradient-dark:   linear-gradient(180deg, var(--void) 0%, var(--surface-1) 100%);
     --gradient-glow:   radial-gradient(circle, var(--accent-20) 0%, transparent 70%);
 

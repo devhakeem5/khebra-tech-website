@@ -51,37 +51,79 @@
         renderer.setSize(canvas.offsetWidth, canvas.offsetHeight);
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-        // Create a massive, abstract luxury shape (Torus Knot)
-        const geometry = new THREE.TorusKnotGeometry(12, 3, 200, 32);
+        // Create a particle system based on logo image
+        let logoParticles = null;
         
-        // VIP Gold Wireframe Material
-        const material = new THREE.MeshBasicMaterial({ 
-            color: 0xD4AF37, 
-            wireframe: true,
-            transparent: true,
-            opacity: 0.15
-        });
-        const torusKnot = new THREE.Mesh(geometry, material);
-        scene.add(torusKnot);
+        const img = new Image();
+        img.src = 'assets/images/logo.png';
+        img.onload = () => {
+            const hiddenCanvas = document.createElement('canvas');
+            const ctx = hiddenCanvas.getContext('2d');
+            
+            // Higher width = more particles (denser)
+            const targetWidth = 140; 
+            const targetHeight = Math.floor((img.height / img.width) * targetWidth);
+            hiddenCanvas.width = targetWidth;
+            hiddenCanvas.height = targetHeight;
+            
+            ctx.drawImage(img, 0, 0, targetWidth, targetHeight);
+            const imgData = ctx.getImageData(0, 0, targetWidth, targetHeight).data;
+            
+            const positions = [];
+            const colors = [];
+            
+            for(let y = 0; y < targetHeight; y++) {
+                for(let x = 0; x < targetWidth; x++) {
+                    const idx = (y * targetWidth + x) * 4;
+                    const a = imgData[idx+3];
+                    
+                    if (a > 100) { // Non-transparent pixels
+                        const pX = (x - targetWidth / 2) * 0.35;
+                        const pY = -(y - targetHeight / 2) * 0.35;
+                        const pZ = (Math.random() - 0.5) * 2; // subtle thickness
+                        
+                        // Store base position and current position
+                        positions.push(pX, pY, pZ);
+                        // Cyan color #00D4FF
+                        colors.push(0.0, 0.83, 1.0);
+                    }
+                }
+            }
+            
+            const geometry = new THREE.BufferGeometry();
+            geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+            geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+            // Store original coordinates for wave animation
+            geometry.setAttribute('basePosition', new THREE.Float32BufferAttribute(positions, 3));
+            
+            const material = new THREE.PointsMaterial({
+                size: 0.18,
+                vertexColors: true,
+                transparent: true,
+                opacity: 0.85,
+                blending: THREE.AdditiveBlending
+            });
+            
+            logoParticles = new THREE.Points(geometry, material);
+            scene.add(logoParticles);
+        };
 
-        // Add glowing particles floating around
-        const particlesGeometry = new THREE.BufferGeometry();
-        const particlesCount = 700;
-        const posArray = new Float32Array(particlesCount * 3);
-
-        for(let i = 0; i < particlesCount * 3; i++) {
-            posArray[i] = (Math.random() - 0.5) * 100;
+        // Add some glowing ambient dust
+        const dustGeo = new THREE.BufferGeometry();
+        const dustCount = 400;
+        const dustPos = new Float32Array(dustCount * 3);
+        for(let i = 0; i < dustCount * 3; i++) {
+            dustPos[i] = (Math.random() - 0.5) * 80;
         }
-
-        particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-        const particlesMaterial = new THREE.PointsMaterial({
-            size: 0.1,
-            color: 0xF3E5AB,
+        dustGeo.setAttribute('position', new THREE.BufferAttribute(dustPos, 3));
+        const dustMat = new THREE.PointsMaterial({
+            size: 0.15,
+            color: 0x00D4FF,
             transparent: true,
-            opacity: 0.8
+            opacity: 0.3
         });
-        const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
-        scene.add(particlesMesh);
+        const dustMesh = new THREE.Points(dustGeo, dustMat);
+        scene.add(dustMesh);
 
         let mouseX = 0;
         let mouseY = 0;
@@ -95,17 +137,27 @@
         const clock = new THREE.Clock();
         function animate() {
             requestAnimationFrame(animate);
-            const elapsedTime = clock.getElapsedTime();
+            const time = clock.getElapsedTime();
 
-            // Smooth rotation
-            torusKnot.rotation.y = elapsedTime * 0.1;
-            torusKnot.rotation.x = elapsedTime * 0.05;
+            if (logoParticles) {
+                // Interactive 3D tilt based on mouse
+                logoParticles.rotation.y = mouseX * 0.3;
+                logoParticles.rotation.x = mouseY * 0.3;
+                
+                // Tech wave animation
+                const positions = logoParticles.geometry.attributes.position.array;
+                const basePositions = logoParticles.geometry.attributes.basePosition.array;
+                for (let i = 0; i < positions.length; i += 3) {
+                    const x = basePositions[i];
+                    const y = basePositions[i+1];
+                    // Add a dynamic wave across the Z axis
+                    positions[i + 2] = basePositions[i + 2] + Math.sin(time * 2 + x * 0.5 + y * 0.5) * 0.5;
+                }
+                logoParticles.geometry.attributes.position.needsUpdate = true;
+            }
 
-            // Interactive mouse rotation
-            torusKnot.rotation.x += mouseY * 0.01;
-            torusKnot.rotation.y += mouseX * 0.01;
-
-            particlesMesh.rotation.y = -elapsedTime * 0.05;
+            dustMesh.rotation.y = time * 0.05;
+            dustMesh.rotation.x = time * 0.02;
             
             renderer.render(scene, camera);
         }
