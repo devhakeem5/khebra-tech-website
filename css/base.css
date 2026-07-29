@@ -64,6 +64,17 @@ a, button, input, textarea, select {
     border-color: var(--accent);
 }
 
+/* Disable custom cursor on touch/mobile devices */
+@media (hover: none), (pointer: coarse), (max-width: 768px) {
+    body, a, button, input, textarea, select {
+        cursor: auto !important;
+    }
+    .cursor-dot,
+    .cursor-outline {
+        display: none !important;
+    }
+}
+
 /* Noise texture for depth */
 .noise-overlay {
     position: fixed;

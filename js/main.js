@@ -242,7 +242,7 @@
             nav.classList.toggle('open');
             document.body.style.overflow = nav.classList.contains('open') ? 'hidden' : '';
         });
-        nav.querySelectorAll('.nav-link').forEach(link => {
+        nav.querySelectorAll('.nav-link, .nav-mobile-cta').forEach(link => {
             link.addEventListener('click', () => {
                 toggle.classList.remove('open');
                 nav.classList.remove('open');
@@ -272,38 +272,41 @@
             const target = document.querySelector(href);
             if (!target) return;
             e.preventDefault();
-            window.scrollTo({ top: target.offsetTop - 90, behavior: 'smooth' });
+            const headerOffset = window.innerWidth <= 768 ? 70 : 90;
+            window.scrollTo({ top: target.offsetTop - headerOffset, behavior: 'smooth' });
         });
     });
 
     /* ═══════════════════════════════════════
-       6. MAGNETIC BUTTONS & TILT
+       6. MAGNETIC BUTTONS & TILT (Desktop only)
        ═══════════════════════════════════════ */
-    const magneticBtns = document.querySelectorAll('.btn-primary, .btn-ghost');
-    magneticBtns.forEach(btn => {
-        btn.addEventListener('mousemove', (e) => {
-            const rect = btn.getBoundingClientRect();
-            const x = e.clientX - rect.left - rect.width / 2;
-            const y = e.clientY - rect.top - rect.height / 2;
-            btn.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
+    if (window.matchMedia('(hover: hover)').matches) {
+        const magneticBtns = document.querySelectorAll('.btn-primary, .btn-ghost');
+        magneticBtns.forEach(btn => {
+            btn.addEventListener('mousemove', (e) => {
+                const rect = btn.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                btn.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
+            });
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transform = '';
+            });
         });
-        btn.addEventListener('mouseleave', () => {
-            btn.style.transform = '';
-        });
-    });
 
-    const tiltCards = document.querySelectorAll('[data-tilt]');
-    tiltCards.forEach(card => {
-        card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = (e.clientX - rect.left - rect.width / 2) / 20;
-            const y = -(e.clientY - rect.top - rect.height / 2) / 20;
-            card.style.transform = `perspective(1000px) rotateX(${y}deg) rotateY(${x}deg) scale3d(1.02, 1.02, 1.02)`;
+        const tiltCards = document.querySelectorAll('[data-tilt]');
+        tiltCards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = (e.clientX - rect.left - rect.width / 2) / 20;
+                const y = -(e.clientY - rect.top - rect.height / 2) / 20;
+                card.style.transform = `perspective(1000px) rotateX(${y}deg) rotateY(${x}deg) scale3d(1.02, 1.02, 1.02)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = '';
+            });
         });
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = '';
-        });
-    });
+    }
 
     /* ═══════════════════════════════════════
        7. CONTACT FORM (Simulated)

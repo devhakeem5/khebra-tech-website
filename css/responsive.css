@@ -1,11 +1,10 @@
 /* ========================================
-   KHEBRA TECH — Responsive v5
-   Creative Mobile Experience
+   KHEBRA TECH — Responsive v6 (VIP Mobile Master Edition)
+   Flawless UX on all Touch & Mobile Devices
    ======================================== */
 
 /* ── Large tablets / small laptops ── */
 @media (max-width: 1100px) {
-    /* Bento Services stacking */
     .bento-services {
         grid-template-columns: 1fr;
     }
@@ -41,277 +40,582 @@
     }
 }
 
-/* ── Mobile ── */
+/* ── Mobile & Touch Screens (<= 768px) ── */
 @media (max-width: 768px) {
     :root {
-        --header-h: 68px;
+        --header-h: 64px;
+        --gutter: 1.5rem;
     }
 
-    /* Mobile menu */
-    .menu-toggle {
-        display: block;
+    /* Disable hover effects on touch devices to prevent stuck states */
+    .about-card:hover,
+    .bento-card:hover,
+    .diff-card:hover,
+    .channel:hover {
+        transform: none !important;
+        box-shadow: none !important;
     }
 
-    .nav {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100vh;
-        height: 100dvh;
-        background: var(--void);
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: var(--s-10);
-        opacity: 0;
-        visibility: hidden;
-        transition: all 0.5s var(--ease-out);
-        z-index: 999;
+    /* ────────────────────
+       HEADER & NAVIGATION OVERLAY
+    ──────────────────── */
+    .header-inner {
+        padding: 0 var(--gutter);
     }
 
-    .nav.open {
-        opacity: 1;
-        visibility: visible;
+    .logo-img {
+        height: 32px;
     }
 
-    .nav-link {
-        font-size: var(--fs-2xl);
-        font-family: var(--font-h);
-        font-weight: 700;
+    .logo-wordmark {
+        font-size: var(--fs-md);
     }
 
     .header-cta {
         display: none;
     }
 
+    /* Hamburger Toggle Button */
+    .menu-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        background: var(--surface-2);
+        border: 1px solid var(--border-light);
+        border-radius: var(--r-sm);
+        transition: background 0.3s ease;
+    }
+
+    .menu-toggle span,
+    .menu-toggle::before,
+    .menu-toggle::after {
+        right: 8px;
+    }
+
+    .menu-toggle span { width: 22px; }
+    .menu-toggle::before { width: 28px; }
+    .menu-toggle::after { width: 16px; }
+
+    .menu-toggle.open span { opacity: 0; width: 0; }
+    .menu-toggle.open::before { width: 24px; }
+    .menu-toggle.open::after { width: 24px; }
+
+    /* Mobile Full-Screen Overlay Nav */
+    .nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100vw;
+        height: 100vh;
+        height: 100dvh;
+        background: rgba(3, 6, 8, 0.98);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: var(--s-4);
+        padding: calc(var(--header-h) + var(--s-6)) var(--gutter) var(--s-8);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: opacity 0.4s var(--ease-out), visibility 0.4s var(--ease-out), transform 0.4s var(--ease-out);
+        z-index: 999;
+    }
+
+    .nav.open {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .nav-link {
+        font-size: var(--fs-xl);
+        font-family: var(--font-h);
+        font-weight: 700;
+        color: var(--text-2);
+        width: 100%;
+        max-width: 280px;
+        text-align: center;
+        padding: var(--s-3) var(--s-6);
+        border-radius: var(--r-md);
+        border: 1px solid transparent;
+        transition: all var(--t-fast);
+    }
+
+    .nav-link::after {
+        display: none;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+        color: var(--accent);
+        background: var(--accent-10);
+        border-color: var(--accent-20);
+    }
+
+    /* Mobile CTA inside menu drawer */
+    .nav-mobile-cta {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        max-width: 280px;
+        margin-top: var(--s-4);
+        padding: var(--s-4) var(--s-8);
+        font-family: var(--font-h);
+        font-weight: 700;
+        font-size: var(--fs-md);
+        color: var(--void);
+        background: var(--gradient-accent);
+        border-radius: var(--r-full);
+        box-shadow: 0 10px 30px var(--accent-20);
+        text-align: center;
+        transition: transform var(--t-fast);
+    }
+
+    .nav-mobile-cta:active {
+        transform: scale(0.97);
+    }
+
     /* ────────────────────
-       HERO — Mobile
+       HERO SECTION — Mobile
     ──────────────────── */
+    .hero {
+        min-height: auto;
+        padding-top: calc(var(--header-h) + var(--s-10));
+        padding-bottom: var(--s-12);
+    }
+
     .hero-content {
+        width: 100%;
+        max-width: 100%;
         text-align: center;
     }
 
+    .hero-title {
+        margin-bottom: var(--s-6);
+    }
+
     .hero-title-line {
-        font-size: var(--fs-3xl);
+        font-size: clamp(2rem, 8vw, 2.75rem);
+        line-height: 1.25;
     }
 
     .hero-desc {
-        font-size: var(--fs-md);
+        font-size: var(--fs-sm);
+        line-height: 1.8;
+        margin-bottom: var(--s-8);
+        max-width: 100%;
     }
 
     .hero-cta-row {
         flex-direction: column;
         width: 100%;
         max-width: 320px;
+        gap: var(--s-3);
+        margin: 0 auto;
     }
 
     .hero-cta-row .btn {
         width: 100%;
+        justify-content: center;
+        min-height: 48px;
+    }
+
+    .hero-scroll {
+        margin-top: var(--s-10);
+        padding-top: 0;
     }
 
     /* ────────────────────
-       ABOUT — Horizontal Scroll Cards
-       Instead of stacked identical cards,
-       use a swipeable horizontal layout
+       ABOUT SECTION — Luxury Mobile Stack
     ──────────────────── */
-    .about-cards {
-        grid-template-columns: none;
-        display: flex;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch;
-        gap: var(--s-4);
-        padding-bottom: var(--s-6);
-        margin: 0 calc(var(--gutter) * -1);
-        padding-left: var(--gutter);
-        padding-right: var(--gutter);
+    .about-section {
+        padding: var(--s-12) 0;
     }
 
-    /* Custom scrollbar for cards */
-    .about-cards::-webkit-scrollbar {
-        height: 4px;
+    .about-header {
+        margin-bottom: var(--s-6);
     }
-    .about-cards::-webkit-scrollbar-track {
-        background: var(--surface-2);
-        border-radius: 4px;
+
+    .about-title {
+        font-size: clamp(1.6rem, 6vw, 2.2rem);
     }
-    .about-cards::-webkit-scrollbar-thumb {
-        background: var(--accent-30);
-        border-radius: 4px;
+
+    .about-intro {
+        margin-bottom: var(--s-10);
+    }
+
+    .about-intro p {
+        font-size: var(--fs-sm);
+        line-height: 1.8;
+    }
+
+    .about-cards {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--s-5);
+        overflow: visible;
+        flex: none;
+        margin: 0;
+        padding: 0;
     }
 
     .about-card {
-        flex: 0 0 80%;
-        scroll-snap-align: center;
-        min-height: 260px;
+        flex: none;
+        min-height: auto;
+        padding: var(--s-6) var(--s-5);
+        background: var(--surface-2);
+        border: 1px solid var(--border-light);
+        border-radius: var(--r-lg);
+        text-align: right;
+        align-items: flex-start;
+        border-top: none;
     }
 
-    /* Give each about-card a unique accent feel */
     .about-card:nth-child(1) {
-        border-top: 3px solid var(--accent);
+        border-right: 3px solid var(--accent);
     }
+
     .about-card:nth-child(2) {
-        border-top: 3px solid var(--violet);
+        border-right: 3px solid var(--violet);
     }
+
     .about-card:nth-child(3) {
-        border-top: 3px solid var(--warm, #FF6B35);
+        border-right: 3px solid var(--warm, #FF6B35);
     }
-    .about-card:nth-child(2) .about-card-icon {
-        color: var(--violet);
-        border-color: var(--violet-20);
+
+    .about-card-icon {
+        width: 48px;
+        height: 48px;
+        margin-bottom: var(--s-4);
+        border-radius: var(--r-md);
+    }
+
+    .about-card h3 {
+        font-size: var(--fs-md);
+        margin-bottom: var(--s-2);
+    }
+
+    .about-card p {
+        font-size: var(--fs-sm);
+        line-height: 1.7;
     }
 
     /* ────────────────────
        SERVICES — Mobile Bento
     ──────────────────── */
+    .services {
+        padding: var(--s-12) 0;
+    }
+
+    .services-eyebrow {
+        margin-bottom: var(--s-8);
+    }
+
+    .bento-services {
+        grid-template-columns: 1fr;
+        gap: var(--s-5);
+    }
+
     .bento-card {
-        padding: var(--s-8) var(--s-6);
+        padding: var(--s-6) var(--s-5);
         min-height: auto;
+        border-radius: var(--r-lg);
+    }
+
+    .bento-card--large {
+        grid-template-columns: 1fr;
+        gap: var(--s-6);
+    }
+
+    .bento-icon {
+        width: 48px;
+        height: 48px;
+        margin-bottom: var(--s-2);
+    }
+
+    .bento-title {
+        font-size: clamp(1.5rem, 5vw, 2rem);
+    }
+
+    .bento-desc {
+        font-size: var(--fs-sm);
+        line-height: 1.7;
     }
 
     .bento-features {
         grid-template-columns: 1fr;
+        gap: var(--s-3);
     }
 
-    .bento-title {
-        font-size: var(--fs-3xl);
+    .bento-features li {
+        font-size: var(--fs-sm);
     }
 
     .bento-watermark {
-        font-size: 6rem;
+        font-size: 5rem;
         bottom: -10px;
         left: -10px;
+        opacity: 0.15;
+        overflow: hidden;
     }
 
     /* ────────────────────
-       DIFFERENTIATORS — Timeline Layout
-       Instead of identical stacked cards,
-       use an elegant timeline on the right side
+       DIFFERENTIATORS — Clean Luxury Cards
     ──────────────────── */
-    .diff-grid {
-        grid-template-columns: 1fr;
-        gap: 0;
-        position: relative;
-        padding-right: var(--s-8);
+    .diff-section {
+        padding: var(--s-12) 0;
     }
 
-    /* Vertical timeline line */
+    .diff-header {
+        margin-bottom: var(--s-10);
+    }
+
+    .diff-title {
+        font-size: clamp(1.6rem, 6vw, 2.2rem);
+    }
+
+    .diff-grid {
+        grid-template-columns: 1fr;
+        gap: var(--s-5);
+        padding-right: 0;
+    }
+
     .diff-grid::before {
-        content: '';
-        position: absolute;
-        right: 0;
-        top: 0;
-        bottom: 0;
-        width: 2px;
-        background: linear-gradient(to bottom, var(--accent), var(--violet), transparent);
+        display: none;
     }
 
     .diff-card {
-        border: none;
-        border-radius: 0;
-        background: transparent;
-        padding: var(--s-8) 0;
+        background: var(--surface-2);
+        border: 1px solid var(--border-light);
+        border-radius: var(--r-lg);
+        padding: var(--s-6) var(--s-5);
         position: relative;
-        border-bottom: 1px solid var(--border);
+        overflow: hidden;
+        border-bottom: 1px solid var(--border-light);
     }
 
-    .diff-card:last-child {
-        border-bottom: none;
-    }
-
-    /* Timeline dot */
     .diff-card::after {
-        content: '';
-        position: absolute;
-        right: calc(var(--s-8) * -1 - 5px);
-        top: var(--s-10);
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-        background: var(--accent);
-        box-shadow: 0 0 12px var(--accent-50);
-    }
-
-    .diff-card:nth-child(2)::after {
-        background: var(--violet);
-        box-shadow: 0 0 12px var(--violet-20);
-    }
-
-    .diff-card:nth-child(3)::after {
-        background: var(--warm, #FF6B35);
-        box-shadow: 0 0 12px rgba(255, 107, 53, 0.3);
-    }
-
-    .diff-card:hover {
-        transform: none;
-        box-shadow: none;
+        display: none;
     }
 
     .diff-card-accent {
-        display: none;
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: var(--gradient-accent);
+        opacity: 1;
     }
 
-    .diff-card--highlight {
-        background: transparent;
-        border-color: var(--border);
+    .diff-card-icon {
+        width: 44px;
+        height: 44px;
+        margin-bottom: var(--s-4);
+    }
+
+    .diff-card h3 {
+        font-size: var(--fs-md);
+        margin-bottom: var(--s-3);
+    }
+
+    .diff-card p {
+        font-size: var(--fs-sm);
+        line-height: 1.7;
+        margin-bottom: var(--s-5);
+    }
+
+    .diff-points {
+        border-top: 1px solid var(--border);
+        padding-top: var(--s-4);
+        gap: var(--s-2);
+    }
+
+    .diff-points li {
+        font-size: var(--fs-sm);
     }
 
     /* ────────────────────
-       NUMBERS — 2x2 with personality
+       NUMBERS — Structured 2x2 Grid
     ──────────────────── */
+    .numbers-section {
+        padding: var(--s-12) 0;
+    }
+
     .numbers-grid {
         grid-template-columns: repeat(2, 1fr);
+        border-radius: var(--r-lg);
+        border: 1px solid var(--border-light);
+        overflow: hidden;
     }
 
     .number-item {
-        padding: var(--s-10) var(--s-4);
+        padding: var(--s-6) var(--s-3);
+        border-bottom: 1px solid var(--border);
+        border-left: 1px solid var(--border);
     }
 
-    .number-item::after {
-        display: none;
+    .number-item:nth-child(2n) {
+        border-left: none;
+    }
+
+    .number-item:nth-child(3),
+    .number-item:nth-child(4) {
+        border-bottom: none;
     }
 
     .number-value {
-        font-size: var(--fs-3xl);
+        font-size: clamp(1.8rem, 6vw, 2.5rem);
+        direction: ltr;
+        white-space: nowrap;
+    }
+
+    .number-label {
+        font-size: var(--fs-xs);
+        margin-top: var(--s-1);
     }
 
     /* ────────────────────
-       CONTACT — Clean mobile form
+       CONTACT — Optimized Form & Channels
     ──────────────────── */
+    .contact {
+        padding: var(--s-12) 0;
+    }
+
+    .contact-inner {
+        grid-template-columns: 1fr;
+        gap: var(--s-10);
+    }
+
+    .contact-title {
+        font-size: clamp(1.6rem, 6vw, 2.2rem);
+        margin-bottom: var(--s-4);
+    }
+
+    .contact-desc {
+        font-size: var(--fs-sm);
+        line-height: 1.8;
+        margin-bottom: var(--s-6);
+    }
+
+    .channel {
+        padding: var(--s-4) var(--s-5);
+    }
+
+    .channel-icon {
+        width: 32px;
+        height: 32px;
+    }
+
+    .channel-value {
+        font-size: var(--fs-sm);
+    }
+
+    .contact-form-wrap {
+        padding: var(--s-6) var(--s-5);
+        border-radius: var(--r-lg);
+    }
+
     .form-row {
         grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .form-field {
+        margin-bottom: var(--s-5);
+    }
+
+    .form-field input,
+    .form-field select,
+    .form-field textarea {
+        min-height: 48px;
+        font-size: var(--fs-sm);
+        padding: var(--s-3) var(--s-2);
+    }
+
+    .btn-submit {
+        width: 100%;
+        min-height: 48px;
+        justify-content: center;
+        font-size: var(--fs-md);
     }
 
     /* ────────────────────
-       FOOTER — Mobile stack
+       FOOTER — Mobile Alignment
     ──────────────────── */
-    .footer-nav {
+    .footer {
+        padding: var(--s-12) 0 var(--s-6);
+    }
+
+    .footer-main {
         flex-direction: column;
         gap: var(--s-8);
+        text-align: center;
+        align-items: center;
+    }
+
+    .footer-brand {
+        max-width: 100%;
+    }
+
+    .footer-logo {
+        margin: 0 auto var(--s-4);
+    }
+
+    .footer-nav {
+        flex-direction: row;
+        justify-content: center;
+        gap: var(--s-10);
+        text-align: right;
     }
 
     .footer-bottom {
         flex-direction: column;
         gap: var(--s-4);
         text-align: center;
+        border-top: 1px solid var(--border);
+        padding-top: var(--s-6);
     }
 }
 
-/* ── Small phones ── */
+/* ── Small phones (<= 480px) ── */
 @media (max-width: 480px) {
+    :root {
+        --gutter: 1.25rem;
+    }
+
     .hero-title-line {
-        font-size: var(--fs-2xl);
+        font-size: clamp(1.75rem, 7vw, 2.25rem);
     }
 
     .services-title,
     .diff-title,
     .about-title,
     .contact-title {
-        font-size: var(--fs-2xl);
+        font-size: clamp(1.4rem, 6vw, 1.8rem);
     }
 
-    .about-card {
-        flex: 0 0 85%;
+    .footer-nav {
+        flex-direction: column;
+        gap: var(--s-6);
+        text-align: center;
+    }
+
+    .number-value {
+        font-size: 1.75rem;
+    }
+
+    .btn {
+        padding: var(--s-3) var(--s-5);
+        font-size: var(--fs-sm);
     }
 }
