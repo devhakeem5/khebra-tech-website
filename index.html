@@ -1,451 +1,81 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>خبرة تك | شريكك التقني في البناء والحماية</title>
-    <meta name="description" content="خبرة تك — نطوّر أنظمة وتطبيقات مخصصة بأعلى معايير الأمن السيبراني. شريكك التقني في البناء والحماية.">
-    <link rel="icon" type="image/png" href="assets/images/logo.png">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="css/variables.css?v=1.1">
-    <link rel="stylesheet" href="css/base.css?v=1.1">
-    <link rel="stylesheet" href="css/layout.css?v=1.1">
-    <link rel="stylesheet" href="css/components.css?v=1.1">
-    <link rel="stylesheet" href="css/sections.css?v=1.1">
-    <link rel="stylesheet" href="css/animations.css?v=1.1">
-    <link rel="stylesheet" href="css/responsive.css?v=1.1">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101f28">
+  <title>خبرة تك | نبني ما يعمل. ونحمي ما يهم.</title>
+  <meta name="description" content="خبرة تك شريك تقني يبني المنتجات الرقمية والأنظمة المؤسسية، ويجعلها أكثر أمانًا واستعدادًا للنمو.">
+  <link rel="icon" type="image/png" href="assets/images/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/brand.css?v=1">
 </head>
 <body>
-    <!-- Noise Overlay -->
-    <div class="noise-overlay"></div>
+  <header class="site-header" id="header">
+    <div class="shell header-inner">
+      <a class="brand" href="#home" aria-label="خبرة تك - الرئيسية">
+        <img src="assets/images/logo.png" alt="" width="44" height="44">
+        <span>خبرة <b>تك</b></span>
+      </a>
+      <button class="menu-button" id="menuButton" aria-expanded="false" aria-controls="mainNav"><span></span><span></span></button>
+      <nav class="nav" id="mainNav" aria-label="التنقل الرئيسي">
+        <a href="#why">نهجنا</a><a href="#work">ما نبنيه</a><a href="#process">كيف نعمل</a>
+        <a class="nav-cta" href="#contact">لنبدأ محادثة <i>↙</i></a>
+      </nav>
+    </div>
+  </header>
 
-    <!-- Custom Cursor -->
-    <div class="cursor-dot" id="cursorDot"></div>
-    <div class="cursor-outline" id="cursorOutline"></div>
-
-    <!-- ==================== HEADER ==================== -->
-    <header class="header" id="header">
-        <div class="header-inner">
-            <a href="#" class="logo">
-                <img src="assets/images/logo.png" alt="خبرة تك" class="logo-img">
-                <div class="logo-wordmark">خبرة <span>تك</span></div>
-            </a>
-
-            <nav class="nav" id="nav">
-                <a href="#home" class="nav-link active">الرئيسية</a>
-                <a href="#about" class="nav-link">من نحن</a>
-                <a href="#services" class="nav-link">خدماتنا</a>
-                <a href="#contact" class="nav-link">تواصل</a>
-                <a href="#contact" class="nav-mobile-cta"><span>ابدأ الآن</span></a>
-            </nav>
-
-            <a href="#contact" class="header-cta"><span>ابدأ الآن</span></a>
-
-            <button class="menu-toggle" id="menuToggle" aria-label="القائمة">
-                <span></span>
-            </button>
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-grid" aria-hidden="true"></div>
+      <div class="shell hero-layout">
+        <div class="hero-copy">
+          <p class="eyebrow"><span></span> شريك تقني من السعودية إلى العالم</p>
+          <h1>نبني ما <em>يعمل.</em><br>ونحمي ما <em>يهم.</em></h1>
+          <p class="hero-text">نحوّل التعقيد إلى منتجات وأنظمة رقمية واضحة، سريعة، وآمنة. من أول سؤال إلى لحظة الإطلاق وما بعدها.</p>
+          <div class="hero-actions"><a class="button button-primary" href="#contact">احكِ لنا عن مشروعك <span>←</span></a><a class="text-link" href="#work">تعرّف إلى قدراتنا <span>↓</span></a></div>
         </div>
-    </header>
-
-    <main>
-        <!-- ==================== HERO ==================== -->
-        <section id="home" class="hero">
-            <canvas class="hero-canvas" id="heroCanvas"></canvas>
-            <div class="hero-glow"></div>
-            <div class="hero-scan"></div>
-
-            <div class="hero-content">
-                <h1 class="hero-title">
-                    <span class="hero-title-line">شريكك التقني</span>
-                    <span class="hero-title-line hero-title-line--accent">في البناء والحماية</span>
-                </h1>
-
-                <p class="hero-desc">
-                    رقمنة أعمالك وحماية أنظمتك — أياً كان ما يحتاجه مشروعك فرقنا ستتكفل به.
-                </p>
-
-                <div class="hero-cta-row">
-                    <a href="#services" class="btn btn-primary">
-                        <span>اكتشف قدراتنا</span>
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 5 12 12 19"></polyline></svg>
-                    </a>
-                    <a href="#contact" class="btn btn-ghost">طلب استشارة مجانية</a>
-                </div>
-            </div>
-        </section>
-
-
-        <!-- ==================== ABOUT ==================== -->
-        <section id="about" class="about-section">
-            <div class="about-inner">
-                <div class="about-header reveal">
-                    <span class="section-label">من نحن</span>
-                    <h2 class="about-title">نخبة من الخبراء، <em>يعملون ككيان واحد.</em></h2>
-                </div>
-                
-                <div class="about-intro reveal" style="--delay: 0.1s">
-                    <p>في <strong>خبرة تك</strong>، استثمرنا وقتاً طويلاً لجمع العقول اللامعة وأصحاب الخبرات الدقيقة كلٌ في مجاله. قمنا بتكوين فرق رئيسية متخصصة لتغطي كافة احتياجاتك التقنية والأمنية بكفاءة استثنائية.</p>
-                </div>
-
-                <div class="about-cards">
-                    <div class="about-card reveal" style="--delay: 0.2s">
-                        <div class="about-card-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-                        </div>
-                        <h3>أمن سيبراني متقدم</h3>
-                        <p>فريق يضم نخبة ذات سمعة حسنة وخبرة واسعة لحماية البنية التحتية والبيانات الحساسة لشركتك من أي تهديد.</p>
-                    </div>
-
-                    <div class="about-card reveal" style="--delay: 0.3s">
-                        <div class="about-card-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
-                        </div>
-                        <h3>تطوير الأنظمة والتطبيقات</h3>
-                        <p>فريق هندسي محترف يبني أنظمة متطورة وتطبيقات مخصصة تلبي احتياجات أعمالك بجودة وكفاءة عالية.</p>
-                    </div>
-
-                    <div class="about-card reveal" style="--delay: 0.4s">
-                        <div class="about-card-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                        </div>
-                        <h3>تنظيم دقيق وسرعة في الإنجاز</h3>
-                        <p>يضم كل فريق رئيسي داخله عدة فرق فرعية منظمة بدقة، تعمل بتناغم لتنفيذ المهام باحترافية وسرعة لضمان تسليم المشاريع في وقتها.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
-        <!-- ==================== SERVICES ==================== -->
-        <section id="services" class="services">
-            <div class="services-inner">
-
-                <!-- eyebrow -->
-                <div class="services-eyebrow reveal">
-                    <span class="section-label">خدماتنا</span>
-                </div>
-
-                <!-- Bento Box Services Layout -->
-                <div class="bento-services">
-
-                    <!-- Service 1: Development (Large, Full Width) -->
-                    <div class="bento-card bento-card--large reveal" data-tilt data-tilt-max="2" data-tilt-speed="400">
-                        <div class="bento-bg" style="--pane-hue:190"></div>
-                        
-                        <div class="bento-content">
-                            <div class="bento-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline><line x1="14" y1="4" x2="10" y2="20"></line></svg>
-                            </div>
-                            <p class="bento-kicker">نحوّل أفكارك إلى أنظمة حيّة</p>
-                            <h3 class="bento-title">تطوير <em>الأنظمة</em></h3>
-                            <p class="bento-desc">نبني تطبيقات ويب وموبايل وأنظمة مؤسسية مخصصة من الصفر بأعلى معايير الأداء والأمان. من واجهة المستخدم إلى قاعدة البيانات، كل طبقة مصممة بدقة هندسية.</p>
-                            <ul class="bento-features">
-                                <li><span class="bento-dot"></span>تطبيقات ويب وموبايل مخصصة</li>
-                                <li><span class="bento-dot"></span>أنظمة إدارة مؤسسية (ERP / CRM)</li>
-                                <li><span class="bento-dot"></span>واجهات برمجية (APIs) وبنية خلفية</li>
-                                <li><span class="bento-dot"></span>بنية سحابية قابلة للتوسع</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="bento-visual">
-                            <div class="bento-orb"></div>
-                            <div class="bento-glyph">&lt;/&gt;</div>
-                        </div>
-                    </div>
-
-                    <!-- Service 2: Security (Half Width) -->
-                    <div class="bento-card reveal" style="--delay: 0.1s" data-tilt data-tilt-max="3">
-                        <div class="bento-bg" style="--pane-hue:250"></div>
-                        <div class="bento-watermark">⬡</div>
-                        
-                        <div class="bento-content">
-                            <div class="bento-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="M9 12l2 2 4-4"></path></svg>
-                            </div>
-                            <p class="bento-kicker">نكتشف الخلل قبل أن يُستغل</p>
-                            <h3 class="bento-title">الأمن <em>السيبراني</em></h3>
-                            <p class="bento-desc">نحمي أنظمتك من التهديدات المتطورة عبر اختبارات اختراق حقيقية، فحص شامل للثغرات، ومراقبة مستمرة.</p>
-                            <ul class="bento-features">
-                                <li><span class="bento-dot"></span>اختبارات اختراق متقدمة</li>
-                                <li><span class="bento-dot"></span>تقييم وتحليل الثغرات</li>
-                                <li><span class="bento-dot"></span>مراقبة واستجابة فورية</li>
-                                <li><span class="bento-dot"></span>تدريب وتأهيل الفرق</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- Service 3: Enterprise (Half Width) -->
-                    <div class="bento-card reveal" style="--delay: 0.2s" data-tilt data-tilt-max="3">
-                        <div class="bento-bg" style="--pane-hue:16"></div>
-                        <div class="bento-watermark">◈</div>
-                        
-                        <div class="bento-content">
-                            <div class="bento-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
-                            </div>
-                            <p class="bento-kicker">أنظمة مُفصّلة على مقاسك</p>
-                            <h3 class="bento-title">الحلول <em>المتكاملة</em></h3>
-                            <p class="bento-desc">نربط أنظمتك ببعضها، نؤتمت عملياتك، ونبني حلولاً متكاملة تنمو مع مؤسستك بدقة هندسية وفهم عميق.</p>
-                            <ul class="bento-features">
-                                <li><span class="bento-dot"></span>تكامل الأنظمة والمنصات</li>
-                                <li><span class="bento-dot"></span>أتمتة العمليات التشغيلية</li>
-                                <li><span class="bento-dot"></span>استشارات تقنية استراتيجية</li>
-                                <li><span class="bento-dot"></span>دعم فني ومتابعة مستمرة</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                </div><!-- /bento-services -->
-            </div>
-        </section>
-
-
-        <!-- ==================== DIFFERENTIATORS ==================== -->
-        <section class="diff-section">
-            <div class="diff-inner">
-                <div class="diff-header reveal">
-                    <span class="section-label">ما يميزنا</span>
-                    <h2 class="diff-title">لماذا <em>خبرة تك؟</em></h2>
-                </div>
-
-                <div class="diff-grid">
-                    <!-- Card 1: Development -->
-                    <div class="diff-card reveal" style="--delay: 0s">
-                        <div class="diff-card-accent"></div>
-                        <div class="diff-card-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>
-                        </div>
-                        <span class="diff-card-tag">تطوير الأنظمة</span>
-                        <h3>مراحل ثابتة، مختصون في كل مرحلة</h3>
-                        <p>كل مشروع يمر بمراحل هندسية واضحة — من التحليل إلى التصميم، البناء، الاختبار، والإطلاق. كل مرحلة يقودها مختص متمكّن، مما يجعل كل طبقة في نظامك نقطة قوة وليست مجرد خطوة عابرة.</p>
-                        <ul class="diff-points">
-                            <li>
-                                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                                تحليل متطلبات معمّق قبل أي سطر كود
-                            </li>
-                            <li>
-                                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                                مختص مسؤول عن كل مرحلة
-                            </li>
-                            <li>
-                                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                                مراجعة جودة صارمة بين كل انتقال
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- Card 2: Penetration Testing -->
-                    <div class="diff-card diff-card--highlight reveal" style="--delay: 0.15s">
-                        <div class="diff-card-accent"></div>
-                        <div class="diff-card-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-                        </div>
-                        <span class="diff-card-tag">فحص الثغرات</span>
-                        <h3>خصوصية مطلقة، اختبار من الخارج</h3>
-                        <p>عند فحص أنظمة شركائنا لا نطلب أي وصول للبنية التحتية أو بيانات العملاء — نختبر تمامًا من الخارج كما سيفعل المهاجم الحقيقي، بأساليب مدروسة لا تؤثر على استقرار النظام. الاختبارات القاسية تُجرى على بيئة افتراضية مخصصة.</p>
-                        <ul class="diff-points">
-                            <li>
-                                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                                لا نطلب صلاحيات الفحص الداخلي
-                            </li>
-                            <li>
-                                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                                محاكاة هجوم واقعي بدون تأثير على النظام
-                            </li>
-                            <li>
-                                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                                بيئة افتراضية مخصصة للاختبارات القاسية
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- Card 3: Continuous Protection -->
-                    <div class="diff-card reveal" style="--delay: 0.3s">
-                        <div class="diff-card-accent"></div>
-                        <div class="diff-card-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                        </div>
-                        <span class="diff-card-tag">الحماية المستمرة</span>
-                        <h3>لا مجال للثغرات، حراسة دائمة</h3>
-                        <p>عندما نستلم حماية نظام ما فإننا نعمل عليه بشكل مستمر ولا نترك للآخرين مجالاً لإيجاد الثغرات. نواكب كل جديد في المجال الأمني، نُحدّث السيرفرات والبروتوكولات، ونراقب التهديدات على مدار الساعة.</p>
-                        <ul class="diff-points">
-                            <li>
-                                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                                مراقبة أمنية 24/7 بلا توقف
-                            </li>
-                            <li>
-                                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                                تحديث مستمر للسيرفرات والبروتوكولات
-                            </li>
-                            <li>
-                                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                                مواكبة أحدث التهديدات وتقنيات الحماية
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ==================== NUMBERS ==================== -->
-        <section class="numbers-section">
-            <div class="numbers-inner">
-                <div class="numbers-grid">
-                    <div class="number-item reveal" style="--delay: 0s">
-                        <div class="number-value">
-                            <span class="counter" data-target="150">0</span>
-                            <span class="number-suffix">+</span>
-                        </div>
-                        <div class="number-label">مشروع مُنجز</div>
-                    </div>
-                    <div class="number-item reveal" style="--delay: 0.1s">
-                        <div class="number-value">
-                            <span class="counter" data-target="99.9">0</span>
-                            <span class="number-suffix">%</span>
-                        </div>
-                        <div class="number-label">معدل الأمان</div>
-                    </div>
-                    <div class="number-item reveal" style="--delay: 0.2s">
-                        <div class="number-value">
-                            <span class="counter" data-target="40">0</span>
-                            <span class="number-suffix">+</span>
-                        </div>
-                        <div class="number-label">عميل يثق بنا</div>
-                    </div>
-                    <div class="number-item reveal" style="--delay: 0.3s">
-                        <div class="number-value">
-                            <span class="counter" data-target="24">0</span>
-                            <span class="number-suffix">/7</span>
-                        </div>
-                        <div class="number-label">دعم ومراقبة</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <hr class="glow-line">
-
-        <!-- ==================== CONTACT ==================== -->
-        <section id="contact" class="contact">
-            <div class="contact-inner">
-                <div class="contact-left reveal-right">
-                    <span class="section-label">لنبدأ</span>
-                    <h2 class="contact-title">مشروعك القادم<br>يبدأ <em>بمحادثة.</em></h2>
-                    <p class="contact-desc">
-                        سواء كنت تحتاج نظامًا جديدًا أو تريد تأمين ما لديك — أخبرنا عن التحدي وسنعود إليك خلال 24 ساعة بخطة عمل.
-                    </p>
-
-                    <div class="contact-channels">
-                        <a href="mailto:hello@khebra-tech.com" class="channel">
-                            <div class="channel-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                            </div>
-                            <div class="channel-text">
-                                <span class="channel-label">البريد الإلكتروني</span>
-                                <span class="channel-value">hello@khebra-tech.com</span>
-                            </div>
-                        </a>
-                        <a href="tel:+966500000000" class="channel">
-                            <div class="channel-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.58 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-                            </div>
-                            <div class="channel-text">
-                                <span class="channel-label">الهاتف</span>
-                                <span class="channel-value" dir="ltr">+966 50 000 0000</span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="contact-form-wrap reveal" style="--delay: 0.2s">
-                    <form class="contact-form" id="contactForm">
-                        <div class="form-row">
-                            <div class="form-field">
-                                <input type="text" id="f-name" required placeholder=" ">
-                                <label for="f-name">الاسم</label>
-                                <div class="field-line"></div>
-                            </div>
-                            <div class="form-field">
-                                <input type="text" id="f-company" placeholder=" ">
-                                <label for="f-company">المؤسسة</label>
-                                <div class="field-line"></div>
-                            </div>
-                        </div>
-                        <div class="form-field">
-                            <input type="email" id="f-email" required placeholder=" ">
-                            <label for="f-email">البريد الإلكتروني</label>
-                            <div class="field-line"></div>
-                        </div>
-                        <div class="form-field">
-                            <select id="f-service" required>
-                                <option value="" disabled selected>ما الذي تحتاجه؟</option>
-                                <option value="dev">تطوير نظام أو تطبيق</option>
-                                <option value="cyber">أمن سيبراني</option>
-                                <option value="enterprise">حلول متكاملة</option>
-                                <option value="consult">استشارة تقنية</option>
-                            </select>
-                            <div class="field-line"></div>
-                        </div>
-                        <div class="form-field">
-                            <textarea id="f-message" rows="4" required placeholder=" "></textarea>
-                            <label for="f-message">أخبرنا عن مشروعك أو التحدي الذي تواجهه</label>
-                            <div class="field-line"></div>
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-submit" id="submitBtn">
-                            <span>إرسال</span>
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- ==================== FOOTER ==================== -->
-    <footer class="footer">
-        <div class="footer-inner">
-            <div class="footer-main">
-                <div class="footer-brand">
-                    <img src="assets/images/logo.png" alt="خبرة تك" class="footer-logo">
-                    <p>نهندس أنظمة تدوم ونحميها بأعلى المعايير — شريكك التقني في البناء والحماية.</p>
-                </div>
-                <div class="footer-nav">
-                    <div class="footer-col">
-                        <h4>القدرات</h4>
-                        <a href="#">تطوير التطبيقات</a>
-                        <a href="#">الأمن السيبراني</a>
-                        <a href="#">أنظمة مؤسسية</a>
-                        <a href="#">استشارات تقنية</a>
-                    </div>
-                    <div class="footer-col">
-                        <h4>خبرة تك</h4>
-                        <a href="#services">خدماتنا</a>
-                        <a href="#contact">تواصل معنا</a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <span>&copy; 2026 خبرة تك. جميع الحقوق محفوظة.</span>
-                <div class="footer-social">
-                    <a href="#" aria-label="LinkedIn">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-                    </a>
-                    <a href="#" aria-label="X / Twitter">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4l11.733 16h4.267l-11.733 -16h-4.267z"></path><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path></svg>
-                    </a>
-                </div>
-            </div>
+        <div class="signal" aria-label="بناء وحماية">
+          <div class="signal-top">KHEBRA / 01</div><div class="signal-line"></div>
+          <div class="signal-word signal-word-build">نـبـنـي</div>
+          <div class="signal-node node-one"></div><div class="signal-node node-two"></div><div class="signal-node node-three"></div>
+          <div class="signal-word signal-word-protect">نـحـمـي</div>
+          <div class="signal-bottom"><span>BUILD WITH INTENT</span><span>SECURE BY DESIGN</span></div>
         </div>
-    </footer>
+      </div>
+      <div class="hero-footer shell"><span>اسحب لاكتشاف المزيد</span><span class="scroll-mark">↓</span><span>الوضوح أولاً. التقنية ثانياً.</span></div>
+    </section>
 
-    <!-- GSAP & Three.js for VIP Animations -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="js/main.js"></script>
+    <section class="manifesto" id="why">
+      <div class="shell">
+        <div class="section-head"><p class="eyebrow"><span></span> لماذا خبرة تك؟</p><p class="section-index">01 / الرؤية</p></div>
+        <div class="manifesto-copy"><p class="large-copy">نحن لا نبيع «حلولاً رقمية» جاهزة. نستمع جيداً، نفكك المشكلة، ثم نبني <strong>الشيء الصحيح</strong> بالطريقة التي تجعله صالحاً للنمو.</p><p>لأن المنتج الجميل الذي لا يخدم العمل عبء، والأمان الذي يأتي متأخراً مخاطرة. في خبرة تك، الهندسة والتصميم والأمن يجلسون حول الطاولة نفسها منذ اليوم الأول.</p></div>
+        <div class="principles">
+          <article><span>01</span><h2>وضوح قبل الكود</h2><p>نحوّل الأسئلة المبعثرة إلى خارطة قرار يفهمها فريقك قبل أن نكتب سطراً واحداً.</p></article>
+          <article><span>02</span><h2>تصميم له وظيفة</h2><p>نصمم تجارب سهلة التبنّي، لا واجهات جميلة فقط.</p></article>
+          <article><span>03</span><h2>أمان من الداخل</h2><p>نضمّن الحماية في البنية، لا نلصقها على المنتج عند النهاية.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="capabilities" id="work">
+      <div class="shell"><div class="section-head"><p class="eyebrow"><span></span> ما نبنيه</p><p class="section-index">02 / القدرات</p></div>
+        <div class="capabilities-intro"><h2>فرق عملك تستحق<br><em>تقنية في صفّها.</em></h2><p>نعمل كفريق داخلي موازٍ لفريقك: نرى الصورة الكاملة، ونتحرك بسرعة وملكية حقيقية.</p></div>
+        <div class="capability-list">
+          <article class="capability"><div class="cap-no">01</div><div><p class="cap-label">PRODUCT &amp; PLATFORM</p><h3>منتجات وأنظمة<br>تنمو معك</h3></div><p class="cap-description">منصة جديدة، تطبيق جوال، أو نظام داخلي يعيد ترتيب عملك. نبني أساساً متيناً وتجربة لا تحتاج إلى دليل استخدام.</p><a href="#contact" aria-label="تحدث معنا عن المنتجات والأنظمة">↙</a></article>
+          <article class="capability capability-amber"><div class="cap-no">02</div><div><p class="cap-label">CYBER SECURITY</p><h3>حماية تعرف<br>أين تنظر</h3></div><p class="cap-description">نختبر افتراضاتك قبل أن يختبرها غيرك: تقييمات، اختبارات اختراق، وخارطة واضحة لما يجب إصلاحه الآن.</p><a href="#contact" aria-label="تحدث معنا عن الأمن السيبراني">↙</a></article>
+          <article class="capability capability-violet"><div class="cap-no">03</div><div><p class="cap-label">AUTOMATION &amp; INTEGRATION</p><h3>عمليات تتنفس<br>بسلاسة</h3></div><p class="cap-description">نربط الأدوات والبيانات والفرق، ونحذف العمل اليدوي الذي يستهلك وقتك بلا قيمة مضافة.</p><a href="#contact" aria-label="تحدث معنا عن الأتمتة والتكامل">↙</a></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="process" id="process"><div class="shell"><div class="section-head"><p class="eyebrow"><span></span> طريقة العمل</p><p class="section-index">03 / من السؤال إلى الإطلاق</p></div><div class="process-layout"><h2>لا مفاجآت.<br>فقط <em>تقدّم مرئي.</em></h2><ol><li><b>استكشاف</b><span>نسمع، نبحث، ونحدد المشكلة التي تستحق أن تُحل.</span></li><li><b>تحديد الاتجاه</b><span>نرسم النطاق والأولويات وخطة التنفيذ التي يمكن قياسها.</span></li><li><b>بناء واختبار</b><span>نطلق على مراحل، نتعلم بسرعة، ونختبر الجودة والأمان باستمرار.</span></li><li><b>نمو ودعم</b><span>نبقى بالقرب من المنتج حتى بعد الإطلاق، عندما يبدأ العمل الحقيقي.</span></li></ol></div></div></section>
+
+    <section class="contact" id="contact"><div class="shell contact-card"><div><p class="eyebrow"><span></span> الخطوة التالية</p><h2>لديك تحدٍ يستحق<br><em>حلاً غير تقليدي؟</em></h2></div><div class="contact-action"><p>احجز محادثة أولى. بلا عروض مكررة ولا وعود فضفاضة — فقط نقاش صريح عن ما تحتاجه فعلاً.</p><a class="button button-light" href="mailto:hello@khebra-tech.com">ابدأ المحادثة <span>←</span></a><small>أو اكتب لنا مباشرة: <a href="mailto:hello@khebra-tech.com">hello@khebra-tech.com</a></small></div></div></section>
+  </main>
+  <footer class="footer shell"><a class="brand" href="#home"><img src="assets/images/logo.png" alt="" width="38" height="38"><span>خبرة <b>تك</b></span></a><p>نصنع التقنية أكثر فائدة، وأقل تعقيداً.</p><span>© 2026 خبرة تك</span></footer>
+  <script src="js/brand.js"></script>
 </body>
 </html>
