@@ -3,78 +3,249 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#071321">
+  <meta name="theme-color" content="#050d18">
   <title>خبرة تك | شريكك التقني في البناء والحماية</title>
-  <meta name="description" content="خبرة تك تقدم خدمات الأمن السيبراني وتطوير الأنظمة والتطبيقات والأتمتة والتدريب.">
+  <meta name="description" content="خبرة تك — فريق من الخبراء المتخصصين في الأمن السيبراني وتطوير الأنظمة والتطبيقات والأتمتة والتدريب.">
   <link rel="icon" type="image/png" href="assets/images/logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/brand.css?v=2">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="site-header">
+
+  <!-- ── Header ────────────────────────────────── -->
+  <header class="header" id="siteHeader">
     <div class="shell header-inner">
-      <a class="brand" href="#home" aria-label="خبرة تك - الرئيسية"><img src="assets/images/logo.png" alt=""><span>خبرة <b>تك</b></span></a>
-      <button class="menu-button" id="menuButton" aria-expanded="false" aria-controls="mainNav" aria-label="فتح القائمة"><span></span><span></span></button>
+      <a class="brand" href="#home" aria-label="خبرة تك — الرئيسية">
+        <img src="assets/images/logo.png" alt="" width="38" height="38">
+        <span>خبرة <strong>تك</strong></span>
+      </a>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mainNav" aria-label="القائمة">
+        <span></span><span></span><span></span>
+      </button>
       <nav class="nav" id="mainNav" aria-label="التنقل الرئيسي">
-        <a href="#about">من نحن</a><a href="#services">خدماتنا</a><a class="nav-cta" href="#contact">تواصل معنا</a>
+        <a class="nav-link" href="#about">من نحن</a>
+        <a class="nav-link" href="#services">خدماتنا</a>
+        <a class="nav-cta" href="#contact">تواصل معنا</a>
       </nav>
     </div>
   </header>
 
   <main>
+
+    <!-- ── 1. Hero ──────────────────────────────── -->
     <section class="hero" id="home">
-      <div class="hero-grid" aria-hidden="true"></div>
-      <div class="hero-orb" aria-hidden="true"></div>
-      <div class="shell hero-layout">
-        <div class="hero-copy">
-          <h1>شريكك التقني<br><em>في البناء والحماية</em></h1>
-          <a class="button" href="#about">تعرّف علينا <span>←</span></a>
+      <canvas id="hero-canvas" aria-hidden="true"></canvas>
+      <div class="hero-overlay" aria-hidden="true"></div>
+      <div class="hero-content">
+        <h1 class="hero-brand">خبرة <strong>تك</strong></h1>
+        <p class="hero-tagline">شريكك التقني <em>في البناء والحماية</em></p>
+        <a class="hero-cta" href="#about">
+          تعرّف علينا
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 5l-7 7 7 7"/></svg>
+        </a>
+      </div>
+      <div class="scroll-hint" aria-hidden="true">
+        <div class="scroll-hint-line"></div>
+      </div>
+    </section>
+
+    <!-- ── 2. من نحن ────────────────────────────── -->
+    <section class="about" id="about">
+      <div class="shell">
+        <div class="about-header reveal">
+          <span class="section-label">من نحن</span>
+          <h2 class="section-heading">فريق من الخبراء</h2>
         </div>
-        <div class="signal" aria-hidden="true">
-          <div class="sculpture">
-            <div class="frame frame-a"></div><div class="frame frame-b"></div><div class="frame frame-c"></div><div class="core"></div>
-          </div>
+        <p class="about-intro reveal">
+          في <strong>خبرة تك</strong>، استثمرنا وقتاً طويلاً لجمع العقول اللامعة وأصحاب الخبرات الدقيقة كلٌّ في مجاله. كوّنا فرقاً رئيسية متخصصة لتغطي كافة احتياجاتك التقنية والأمنية بكفاءة استثنائية.
+        </p>
+        <div class="team-cards">
+          <!-- بطاقة الأمن السيبراني -->
+          <article class="team-card reveal reveal-d1">
+            <div class="team-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                <path d="M9 12l2 2 4-4"/>
+              </svg>
+            </div>
+            <h3>أمن سيبراني متقدم</h3>
+            <p>فريق يضم نخبة ذات سمعة حسنة وخبرة واسعة لحماية البنية التحتية والبيانات الحساسة لشركتك من أي تهديد.</p>
+          </article>
+          <!-- بطاقة التطوير -->
+          <article class="team-card reveal reveal-d2">
+            <div class="team-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="16 18 22 12 16 6"/>
+                <polyline points="8 6 2 12 8 18"/>
+                <line x1="14" y1="4" x2="10" y2="20"/>
+              </svg>
+            </div>
+            <h3>تطوير الأنظمة والتطبيقات</h3>
+            <p>فريق هندسي محترف يبني أنظمة متطورة وتطبيقات مخصصة تلبي احتياجات أعمالك بجودة وكفاءة عالية.</p>
+          </article>
         </div>
       </div>
     </section>
 
-    <section class="about section" id="about">
+    <!-- ── 3. خدماتنا ──────────────────────────── -->
+    <section class="services" id="services">
       <div class="shell">
-        <div class="section-title"><span>01</span><h2>من نحن</h2></div>
-        <p class="about-intro">في خبرة تك، استثمرنا وقتاً طويلاً لجمع العقول اللامعة وأصحاب الخبرات الدقيقة. كوّنا فرقاً رئيسية متخصصة تغطي احتياجاتك التقنية والأمنية بكفاءة استثنائية.</p>
-        <div class="teams">
-          <article class="team-card cyber"><div class="team-icon">⌁</div><div><h3>أمن سيبراني متقدم</h3><p>فريق يضم نخبة ذات سمعة حسنة وخبرة واسعة لحماية البنية التحتية والبيانات الحساسة لشركتك من أي تهديد.</p></div></article>
-          <article class="team-card engineering"><div class="team-icon">◈</div><div><h3>تطوير الأنظمة والتطبيقات</h3><p>فريق هندسي محترف يبني أنظمة متطورة وتطبيقات مخصصة تلبي احتياجات أعمالك بجودة وكفاءة عالية.</p></div></article>
+        <div class="services-header reveal">
+          <span class="section-label">خدماتنا</span>
+          <h2 class="section-heading">ما نقدّمه</h2>
         </div>
-      </div>
-    </section>
-
-    <section class="services section" id="services">
-      <div class="shell">
-        <div class="section-title"><span>02</span><h2>خدماتنا</h2></div>
         <div class="service-grid">
-          <article><span>01</span><h3>فحص وتأمين الأنظمة</h3><p>تقييم الثغرات، اختبار الاختراق، وحماية الأنظمة والبنية التحتية.</p></article>
-          <article><span>02</span><h3>تطوير التطبيقات والمواقع</h3><p>تطبيقات جوال، مواقع ويب، وأنظمة أعمال مخصصة.</p></article>
-          <article><span>03</span><h3>الأتمتة والتكامل</h3><p>ربط الأدوات والعمليات لتقليل العمل اليدوي وتحسين الكفاءة.</p></article>
-          <article><span>04</span><h3>التدريب</h3><p>تدريب الموظفين والفرق على الأمن السيبراني والأدوات التقنية.</p></article>
+
+          <!-- خدمة 1: فحص وتأمين -->
+          <article class="service-card reveal reveal-d1">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                <circle cx="12" cy="11" r="1"/>
+                <path d="M12 12v3"/>
+              </svg>
+            </div>
+            <h3>فحص وتأمين الأنظمة</h3>
+            <p>تقييم شامل للثغرات الأمنية واختبار الاختراق وحماية البنية التحتية والأنظمة الحساسة.</p>
+            <div class="service-tags">
+              <span class="service-tag">تقييم الثغرات</span>
+              <span class="service-tag">اختبار الاختراق</span>
+              <span class="service-tag">حماية البنية التحتية</span>
+            </div>
+          </article>
+
+          <!-- خدمة 2: تطوير التطبيقات -->
+          <article class="service-card reveal reveal-d2">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="3" width="20" height="14" rx="2"/>
+                <path d="M8 21h8"/>
+                <path d="M12 17v4"/>
+                <path d="M7 8l-2 2 2 2"/>
+                <path d="M17 8l2 2-2 2"/>
+              </svg>
+            </div>
+            <h3>تطوير التطبيقات والأنظمة</h3>
+            <p>بناء حلول رقمية متكاملة تشمل تطبيقات الجوال ومواقع الويب وأنظمة الأعمال المخصصة.</p>
+            <div class="service-tags">
+              <span class="service-tag">تطبيقات الجوال</span>
+              <span class="service-tag">مواقع الويب</span>
+              <span class="service-tag">أنظمة الأعمال</span>
+            </div>
+          </article>
+
+          <!-- خدمة 3: الأتمتة -->
+          <article class="service-card reveal reveal-d3">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 1v4"/>
+                <path d="M12 19v4"/>
+                <path d="M4.93 4.93l2.83 2.83"/>
+                <path d="M16.24 16.24l2.83 2.83"/>
+                <path d="M1 12h4"/>
+                <path d="M19 12h4"/>
+                <path d="M4.93 19.07l2.83-2.83"/>
+                <path d="M16.24 7.76l2.83-2.83"/>
+                <circle cx="12" cy="12" r="4"/>
+              </svg>
+            </div>
+            <h3>الأتمتة والتكامل</h3>
+            <p>ربط الأدوات وأتمتة العمليات لتقليل العمل اليدوي وتحسين كفاءة فريقك.</p>
+            <div class="service-tags">
+              <span class="service-tag">أتمتة العمليات</span>
+              <span class="service-tag">ربط الأدوات</span>
+              <span class="service-tag">تحسين الكفاءة</span>
+            </div>
+          </article>
+
+          <!-- خدمة 4: التدريب -->
+          <article class="service-card reveal reveal-d4">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+            </div>
+            <h3>التدريب</h3>
+            <p>برامج تدريبية متخصصة لتأهيل الموظفين والفرق التقنية في مجالات الأمن السيبراني والأدوات التقنية.</p>
+            <div class="service-tags">
+              <span class="service-tag">تدريب الموظفين</span>
+              <span class="service-tag">تأهيل الفرق</span>
+              <span class="service-tag">الأمن السيبراني</span>
+            </div>
+          </article>
+
         </div>
       </div>
     </section>
 
-    <section class="contact section" id="contact">
-      <div class="shell contact-layout">
-        <div><div class="section-title"><span>03</span><h2>تواصل معنا</h2></div><p>نرحب بمناقشة احتياجك التقني.</p></div>
-        <address>
-          <a href="mailto:business@khebra.tech"><small>البريد الإلكتروني</small>business@khebra.tech</a>
-          <a href="tel:+967777005345"><small>الهاتف وواتساب</small><bdi>+967 777005345</bdi></a>
-          <p><small>العنوان</small>اليمن - مأرب</p>
-        </address>
+    <!-- ── 4. تواصل معنا ───────────────────────── -->
+    <section class="contact" id="contact">
+      <div class="shell">
+        <div class="contact-header reveal">
+          <span class="section-label">تواصل معنا</span>
+          <h2 class="section-heading">نرحب بمناقشة احتياجك التقني</h2>
+        </div>
+        <div class="contact-cards">
+
+          <!-- البريد -->
+          <a class="contact-card reveal reveal-d1" href="mailto:business@khebra.tech">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="4" width="20" height="16" rx="2"/>
+                <path d="M22 7l-10 7L2 7"/>
+              </svg>
+            </div>
+            <span class="contact-label">البريد الإلكتروني</span>
+            <span class="contact-value">business@khebra.tech</span>
+          </a>
+
+          <!-- الهاتف -->
+          <a class="contact-card reveal reveal-d2" href="https://wa.me/967777005345" target="_blank" rel="noopener">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+              </svg>
+            </div>
+            <span class="contact-label">الهاتف وواتساب</span>
+            <span class="contact-value">+967 777005345</span>
+          </a>
+
+          <!-- العنوان -->
+          <div class="contact-card reveal reveal-d3">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+            </div>
+            <span class="contact-label">العنوان</span>
+            <span class="contact-value">اليمن — مأرب</span>
+          </div>
+
+        </div>
       </div>
     </section>
+
   </main>
-  <footer class="footer shell"><span>© 2026 خبرة تك</span><span>البناء والحماية</span></footer>
-  <script src="js/brand.js"></script>
+
+  <!-- ── Footer ──────────────────────────────── -->
+  <footer class="footer">
+    <div class="shell footer-inner">
+      <span>© 2026 خبرة تك</span>
+      <span>البناء والحماية</span>
+    </div>
+  </footer>
+
+  <!-- Three.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+  <!-- 3D Scene -->
+  <script src="js/scene.js"></script>
+  <!-- App Logic -->
+  <script src="js/app.js"></script>
 </body>
 </html>
