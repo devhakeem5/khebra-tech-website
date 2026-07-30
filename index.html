@@ -9,10 +9,13 @@
   <link rel="icon" type="image/png" href="assets/images/logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+  <!-- ── Particle Network Canvas (full-page background) ── -->
+  <canvas id="particleNetwork" aria-hidden="true"></canvas>
 
   <!-- ── Header ────────────────────────────────── -->
   <header class="header" id="siteHeader">
@@ -34,14 +37,24 @@
 
   <main>
 
-    <!-- ── 1. Hero ──────────────────────────────── -->
+    <!-- ── 1. Hero + Interactive Terminal ──────── -->
     <section class="hero" id="home">
       <canvas id="hero-canvas" aria-hidden="true"></canvas>
       <div class="hero-overlay" aria-hidden="true"></div>
       <div class="hero-content">
         <h1 class="hero-brand">خبرة <strong>تك</strong></h1>
-        <p class="hero-tagline">شريكك التقني <em>في البناء والحماية</em></p>
-        <a class="hero-cta" href="#about">
+        <div class="hero-terminal" id="heroTerminal" aria-label="عرض تفاعلي">
+          <div class="terminal-header">
+            <span class="terminal-dot terminal-dot--red"></span>
+            <span class="terminal-dot terminal-dot--yellow"></span>
+            <span class="terminal-dot terminal-dot--green"></span>
+            <span class="terminal-title">khebra@shield:~</span>
+          </div>
+          <div class="terminal-body" id="terminalBody">
+            <div class="terminal-line" id="termLine0"></div>
+          </div>
+        </div>
+        <a class="hero-cta magnetic-btn" href="#about">
           تعرّف علينا
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 5l-7 7 7 7"/></svg>
         </a>
@@ -63,7 +76,7 @@
         </p>
         <div class="team-cards">
           <!-- بطاقة الأمن السيبراني -->
-          <article class="team-card reveal reveal-d1">
+          <article class="team-card spotlight-card reveal reveal-d1">
             <div class="team-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
@@ -74,7 +87,7 @@
             <p>فريق يضم نخبة ذات سمعة حسنة وخبرة واسعة لحماية البنية التحتية والبيانات الحساسة لشركتك من أي تهديد.</p>
           </article>
           <!-- بطاقة التطوير -->
-          <article class="team-card reveal reveal-d2">
+          <article class="team-card spotlight-card reveal reveal-d2">
             <div class="team-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="16 18 22 12 16 6"/>
@@ -89,7 +102,35 @@
       </div>
     </section>
 
-    <!-- ── 3. خدماتنا ──────────────────────────── -->
+    <!-- ── 3. أرقام — Social Proof ───────────────── -->
+    <section class="stats" id="stats">
+      <div class="shell">
+        <div class="stats-grid">
+          <div class="stat-card spotlight-card reveal reveal-d1">
+            <span class="stat-number" data-target="50">0</span>
+            <span class="stat-suffix">+</span>
+            <span class="stat-label">عميل محمي</span>
+          </div>
+          <div class="stat-card spotlight-card reveal reveal-d2">
+            <span class="stat-number" data-target="120">0</span>
+            <span class="stat-suffix">+</span>
+            <span class="stat-label">مشروع مكتمل</span>
+          </div>
+          <div class="stat-card spotlight-card reveal reveal-d3">
+            <span class="stat-number" data-target="8">0</span>
+            <span class="stat-suffix">+</span>
+            <span class="stat-label">سنوات خبرة</span>
+          </div>
+          <div class="stat-card spotlight-card reveal reveal-d4">
+            <span class="stat-number" data-target="99">0</span>
+            <span class="stat-suffix">%</span>
+            <span class="stat-label">معدل رضا العملاء</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 4. خدماتنا — Flip Cards ───────────────── -->
     <section class="services" id="services">
       <div class="shell">
         <div class="services-header reveal">
@@ -99,132 +140,270 @@
         <div class="service-grid">
 
           <!-- خدمة 1: فحص وتأمين -->
-          <article class="service-card reveal reveal-d1">
-            <div class="service-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                <circle cx="12" cy="11" r="1"/>
-                <path d="M12 12v3"/>
-              </svg>
+          <div class="flip-card reveal reveal-d1">
+            <div class="flip-card-inner">
+              <article class="flip-card-front spotlight-card">
+                <div class="service-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    <circle cx="12" cy="11" r="1"/>
+                    <path d="M12 12v3"/>
+                  </svg>
+                </div>
+                <h3>فحص وتأمين الأنظمة</h3>
+                <p>تقييم شامل للثغرات الأمنية واختبار الاختراق وحماية البنية التحتية والأنظمة الحساسة.</p>
+                <div class="service-tags">
+                  <span class="service-tag">تقييم الثغرات</span>
+                  <span class="service-tag">اختبار الاختراق</span>
+                  <span class="service-tag">حماية البنية التحتية</span>
+                </div>
+                <span class="flip-hint">حوّم لاكتشاف المزيد ←</span>
+              </article>
+              <div class="flip-card-back">
+                <div class="flip-back-stat">
+                  <span class="flip-stat-number" data-target="56">0</span>
+                  <span class="flip-stat-suffix">+</span>
+                  <span class="flip-stat-label">نظام تم تأمينه</span>
+                </div>
+                <ul class="flip-back-features">
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+                    اختبار اختراق متقدم (White/Black Box)
+                  </li>
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+                    مراجعة الكود المصدري للثغرات
+                  </li>
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+                    تقارير تفصيلية مع حلول
+                  </li>
+                </ul>
+                <a class="flip-cta magnetic-btn" href="#contact">اطلب هذه الخدمة</a>
+              </div>
             </div>
-            <h3>فحص وتأمين الأنظمة</h3>
-            <p>تقييم شامل للثغرات الأمنية واختبار الاختراق وحماية البنية التحتية والأنظمة الحساسة.</p>
-            <div class="service-tags">
-              <span class="service-tag">تقييم الثغرات</span>
-              <span class="service-tag">اختبار الاختراق</span>
-              <span class="service-tag">حماية البنية التحتية</span>
-            </div>
-          </article>
+          </div>
 
           <!-- خدمة 2: تطوير التطبيقات -->
-          <article class="service-card reveal reveal-d2">
-            <div class="service-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="2" y="3" width="20" height="14" rx="2"/>
-                <path d="M8 21h8"/>
-                <path d="M12 17v4"/>
-                <path d="M7 8l-2 2 2 2"/>
-                <path d="M17 8l2 2-2 2"/>
-              </svg>
+          <div class="flip-card reveal reveal-d2">
+            <div class="flip-card-inner">
+              <article class="flip-card-front spotlight-card">
+                <div class="service-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="3" width="20" height="14" rx="2"/>
+                    <path d="M8 21h8"/>
+                    <path d="M12 17v4"/>
+                    <path d="M7 8l-2 2 2 2"/>
+                    <path d="M17 8l2 2-2 2"/>
+                  </svg>
+                </div>
+                <h3>تطوير التطبيقات والأنظمة</h3>
+                <p>بناء حلول رقمية متكاملة تشمل تطبيقات الجوال ومواقع الويب وأنظمة الأعمال المخصصة.</p>
+                <div class="service-tags">
+                  <span class="service-tag">تطبيقات الجوال</span>
+                  <span class="service-tag">مواقع الويب</span>
+                  <span class="service-tag">أنظمة الأعمال</span>
+                </div>
+                <span class="flip-hint">حوّم لاكتشاف المزيد ←</span>
+              </article>
+              <div class="flip-card-back">
+                <div class="flip-back-stat">
+                  <span class="flip-stat-number" data-target="85">0</span>
+                  <span class="flip-stat-suffix">+</span>
+                  <span class="flip-stat-label">تطبيق ونظام تم تطويره</span>
+                </div>
+                <ul class="flip-back-features">
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+                    تطبيقات iOS و Android أصلية
+                  </li>
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+                    أنظمة ERP و CRM مخصصة
+                  </li>
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+                    لوحات تحكم ذكية (Dashboards)
+                  </li>
+                </ul>
+                <a class="flip-cta magnetic-btn" href="#contact">اطلب هذه الخدمة</a>
+              </div>
             </div>
-            <h3>تطوير التطبيقات والأنظمة</h3>
-            <p>بناء حلول رقمية متكاملة تشمل تطبيقات الجوال ومواقع الويب وأنظمة الأعمال المخصصة.</p>
-            <div class="service-tags">
-              <span class="service-tag">تطبيقات الجوال</span>
-              <span class="service-tag">مواقع الويب</span>
-              <span class="service-tag">أنظمة الأعمال</span>
-            </div>
-          </article>
+          </div>
 
           <!-- خدمة 3: الأتمتة -->
-          <article class="service-card reveal reveal-d3">
-            <div class="service-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 1v4"/>
-                <path d="M12 19v4"/>
-                <path d="M4.93 4.93l2.83 2.83"/>
-                <path d="M16.24 16.24l2.83 2.83"/>
-                <path d="M1 12h4"/>
-                <path d="M19 12h4"/>
-                <path d="M4.93 19.07l2.83-2.83"/>
-                <path d="M16.24 7.76l2.83-2.83"/>
-                <circle cx="12" cy="12" r="4"/>
-              </svg>
+          <div class="flip-card reveal reveal-d3">
+            <div class="flip-card-inner">
+              <article class="flip-card-front spotlight-card">
+                <div class="service-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 1v4"/>
+                    <path d="M12 19v4"/>
+                    <path d="M4.93 4.93l2.83 2.83"/>
+                    <path d="M16.24 16.24l2.83 2.83"/>
+                    <path d="M1 12h4"/>
+                    <path d="M19 12h4"/>
+                    <path d="M4.93 19.07l2.83-2.83"/>
+                    <path d="M16.24 7.76l2.83-2.83"/>
+                    <circle cx="12" cy="12" r="4"/>
+                  </svg>
+                </div>
+                <h3>الأتمتة والتكامل</h3>
+                <p>ربط الأدوات وأتمتة العمليات لتقليل العمل اليدوي وتحسين كفاءة فريقك.</p>
+                <div class="service-tags">
+                  <span class="service-tag">أتمتة العمليات</span>
+                  <span class="service-tag">ربط الأدوات</span>
+                  <span class="service-tag">تحسين الكفاءة</span>
+                </div>
+                <span class="flip-hint">حوّم لاكتشاف المزيد ←</span>
+              </article>
+              <div class="flip-card-back">
+                <div class="flip-back-stat">
+                  <span class="flip-stat-number" data-target="40">0</span>
+                  <span class="flip-stat-suffix">+</span>
+                  <span class="flip-stat-label">عملية تم أتمتتها</span>
+                </div>
+                <ul class="flip-back-features">
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+                    تكامل APIs و Webhooks
+                  </li>
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+                    بناء Bots ذكية (Telegram, Discord)
+                  </li>
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+                    سير عمل تلقائي مخصص
+                  </li>
+                </ul>
+                <a class="flip-cta magnetic-btn" href="#contact">اطلب هذه الخدمة</a>
+              </div>
             </div>
-            <h3>الأتمتة والتكامل</h3>
-            <p>ربط الأدوات وأتمتة العمليات لتقليل العمل اليدوي وتحسين كفاءة فريقك.</p>
-            <div class="service-tags">
-              <span class="service-tag">أتمتة العمليات</span>
-              <span class="service-tag">ربط الأدوات</span>
-              <span class="service-tag">تحسين الكفاءة</span>
-            </div>
-          </article>
+          </div>
 
           <!-- خدمة 4: التدريب -->
-          <article class="service-card reveal reveal-d4">
-            <div class="service-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                <circle cx="9" cy="7" r="4"/>
-                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-              </svg>
+          <div class="flip-card reveal reveal-d4">
+            <div class="flip-card-inner">
+              <article class="flip-card-front spotlight-card">
+                <div class="service-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                    <circle cx="9" cy="7" r="4"/>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                  </svg>
+                </div>
+                <h3>التدريب</h3>
+                <p>برامج تدريبية متخصصة لتأهيل الموظفين والفرق التقنية في مجالات الأمن السيبراني والأدوات التقنية.</p>
+                <div class="service-tags">
+                  <span class="service-tag">تدريب الموظفين</span>
+                  <span class="service-tag">تأهيل الفرق</span>
+                  <span class="service-tag">الأمن السيبراني</span>
+                </div>
+                <span class="flip-hint">حوّم لاكتشاف المزيد ←</span>
+              </article>
+              <div class="flip-card-back">
+                <div class="flip-back-stat">
+                  <span class="flip-stat-number" data-target="200">0</span>
+                  <span class="flip-stat-suffix">+</span>
+                  <span class="flip-stat-label">متدرب تم تأهيله</span>
+                </div>
+                <ul class="flip-back-features">
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+                    دورات Offensive Security
+                  </li>
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+                    تدريب عملي في بيئة Lab
+                  </li>
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+                    شهادات معتمدة
+                  </li>
+                </ul>
+                <a class="flip-cta magnetic-btn" href="#contact">اطلب هذه الخدمة</a>
+              </div>
             </div>
-            <h3>التدريب</h3>
-            <p>برامج تدريبية متخصصة لتأهيل الموظفين والفرق التقنية في مجالات الأمن السيبراني والأدوات التقنية.</p>
-            <div class="service-tags">
-              <span class="service-tag">تدريب الموظفين</span>
-              <span class="service-tag">تأهيل الفرق</span>
-              <span class="service-tag">الأمن السيبراني</span>
-            </div>
-          </article>
+          </div>
 
         </div>
       </div>
     </section>
 
-    <!-- ── 4. تواصل معنا ───────────────────────── -->
+    <!-- ── 5. تواصل معنا — Terminal Form + Cards ─── -->
     <section class="contact" id="contact">
       <div class="shell">
         <div class="contact-header reveal">
           <span class="section-label">تواصل معنا</span>
           <h2 class="section-heading">نرحب بمناقشة احتياجك التقني</h2>
         </div>
-        <div class="contact-cards">
+        <div class="contact-layout">
 
-          <!-- البريد -->
-          <a class="contact-card reveal reveal-d1" href="mailto:business@khebra.tech">
-            <div class="contact-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="2" y="4" width="20" height="16" rx="2"/>
-                <path d="M22 7l-10 7L2 7"/>
-              </svg>
-            </div>
-            <span class="contact-label">البريد الإلكتروني</span>
-            <span class="contact-value">business@khebra.tech</span>
-          </a>
+          <!-- Terminal-style Contact Form -->
+          <div class="contact-form-wrap reveal reveal-d1">
+            <form class="contact-terminal" id="contactForm" autocomplete="off">
+              <div class="terminal-header">
+                <span class="terminal-dot terminal-dot--red"></span>
+                <span class="terminal-dot terminal-dot--yellow"></span>
+                <span class="terminal-dot terminal-dot--green"></span>
+                <span class="terminal-title">khebra@contact:~</span>
+              </div>
+              <div class="contact-terminal-body">
+                <div class="term-field">
+                  <label class="term-prompt" for="fieldName"><span class="term-user">client</span>@khebra:~$ </label>
+                  <input type="text" id="fieldName" name="name" placeholder="أدخل اسمك" required>
+                </div>
+                <div class="term-field">
+                  <label class="term-prompt" for="fieldEmail"><span class="term-user">client</span>@khebra:~$ </label>
+                  <input type="email" id="fieldEmail" name="email" placeholder="أدخل بريدك الإلكتروني" required>
+                </div>
+                <div class="term-field">
+                  <label class="term-prompt" for="fieldMsg"><span class="term-user">client</span>@khebra:~$ </label>
+                  <textarea id="fieldMsg" name="message" rows="3" placeholder="اكتب رسالتك هنا..." required></textarea>
+                </div>
+                <button type="submit" class="term-submit magnetic-btn">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+                  إرسال الرسالة
+                </button>
+              </div>
+            </form>
+          </div>
 
-          <!-- الهاتف -->
-          <a class="contact-card reveal reveal-d2" href="https://wa.me/967777005345" target="_blank" rel="noopener">
-            <div class="contact-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-              </svg>
-            </div>
-            <span class="contact-label">الهاتف وواتساب</span>
-            <span class="contact-value">+967 777005345</span>
-          </a>
+          <!-- Contact Info Cards -->
+          <div class="contact-info reveal reveal-d2">
+            <a class="contact-card spotlight-card" href="mailto:business@khebra.tech">
+              <div class="contact-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="4" width="20" height="16" rx="2"/>
+                  <path d="M22 7l-10 7L2 7"/>
+                </svg>
+              </div>
+              <span class="contact-label">البريد الإلكتروني</span>
+              <span class="contact-value">business@khebra.tech</span>
+            </a>
 
-          <!-- العنوان -->
-          <div class="contact-card reveal reveal-d3">
-            <div class="contact-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                <circle cx="12" cy="10" r="3"/>
-              </svg>
+            <a class="contact-card spotlight-card" href="https://wa.me/967777005345" target="_blank" rel="noopener">
+              <div class="contact-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                </svg>
+              </div>
+              <span class="contact-label">الهاتف وواتساب</span>
+              <span class="contact-value">+967 777005345</span>
+            </a>
+
+            <div class="contact-card spotlight-card">
+              <div class="contact-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                  <circle cx="12" cy="10" r="3"/>
+                </svg>
+              </div>
+              <span class="contact-label">العنوان</span>
+              <span class="contact-value">اليمن — مأرب</span>
             </div>
-            <span class="contact-label">العنوان</span>
-            <span class="contact-value">اليمن — مأرب</span>
           </div>
 
         </div>
@@ -245,6 +424,8 @@
   <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
   <!-- 3D Scene -->
   <script src="js/scene.js"></script>
+  <!-- Particle Network -->
+  <script src="js/particles.js"></script>
   <!-- App Logic -->
   <script src="js/app.js"></script>
 </body>
