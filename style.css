@@ -686,7 +686,7 @@ img {
 }
 
 .stat-number {
-  display: block;
+  display: inline;
   font-family: var(--font-display);
   font-weight: 900;
   font-size: clamp(36px, 4vw, 52px);
@@ -699,6 +699,7 @@ img {
 }
 
 .stat-suffix {
+  display: inline;
   font-family: var(--font-display);
   font-weight: 700;
   font-size: clamp(24px, 3vw, 36px);
@@ -1480,6 +1481,217 @@ a.contact-card:hover .contact-value {
   }
 }
 
+/* Extra-small mobile (iPhone SE, Galaxy S series, etc.) */
+@media (max-width: 420px) {
+  :root {
+    --shell-width: calc(100% - 24px);
+  }
+
+  .hero-brand {
+    font-size: clamp(36px, 11vw, 48px);
+    margin-bottom: 16px;
+  }
+
+  .hero-terminal {
+    margin: 0 auto 20px;
+  }
+
+  .terminal-body {
+    padding: 12px 12px;
+    font-size: 10.5px;
+    line-height: 1.9;
+    min-height: 90px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .terminal-header {
+    padding: 8px 12px;
+  }
+
+  .terminal-title {
+    font-size: 10px;
+  }
+
+  .terminal-dot {
+    width: 10px;
+    height: 10px;
+  }
+
+  .hero-cta {
+    padding: 11px 22px;
+    font-size: 14px;
+  }
+
+  /* Stats */
+  .stats-grid {
+    gap: 12px;
+  }
+
+  .stat-card {
+    padding: 24px 12px;
+  }
+
+  .stat-number {
+    font-size: clamp(28px, 8vw, 36px);
+  }
+
+  .stat-suffix {
+    font-size: clamp(18px, 5vw, 24px);
+  }
+
+  .stat-label {
+    font-size: 12px;
+    margin-top: 6px;
+  }
+
+  /* Flip Cards */
+  .flip-card {
+    min-height: 280px;
+  }
+
+  .flip-card-inner {
+    min-height: 280px;
+  }
+
+  .flip-card-front {
+    padding: 24px 18px 22px;
+  }
+
+  .flip-card-front h3 {
+    font-size: 17px;
+    margin-bottom: 10px;
+  }
+
+  .flip-card-front p {
+    font-size: 13px;
+    line-height: 1.7;
+    margin-bottom: 12px;
+  }
+
+  .service-tag {
+    padding: 4px 10px;
+    font-size: 11px;
+  }
+
+  .flip-card-back {
+    padding: 24px 18px;
+  }
+
+  .flip-stat-number {
+    font-size: 36px;
+  }
+
+  .flip-stat-suffix {
+    font-size: 24px;
+  }
+
+  .flip-back-features li {
+    font-size: 12px;
+    padding: 6px 0;
+    gap: 8px;
+  }
+
+  .flip-cta {
+    padding: 9px 18px;
+    font-size: 13px;
+  }
+
+  /* About */
+  .about-intro {
+    font-size: 15px;
+    line-height: 1.9;
+  }
+
+  .team-card {
+    padding: 24px 18px;
+  }
+
+  .team-card h3 {
+    font-size: 17px;
+  }
+
+  .team-card p {
+    font-size: 13.5px;
+  }
+
+  .team-icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 16px;
+  }
+
+  .team-icon svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  /* Contact */
+  .contact-terminal-body {
+    padding: 18px 14px;
+  }
+
+  .term-prompt {
+    font-size: 10px;
+  }
+
+  .term-field input,
+  .term-field textarea {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+
+  .term-submit {
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  .contact-card {
+    padding: 22px 18px;
+    gap: 14px;
+  }
+
+  .contact-icon {
+    width: 44px;
+    height: 44px;
+  }
+
+  .contact-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .contact-value {
+    font-size: 13.5px;
+  }
+
+  .contact-label {
+    font-size: 10px;
+  }
+
+  /* Section spacing */
+  .about,
+  .services,
+  .contact {
+    padding: 70px 0 60px;
+  }
+
+  .section-heading {
+    font-size: clamp(24px, 6vw, 30px);
+  }
+
+  .section-label {
+    font-size: 11px;
+    margin-bottom: 10px;
+  }
+
+  .about-header,
+  .services-header,
+  .contact-header {
+    margin-bottom: 40px;
+  }
+}
+
 /* Mobile: tap to flip */
 @media (hover: none) {
   .flip-card.flipped .flip-card-inner {
@@ -1497,5 +1709,11 @@ a.contact-card:hover .contact-value {
   .flip-hint {
     opacity: 1 !important;
     transform: none !important;
+    font-size: 0; /* hide original text */
+  }
+
+  .flip-hint::after {
+    content: 'اضغط لاكتشاف المزيد ←';
+    font-size: 12px;
   }
 }
