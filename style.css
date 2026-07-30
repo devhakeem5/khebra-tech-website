@@ -102,7 +102,7 @@ img {
   height: 100%;
   z-index: 0;
   pointer-events: none;
-  opacity: 0.4;
+  opacity: 0.65;
 }
 
 /* ── 4. Layout ─────────────────────────────────────── */
@@ -462,23 +462,25 @@ img {
   50% { transform: translateX(-50%) translateY(8px); opacity: 0.5; }
 }
 
-/* ── 7. About Section ──────────────────────────────── */
+/* ── 7. About Section ───────────────────────────── */
 .about {
   position: relative;
   padding: 130px 0 110px;
-  background: var(--bg-primary);
+  background: rgba(8, 20, 36, 0.84);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
   z-index: 1;
 }
 
-/* Gradient transition from hero */
+/* Subtle top accent line */
 .about::before {
   content: '';
   position: absolute;
-  top: -80px;
+  top: 0;
   left: 0;
   right: 0;
-  height: 80px;
-  background: linear-gradient(to bottom, var(--bg-deep), var(--bg-primary));
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(59, 130, 246, 0.2), transparent);
   pointer-events: none;
 }
 
@@ -625,11 +627,14 @@ img {
 .stats {
   position: relative;
   padding: 80px 0;
-  background: var(--bg-deep);
+  background: rgba(5, 13, 24, 0.7);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
   z-index: 1;
   overflow: hidden;
 }
 
+/* Subtle radial accents */
 .stats::before {
   content: '';
   position: absolute;
@@ -718,22 +723,24 @@ img {
   letter-spacing: 0.02em;
 }
 
-
+/* ── 9. Services Section — Static Cards ──────────────── */
 .services {
   position: relative;
   padding: 130px 0 120px;
-  background: var(--bg-elevated);
+  background: rgba(10, 22, 42, 0.88);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
   z-index: 1;
 }
 
 .services::before {
   content: '';
   position: absolute;
-  top: -80px;
+  top: 0;
   left: 0;
   right: 0;
-  height: 80px;
-  background: linear-gradient(to bottom, var(--bg-deep), var(--bg-elevated));
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(59, 130, 246, 0.18), transparent);
   pointer-events: none;
 }
 
@@ -894,24 +901,24 @@ img {
   box-shadow: 0 8px 28px rgba(59, 130, 246, 0.4);
 }
 
-
-
-/* ── 10. Contact Section ───────────────────────────── */
+/* ── 10. Contact Section ──────────────────────────── */
 .contact {
   position: relative;
   padding: 130px 0 120px;
-  background: var(--bg-primary);
+  background: rgba(8, 20, 36, 0.84);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
   z-index: 1;
 }
 
 .contact::before {
   content: '';
   position: absolute;
-  top: -80px;
+  top: 0;
   left: 0;
   right: 0;
-  height: 80px;
-  background: linear-gradient(to bottom, var(--bg-elevated), var(--bg-primary));
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(59, 130, 246, 0.2), transparent);
   pointer-events: none;
 }
 
@@ -1098,8 +1105,10 @@ a.contact-card:hover .contact-value {
 /* ── 11. Footer ────────────────────────────────────── */
 .footer {
   padding: 28px 0;
-  border-top: 1px solid var(--border);
-  background: var(--bg-deep);
+  border-top: 1px solid rgba(100, 160, 230, 0.1);
+  background: rgba(5, 13, 24, 0.9);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
   position: relative;
   z-index: 1;
 }
