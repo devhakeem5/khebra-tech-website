@@ -229,7 +229,7 @@
     requestAnimationFrame(step);
   }
 
-  // Also trigger flip card back counters when the card is flipped (hovered)
+  // Trigger flip card back counters when the card is hovered (desktop only)
   var flipCards = document.querySelectorAll('.flip-card');
   flipCards.forEach(function (card) {
     var triggered = false;
@@ -244,22 +244,6 @@
           }
         });
       }, 400);
-    });
-
-    // For touch devices
-    card.addEventListener('click', function () {
-      card.classList.toggle('flipped');
-      if (!triggered) {
-        triggered = true;
-        setTimeout(function () {
-          var nums = card.querySelectorAll('.flip-stat-number');
-          nums.forEach(function (n) {
-            if (!n.dataset.animated) {
-              animateCounterSingle(n);
-            }
-          });
-        }, 400);
-      }
     });
   });
 

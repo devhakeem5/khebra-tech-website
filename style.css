@@ -1426,21 +1426,93 @@ a.contact-card:hover .contact-value {
     font-size: 19px;
   }
 
-  /* Flip Cards Mobile — tap instead of hover */
+  /* Service Cards Mobile — flat layout, no flip */
   .flip-card {
-    min-height: 300px;
+    perspective: none !important;
+    min-height: auto !important;
+    height: auto !important;
+    overflow: visible !important;
   }
 
   .flip-card-inner {
-    min-height: 300px;
+    transform-style: flat !important;
+    min-height: auto !important;
+    height: auto !important;
+    transition: none !important;
+    transform: none !important;
+    overflow: visible !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .flip-card:hover .flip-card-inner {
+    transform: none !important;
+  }
+
+  .flip-card-front,
+  .flip-card-back {
+    position: relative !important;
+    inset: auto !important;
+    backface-visibility: visible !important;
+    -webkit-backface-visibility: visible !important;
+    transform: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    height: auto !important;
+    overflow: visible !important;
   }
 
   .flip-card-front {
-    padding: 28px 24px 26px;
+    padding: 28px 24px 24px;
+    border-radius: var(--radius) var(--radius) 0 0 !important;
+    border-bottom: none !important;
   }
 
   .flip-card-front h3 {
     font-size: 19px;
+  }
+
+  /* Hide the flip hint */
+  .flip-hint {
+    display: none !important;
+  }
+
+  /* Hide the animated gradient border on back */
+  .flip-card-back::before {
+    display: none;
+  }
+
+  /* Back becomes a continuation of the same card */
+  .flip-card-back {
+    border-radius: 0 0 var(--radius) var(--radius) !important;
+    border-top: 1px solid var(--border-card) !important;
+    padding: 24px !important;
+    text-align: right;
+    align-items: stretch;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  /* Hide the stat number on mobile — card is compact */
+  .flip-back-stat {
+    display: none;
+  }
+
+  .flip-back-features {
+    margin-bottom: 20px;
+    width: 100%;
+  }
+
+  .flip-back-features li {
+    justify-content: flex-start;
+  }
+
+  .flip-cta {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 12px 20px;
+    font-size: 14px;
   }
 
   /* Stats */
@@ -1545,17 +1617,9 @@ a.contact-card:hover .contact-value {
     margin-top: 6px;
   }
 
-  /* Flip Cards */
-  .flip-card {
-    min-height: 280px;
-  }
-
-  .flip-card-inner {
-    min-height: 280px;
-  }
-
+  /* Flip Cards — extra-small sizing */
   .flip-card-front {
-    padding: 24px 18px 22px;
+    padding: 24px 18px 20px;
   }
 
   .flip-card-front h3 {
@@ -1575,15 +1639,7 @@ a.contact-card:hover .contact-value {
   }
 
   .flip-card-back {
-    padding: 24px 18px;
-  }
-
-  .flip-stat-number {
-    font-size: 36px;
-  }
-
-  .flip-stat-suffix {
-    font-size: 24px;
+    padding: 20px 18px;
   }
 
   .flip-back-features li {
@@ -1593,7 +1649,7 @@ a.contact-card:hover .contact-value {
   }
 
   .flip-cta {
-    padding: 9px 18px;
+    padding: 10px 18px;
     font-size: 13px;
   }
 
@@ -1692,28 +1748,9 @@ a.contact-card:hover .contact-value {
   }
 }
 
-/* Mobile: tap to flip */
+/* Touch devices: ensure no accidental flip */
 @media (hover: none) {
-  .flip-card.flipped .flip-card-inner {
-    transform: rotateY(180deg);
-  }
-
   .flip-card:hover .flip-card-inner {
     transform: none;
-  }
-
-  .flip-card.flipped:hover .flip-card-inner {
-    transform: rotateY(180deg);
-  }
-
-  .flip-hint {
-    opacity: 1 !important;
-    transform: none !important;
-    font-size: 0; /* hide original text */
-  }
-
-  .flip-hint::after {
-    content: 'اضغط لاكتشاف المزيد ←';
-    font-size: 12px;
   }
 }
